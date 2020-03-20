@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -189,6 +189,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -319,6 +329,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/Keras/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/Keras/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -455,6 +476,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -557,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容backend"><span class="nav-number">1.</span> <span class="nav-text">兼容backend</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看Backend"><span class="nav-number">1.1.</span> <span class="nav-text">查看Backend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Backend"><span class="nav-number">1.2.</span> <span class="nav-text">修改Backend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regressor-回归"><span class="nav-number">2.</span> <span class="nav-text">Regressor 回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块并创建数据"><span class="nav-number">3.</span> <span class="nav-text">导入模块并创建数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立模型"><span class="nav-number">4.</span> <span class="nav-text">建立模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活模型"><span class="nav-number">5.</span> <span class="nav-text">激活模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练模型"><span class="nav-number">6.</span> <span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检验模型"><span class="nav-number">7.</span> <span class="nav-text">检验模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化结果"><span class="nav-number">8.</span> <span class="nav-text">可视化结果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容backend"><span class="nav-text">兼容backend</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看Backend"><span class="nav-text">查看Backend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Backend"><span class="nav-text">修改Backend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regressor-回归"><span class="nav-text">Regressor 回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入模块并创建数据"><span class="nav-text">导入模块并创建数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立模型"><span class="nav-text">建立模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活模型"><span class="nav-text">激活模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#训练模型"><span class="nav-text">训练模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检验模型"><span class="nav-text">检验模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化结果"><span class="nav-text">可视化结果</span></a></li></ol></div>
             
 
           </div>
@@ -565,6 +596,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -612,11 +650,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -717,6 +750,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/Keras/';
+          this.page.identifier = '2020/03/20/Keras/';
+          this.page.title = 'Keras';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 

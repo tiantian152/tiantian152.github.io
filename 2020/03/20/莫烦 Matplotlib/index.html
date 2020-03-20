@@ -142,7 +142,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -229,6 +229,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -359,6 +369,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/%E8%8E%AB%E7%83%A6%20Matplotlib/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/莫烦 Matplotlib/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -823,6 +844,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -925,7 +956,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#莫烦-Matplotlib"><span class="nav-number">1.</span> <span class="nav-text">莫烦 Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib安装"><span class="nav-number">1.1.</span> <span class="nav-text">Matplotlib安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS"><span class="nav-number">1.1.2.</span> <span class="nav-text">MacOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">1.1.3.</span> <span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#figure图像"><span class="nav-number">1.2.1.</span> <span class="nav-text">figure图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴1"><span class="nav-number">1.2.2.</span> <span class="nav-text">设置坐标轴1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴2"><span class="nav-number">1.2.3.</span> <span class="nav-text">设置坐标轴2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Legend图例"><span class="nav-number">1.2.4.</span> <span class="nav-text">Legend图例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加图例"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">添加图例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整位置和名称"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">调整位置和名称</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Annotation-标注"><span class="nav-number">1.2.5.</span> <span class="nav-text">Annotation 标注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画出基本图"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">画出基本图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动坐标"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">移动坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-annotate"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">添加注释 annotate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-text"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">添加注释 text</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tick-能见度"><span class="nav-number">1.2.6.</span> <span class="nav-text">tick 能见度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成图形"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">生成图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整坐标"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">调整坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图种类"><span class="nav-number">1.3.</span> <span class="nav-text">画图种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scatter-散点图"><span class="nav-number">1.3.1.</span> <span class="nav-text">Scatter 散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#散点图"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">散点图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bar-柱状图"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bar 柱状图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成基本图形"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">生成基本图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加颜色和数据"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">加颜色和数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contours-等高线图"><span class="nav-number">1.3.3.</span> <span class="nav-text">Contours 等高线图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画等高线"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">画等高线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加高度数字"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">添加高度数字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-图片"><span class="nav-number">1.3.4.</span> <span class="nav-text">Image 图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机矩阵画图"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">随机矩阵画图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#出图方式"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">出图方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#colorbar"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">colorbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-数据"><span class="nav-number">1.3.5.</span> <span class="nav-text">3D 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3D-图"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">3D 图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">投影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多图合并显示"><span class="nav-number">1.4.</span> <span class="nav-text">多图合并显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-多合一显示"><span class="nav-number">1.4.1.</span> <span class="nav-text">Subplot 多合一显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均匀图中图"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">均匀图中图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不均匀图中图"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">不均匀图中图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-分格显示"><span class="nav-number">1.4.2.</span> <span class="nav-text">Subplot 分格显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subplot2grid"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">subplot2grid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gridspec"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">gridspec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subplots"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">subplots</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图中图"><span class="nav-number">1.4.3.</span> <span class="nav-text">图中图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大图"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">大图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小图"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">小图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#次坐标轴"><span class="nav-number">1.4.4.</span> <span class="nav-text">次坐标轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个y坐标"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">第二个y坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">1.5.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation-动画"><span class="nav-number">1.5.1.</span> <span class="nav-text">Animation 动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义方程"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">定义方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数设置"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">参数设置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#莫烦-Matplotlib"><span class="nav-text">莫烦 Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib安装"><span class="nav-text">Matplotlib安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS"><span class="nav-text">MacOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#figure图像"><span class="nav-text">figure图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴1"><span class="nav-text">设置坐标轴1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴2"><span class="nav-text">设置坐标轴2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Legend图例"><span class="nav-text">Legend图例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加图例"><span class="nav-text">添加图例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整位置和名称"><span class="nav-text">调整位置和名称</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Annotation-标注"><span class="nav-text">Annotation 标注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画出基本图"><span class="nav-text">画出基本图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动坐标"><span class="nav-text">移动坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-annotate"><span class="nav-text">添加注释 annotate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-text"><span class="nav-text">添加注释 text</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tick-能见度"><span class="nav-text">tick 能见度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成图形"><span class="nav-text">生成图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整坐标"><span class="nav-text">调整坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图种类"><span class="nav-text">画图种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scatter-散点图"><span class="nav-text">Scatter 散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#散点图"><span class="nav-text">散点图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bar-柱状图"><span class="nav-text">Bar 柱状图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成基本图形"><span class="nav-text">生成基本图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加颜色和数据"><span class="nav-text">加颜色和数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contours-等高线图"><span class="nav-text">Contours 等高线图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画等高线"><span class="nav-text">画等高线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加高度数字"><span class="nav-text">添加高度数字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-图片"><span class="nav-text">Image 图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机矩阵画图"><span class="nav-text">随机矩阵画图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#出图方式"><span class="nav-text">出图方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#colorbar"><span class="nav-text">colorbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-数据"><span class="nav-text">3D 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3D-图"><span class="nav-text">3D 图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影"><span class="nav-text">投影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多图合并显示"><span class="nav-text">多图合并显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-多合一显示"><span class="nav-text">Subplot 多合一显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均匀图中图"><span class="nav-text">均匀图中图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不均匀图中图"><span class="nav-text">不均匀图中图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-分格显示"><span class="nav-text">Subplot 分格显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subplot2grid"><span class="nav-text">subplot2grid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gridspec"><span class="nav-text">gridspec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subplots"><span class="nav-text">subplots</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图中图"><span class="nav-text">图中图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据"><span class="nav-text">数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大图"><span class="nav-text">大图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小图"><span class="nav-text">小图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#次坐标轴"><span class="nav-text">次坐标轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个y坐标"><span class="nav-text">第二个y坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation-动画"><span class="nav-text">Animation 动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义方程"><span class="nav-text">定义方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数设置"><span class="nav-text">参数设置</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -933,6 +964,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -980,11 +1018,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1085,6 +1118,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/%E8%8E%AB%E7%83%A6%20Matplotlib/';
+          this.page.identifier = '2020/03/20/莫烦 Matplotlib/';
+          this.page.title = '莫烦 Matplotlib';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 

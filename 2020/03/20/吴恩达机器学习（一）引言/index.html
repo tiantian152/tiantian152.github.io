@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -186,6 +186,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -317,6 +327,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/吴恩达机器学习（一）引言/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -436,6 +457,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -538,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-引言"><span class="nav-number">1.</span> <span class="nav-text">一、 引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-欢迎"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 欢迎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-机器学习是什么？"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 机器学习是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-监督学习"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 监督学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-无监督学习"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 无监督学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、-引言"><span class="nav-text">一、 引言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-欢迎"><span class="nav-text">1.1 欢迎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-机器学习是什么？"><span class="nav-text">1.2 机器学习是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-监督学习"><span class="nav-text">1.3 监督学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-无监督学习"><span class="nav-text">1.4 无监督学习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -546,6 +577,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -593,11 +631,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -698,6 +731,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%A8%80/';
+          this.page.identifier = '2020/03/20/吴恩达机器学习（一）引言/';
+          this.page.title = '吴恩达机器学习（一）引言';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 

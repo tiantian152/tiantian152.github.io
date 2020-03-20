@@ -119,7 +119,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -206,6 +206,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -336,6 +346,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BASVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/吴恩达机器学习（十二）支持向量机SVM/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -674,6 +695,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -776,7 +807,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、支持向量机-Support-Vector-Machines"><span class="nav-number">1.</span> <span class="nav-text">十二、支持向量机 (Support Vector Machines)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-优化目标"><span class="nav-number">1.1.</span> <span class="nav-text">12.1 优化目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-大边界的直观理解（Large-margin-intuition）"><span class="nav-number">1.2.</span> <span class="nav-text">12.2 大边界的直观理解（Large margin intuition）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-4-核函数1：使SVM适应非线性分类器"><span class="nav-number">1.3.</span> <span class="nav-text">12.4 核函数1：使SVM适应非线性分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-5-核函数2"><span class="nav-number">1.4.</span> <span class="nav-text">12.5 核函数2</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何选择标记-landmarks"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">如何选择标记(landmarks)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-6-使用支持向量机"><span class="nav-number">1.5.</span> <span class="nav-text">12.6 使用支持向量机</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、支持向量机-Support-Vector-Machines"><span class="nav-text">十二、支持向量机 (Support Vector Machines)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-1-优化目标"><span class="nav-text">12.1 优化目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-大边界的直观理解（Large-margin-intuition）"><span class="nav-text">12.2 大边界的直观理解（Large margin intuition）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-4-核函数1：使SVM适应非线性分类器"><span class="nav-text">12.4 核函数1：使SVM适应非线性分类器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-5-核函数2"><span class="nav-text">12.5 核函数2</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何选择标记-landmarks"><span class="nav-text">如何选择标记(landmarks)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-6-使用支持向量机"><span class="nav-text">12.6 使用支持向量机</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -784,6 +815,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -831,11 +869,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -936,6 +969,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BASVM/';
+          this.page.identifier = '2020/03/20/吴恩达机器学习（十二）支持向量机SVM/';
+          this.page.title = '吴恩达机器学习（十二）支持向量机SVM';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 

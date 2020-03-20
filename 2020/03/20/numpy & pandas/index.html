@@ -104,7 +104,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -191,6 +191,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -321,6 +331,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/numpy%20&%20pandas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/numpy & pandas/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -741,6 +762,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -843,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-amp-pandas"><span class="nav-number">1.</span> <span class="nav-text">numpy &amp; pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-numpy-amp-pandas"><span class="nav-number">1.1.</span> <span class="nav-text">why numpy &amp; pandas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy"><span class="nav-number">1.2.</span> <span class="nav-text">numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy-array"><span class="nav-number">1.2.2.</span> <span class="nav-text">numpy.array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#numpy-reshape"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">numpy.reshape</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础运算"><span class="nav-number">1.2.3.</span> <span class="nav-text">基础运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">一维</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维或多维"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">二维或多维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">1.2.4.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array合并"><span class="nav-number">1.2.5.</span> <span class="nav-text">array合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#np-vstack"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">np.vstack()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-hstack"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">np.hstack()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-newaxis"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">np.newaxis()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-concatenate"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">np.concatenate()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array分割"><span class="nav-number">1.2.6.</span> <span class="nav-text">array分割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">创建数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纵向分割"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">纵向分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#横向分割"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">横向分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误的分割"><span class="nav-number">1.2.6.4.</span> <span class="nav-text">错误的分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不等量的分割"><span class="nav-number">1.2.6.5.</span> <span class="nav-text">不等量的分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的分割方式"><span class="nav-number">1.2.6.6.</span> <span class="nav-text">其他的分割方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Numpy-copy-amp-deep-copy"><span class="nav-number">1.2.7.</span> <span class="nav-text">Numpy copy &amp; deep copy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅拷贝"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">&#x3D; 浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy-深拷贝"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">copy() 深拷贝</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas"><span class="nav-number">1.3.</span> <span class="nav-text">pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Series"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Series</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataFrame"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">DataFrame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataFrame-的一些简单运用"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">DataFrame 的一些简单运用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择数据"><span class="nav-number">1.3.2.</span> <span class="nav-text">选择数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的筛选"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">简单的筛选</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据标签-loc"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">根据标签 loc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据序列-iloc"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">根据序列 iloc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据混合的这两种-ix"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">根据混合的这两种 ix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过判断的筛选"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">通过判断的筛选</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas设置值"><span class="nav-number">1.3.3.</span> <span class="nav-text">pandas设置值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据-1"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">创建数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据位置设置-loc-和-iloc"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">根据位置设置 loc 和 iloc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据条件设置"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">根据条件设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按行或列设置"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">按行或列设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加数据"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">添加数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-处理丢失数据"><span class="nav-number">1.3.4.</span> <span class="nav-text">Pandas 处理丢失数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建含-NaN-的矩阵"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">创建含 NaN 的矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-dropna"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">pd.dropna()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-fillna"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">pd.fillna()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-isnull"><span class="nav-number">1.3.4.4.</span> <span class="nav-text">pd.isnull()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-导入导出"><span class="nav-number">1.3.5.</span> <span class="nav-text">Pandas 导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读取csv"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">读取csv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将资料存取成pickle"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">将资料存取成pickle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-合并-concat"><span class="nav-number">1.3.6.</span> <span class="nav-text">Pandas 合并 concat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axis-合并方向"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">axis (合并方向)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ignore-index-重置-index"><span class="nav-number">1.3.6.2.</span> <span class="nav-text">ignore_index (重置 index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-合并方式"><span class="nav-number">1.3.6.3.</span> <span class="nav-text">join (合并方式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-axes-依照-axes-合并"><span class="nav-number">1.3.6.4.</span> <span class="nav-text">join_axes (依照 axes 合并)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#append-添加数据"><span class="nav-number">1.3.6.5.</span> <span class="nav-text">append (添加数据)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-合并-merge"><span class="nav-number">1.3.7.</span> <span class="nav-text">Pandas 合并 merge</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依据一组key合并"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">依据一组key合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依据两组key合并"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">依据两组key合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indicator"><span class="nav-number">1.3.7.3.</span> <span class="nav-text">Indicator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依据index合并"><span class="nav-number">1.3.7.4.</span> <span class="nav-text">依据index合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决overlapping的问题"><span class="nav-number">1.3.7.5.</span> <span class="nav-text">解决overlapping的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas-plot"><span class="nav-number">1.3.8.</span> <span class="nav-text">pandas plot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个Series"><span class="nav-number">1.3.8.1.</span> <span class="nav-text">创建一个Series</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dataframe-可视化"><span class="nav-number">1.3.8.2.</span> <span class="nav-text">Dataframe 可视化</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#numpy-amp-pandas"><span class="nav-text">numpy &amp; pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#why-numpy-amp-pandas"><span class="nav-text">why numpy &amp; pandas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy"><span class="nav-text">numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#numpy-array"><span class="nav-text">numpy.array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#numpy-reshape"><span class="nav-text">numpy.reshape</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础运算"><span class="nav-text">基础运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一维"><span class="nav-text">一维</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二维或多维"><span class="nav-text">二维或多维</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array合并"><span class="nav-text">array合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#np-vstack"><span class="nav-text">np.vstack()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-hstack"><span class="nav-text">np.hstack()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-newaxis"><span class="nav-text">np.newaxis()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#np-concatenate"><span class="nav-text">np.concatenate()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array分割"><span class="nav-text">array分割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据"><span class="nav-text">创建数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纵向分割"><span class="nav-text">纵向分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#横向分割"><span class="nav-text">横向分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误的分割"><span class="nav-text">错误的分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不等量的分割"><span class="nav-text">不等量的分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的分割方式"><span class="nav-text">其他的分割方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Numpy-copy-amp-deep-copy"><span class="nav-text">Numpy copy &amp; deep copy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浅拷贝"><span class="nav-text">&#x3D; 浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy-深拷贝"><span class="nav-text">copy() 深拷贝</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas"><span class="nav-text">pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本介绍"><span class="nav-text">基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Series"><span class="nav-text">Series</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataFrame"><span class="nav-text">DataFrame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DataFrame-的一些简单运用"><span class="nav-text">DataFrame 的一些简单运用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择数据"><span class="nav-text">选择数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单的筛选"><span class="nav-text">简单的筛选</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据标签-loc"><span class="nav-text">根据标签 loc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据序列-iloc"><span class="nav-text">根据序列 iloc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据混合的这两种-ix"><span class="nav-text">根据混合的这两种 ix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过判断的筛选"><span class="nav-text">通过判断的筛选</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas设置值"><span class="nav-text">pandas设置值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据-1"><span class="nav-text">创建数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据位置设置-loc-和-iloc"><span class="nav-text">根据位置设置 loc 和 iloc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据条件设置"><span class="nav-text">根据条件设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按行或列设置"><span class="nav-text">按行或列设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加数据"><span class="nav-text">添加数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-处理丢失数据"><span class="nav-text">Pandas 处理丢失数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建含-NaN-的矩阵"><span class="nav-text">创建含 NaN 的矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-dropna"><span class="nav-text">pd.dropna()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-fillna"><span class="nav-text">pd.fillna()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pd-isnull"><span class="nav-text">pd.isnull()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-导入导出"><span class="nav-text">Pandas 导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读取csv"><span class="nav-text">读取csv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将资料存取成pickle"><span class="nav-text">将资料存取成pickle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-合并-concat"><span class="nav-text">Pandas 合并 concat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axis-合并方向"><span class="nav-text">axis (合并方向)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ignore-index-重置-index"><span class="nav-text">ignore_index (重置 index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-合并方式"><span class="nav-text">join (合并方式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-axes-依照-axes-合并"><span class="nav-text">join_axes (依照 axes 合并)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#append-添加数据"><span class="nav-text">append (添加数据)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pandas-合并-merge"><span class="nav-text">Pandas 合并 merge</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依据一组key合并"><span class="nav-text">依据一组key合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依据两组key合并"><span class="nav-text">依据两组key合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indicator"><span class="nav-text">Indicator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依据index合并"><span class="nav-text">依据index合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决overlapping的问题"><span class="nav-text">解决overlapping的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas-plot"><span class="nav-text">pandas plot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个Series"><span class="nav-text">创建一个Series</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dataframe-可视化"><span class="nav-text">Dataframe 可视化</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -851,6 +882,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -898,11 +936,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -1003,6 +1036,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/numpy%20&%20pandas/';
+          this.page.identifier = '2020/03/20/numpy & pandas/';
+          this.page.title = 'numpy & pandas';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 

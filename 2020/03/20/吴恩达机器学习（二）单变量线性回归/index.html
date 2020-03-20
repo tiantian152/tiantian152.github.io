@@ -87,9 +87,9 @@
 <meta property="og:description" content="二、单变量线性回归2.1 模型表示m代表训练集中实例的数量   x代表特征&#x2F;输入变量 y 代表目标变量&#x2F;输出变量 (x,y)代表训练集中的实例 $ (x^{(i)}, y^{(i)}) ​$代表第i个观察实例 h 代表学习算法的解决方案或函数也称为假设（hypothesis） 2.2 代价函数假设函数：$ h_\theta(x) &#x3D; \theta_0 + \theta_1x ​$ 参数：$ \th">
 <meta property="og:image" content="http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/%5Cimage%5C1580646267317.png">
 <meta property="og:image" content="http://yoursite.com/images/1580647988012.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/%5Cimage%5CIMG_0945(20200202-212622).PNG">
+<meta property="og:image" content="http://yoursite.com/images/IMG_0945(20200202-212622).PNG">
 <meta property="article:published_time" content="2020-03-20T08:46:09.000Z">
-<meta property="article:modified_time" content="2020-03-20T08:47:27.108Z">
+<meta property="article:modified_time" content="2020-03-20T09:41:39.402Z">
 <meta property="article:author" content="tiantian">
 <meta property="article:tag" content="吴恩达机器学习">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -190,6 +190,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -321,6 +331,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/03/20/吴恩达机器学习（二）单变量线性回归/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -385,7 +406,7 @@
 <p>其中 $ \alpha$ 是学习率（<strong>learning rate</strong>），它决定了我们沿着能让代价函数下降程度最大的方向向下迈出的步子有多大，在批量梯度下降中，我们每一次都同时让所有的参数减去学习速率乘以代价函数的导数。</p>
 <p>实现梯度下降算法的微妙之处是所有参数需要同时更新。</p>
 <p>一般来说先将参数都初始化成0</p>
-<h3 id="2-6-梯度下降的直观理解"><a href="#2-6-梯度下降的直观理解" class="headerlink" title="2.6 梯度下降的直观理解"></a>2.6 梯度下降的直观理解</h3><p><img src="%5Cimage%5CIMG_0945(20200202-212622).PNG" alt="IMG_0945(20200202-212622)"></p>
+<h3 id="2-6-梯度下降的直观理解"><a href="#2-6-梯度下降的直观理解" class="headerlink" title="2.6 梯度下降的直观理解"></a>2.6 梯度下降的直观理解</h3><p><img src="/images/IMG_0945(20200202-212622).PNG" alt="IMG_0945(images/IMG_0945(20200202-212622).PNG)"></p>
 <p>如果 $ \alpha$ 太小了，即我的学习速率太小，结果就是只能这样像小宝宝一样一点点地挪动，去努力接近最低点，这样就需要很多步才能到达最低点，所以如果 α 太小的话，可能会很慢，因为它会一点点挪动，它会需要很多步才能到达全局最低点。</p>
 <p>如果 $ \alpha$ 太大，那么梯度下降法可能会越过最低点，甚至可能无法收敛，下一次迭代又移动了一大步，越过一次，又越过一次，一次次越过最低点，直到你发现实际上离最低点越来越远，所以，如果 α 太大，它会导致无法收敛，甚至发散。</p>
 <p>如果将初始值放置在最低点，那么参数每次的变化将为0，但此时仍然进行着操作</p>
@@ -460,6 +481,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -564,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、单变量线性回归"><span class="nav-number">1.</span> <span class="nav-text">二、单变量线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-模型表示"><span class="nav-number">1.1.</span> <span class="nav-text">2.1 模型表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-代价函数"><span class="nav-number">1.2.</span> <span class="nav-text">2.2 代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#less-function"><span class="nav-number">1.2.1.</span> <span class="nav-text">less function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cost-function"><span class="nav-number">1.2.2.</span> <span class="nav-text">cost function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标"><span class="nav-number">1.2.3.</span> <span class="nav-text">优化目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-代价函数的直观理解I"><span class="nav-number">1.3.</span> <span class="nav-text">2.3 代价函数的直观理解I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-代价函数的直观理解II"><span class="nav-number">1.4.</span> <span class="nav-text">2.4 代价函数的直观理解II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-梯度下降"><span class="nav-number">1.5.</span> <span class="nav-text">2.5 梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-梯度下降的直观理解"><span class="nav-number">1.6.</span> <span class="nav-text">2.6 梯度下降的直观理解</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二、单变量线性回归"><span class="nav-text">二、单变量线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-模型表示"><span class="nav-text">2.1 模型表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-代价函数"><span class="nav-text">2.2 代价函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#less-function"><span class="nav-text">less function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cost-function"><span class="nav-text">cost function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化目标"><span class="nav-text">优化目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-代价函数的直观理解I"><span class="nav-text">2.3 代价函数的直观理解I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-代价函数的直观理解II"><span class="nav-text">2.4 代价函数的直观理解II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-梯度下降"><span class="nav-text">2.5 梯度下降</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-梯度下降的直观理解"><span class="nav-text">2.6 梯度下降的直观理解</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -572,6 +603,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -619,11 +657,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -724,6 +757,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/';
+          this.page.identifier = '2020/03/20/吴恩达机器学习（二）单变量线性回归/';
+          this.page.title = '吴恩达机器学习（二）单变量线性回归';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
