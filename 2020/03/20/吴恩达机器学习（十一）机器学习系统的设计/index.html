@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="吴恩达机器学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="十一、机器学习系统的设计11.0 工作的优先级：垃圾邮件分类例子我们将垃圾邮件标注为 spam 用1表示 将废垃圾邮件标注为 non-spam 用0表示 如果我们有一些这样标注好的垃圾和非垃圾邮件样本，如何来训练一个垃圾邮件分类器？很清楚这是一个有监督学习的问题，假设我们选择逻辑回归算法来训练这样的分类器，首先必须选择合适的特征。这里定义：  x &#x3D; 邮件的特征； y &#x3D; 垃圾邮件(1) 或 非垃">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吴恩达机器学习（十一）机器学习系统的设计">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="十一、机器学习系统的设计11.0 工作的优先级：垃圾邮件分类例子我们将垃圾邮件标注为 spam 用1表示 将废垃圾邮件标注为 non-spam 用0表示 如果我们有一些这样标注好的垃圾和非垃圾邮件样本，如何来训练一个垃圾邮件分类器？很清楚这是一个有监督学习的问题，假设我们选择逻辑回归算法来训练这样的分类器，首先必须选择合适的特征。这里定义：  x &#x3D; 邮件的特征； y &#x3D; 垃圾邮件(1) 或 非垃">
+<meta property="og:image" content="http://52opencourse.com/?qa=blob&qa_blobid=5923680306589653738">
+<meta property="og:image" content="http://52opencourse.com/?qa=blob&qa_blobid=333243597623131971">
+<meta property="og:image" content="http://52opencourse.com/?qa=blob&qa_blobid=9727548652199519336">
+<meta property="article:published_time" content="2020-03-20T09:02:00.000Z">
+<meta property="article:modified_time" content="2020-03-20T09:25:14.372Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="吴恩达机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://52opencourse.com/?qa=blob&qa_blobid=5923680306589653738">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/吴恩达机器学习（十一）机器学习系统的设计/"/>
+
+
+
+
+
+  <title>吴恩达机器学习（十一）机器学习系统的设计 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">吴恩达机器学习（十一）机器学习系统的设计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T17:02:00+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="十一、机器学习系统的设计"><a href="#十一、机器学习系统的设计" class="headerlink" title="十一、机器学习系统的设计"></a>十一、机器学习系统的设计</h2><h3 id="11-0-工作的优先级：垃圾邮件分类例子"><a href="#11-0-工作的优先级：垃圾邮件分类例子" class="headerlink" title="11.0 工作的优先级：垃圾邮件分类例子"></a>11.0 工作的优先级：垃圾邮件分类例子</h3><p>我们将垃圾邮件标注为 spam 用1表示</p>
+<p>将废垃圾邮件标注为 non-spam 用0表示</p>
+<p>如果我们有一些这样标注好的垃圾和非垃圾邮件样本，如何来训练一个垃圾邮件分类器？很清楚这是一个有监督学习的问题，假设我们选择逻辑回归算法来训练这样的分类器，首先必须选择合适的特征。这里定义：</p>
+<ul>
+<li>x = 邮件的特征；</li>
+<li>y = 垃圾邮件(1) 或 非垃圾邮件(0)</li>
+</ul>
+<p>我们可以选择100个典型的词汇集合来代表垃圾/非垃圾（单词），例如deal, buy, discount, andrew, now等，可以按它们的字母顺序排序。对于已经标注好的邮件训练样本，如果100个词汇中有单词j在样本中出现，就用1代表特征向量x中的xj，否则用0表示，这样训练样本就被特征向量x所替代:</p>
+<p>注意在实际使用中，我们不会手动去选择100个典型的词汇，而是从训练集中选择出现频率最高的前n个词，例如10000到50000个。</p>
+<p>那么，如何高效的训练一个垃圾邮件分类器使其准确率较高，错误率较小？</p>
+<ul>
+<li><p>首先很自然的考虑到收集较多的数据，例如”honeypot” project,一个专门收集垃圾邮件服务器ip和垃圾邮件内容的项目；</p>
+</li>
+<li><p>但是上一章已经告诉我们，数据并不是越多越好，所以可以考虑设计其他复杂的特征，例如利用邮件的发送信息，这通常隐藏在垃圾邮件的顶部；</p>
+</li>
+<li><p>还可以考虑设计基于邮件主体的特征，例如是否将”discount”和”discounts”看作是同一个词？同理如何处理”deal”和”Dealer”? 还有是否将标点作为特征？</p>
+</li>
+<li><p>最后可以考虑使用复杂的算法来侦测错误的拼写（垃圾邮件会故意将单词拼写错误以逃避垃圾邮件过滤器，例如m0rtgage, med1cine, w4tches)</p>
+</li>
+</ul>
+<h3 id="11-1-首先要做什么"><a href="#11-1-首先要做什么" class="headerlink" title="11.1 首先要做什么"></a>11.1 首先要做什么</h3><p>以一个垃圾邮件分类器算法为例进行讨论。</p>
+<p>为了解决这样一个问题，我们首先要做的决定是如何选择并表达特征向量$x​$。我们可以选择一个由100个最常出现在垃圾邮件中的词所构成的列表，根据这些词是否有在邮件中出现，来获得我们的特征向量（出现为1，不出现为0），尺寸为100×1。</p>
+<p>为了构建这个分类器算法，我们可以做很多事，例如：</p>
+<ol>
+<li><strong>收集更多的数据，让我们有更多的垃圾邮件和非垃圾邮件的样本</strong></li>
+<li><strong>基于邮件的路由信息开发一系列复杂的特征</strong></li>
+<li><strong>基于邮件的正文信息开发一系列复杂的特征，包括考虑截词的处理</strong></li>
+<li><strong>为探测刻意的拼写错误（把watch 写成w4tch）开发复杂的算法</strong></li>
+</ol>
+<p>在上面这些选项中，非常难决定应该在哪一项上花费时间和精力，作出明智的选择，比随着感觉走要更好。</p>
+<p>我们将在随后的课程中讲误差分析，我会告诉你怎样用一个更加系统性的方法，从一堆不同的方法中，选取合适的那一个。因此，你更有可能选择一个真正的好方法，能让你花上几天几周，甚至是几个月去进行深入的研究。</p>
+<h3 id="11-2-误差分析（Error-Analysis）"><a href="#11-2-误差分析（Error-Analysis）" class="headerlink" title="11.2 误差分析（Error Analysis）"></a>11.2 误差分析（Error Analysis）</h3><p>构建一个学习算法的推荐方法为：</p>
+<ol>
+<li><p>从一个简单的能快速实现的算法开始，实现该算法并用交叉验证集数据测试这个算法</p>
+</li>
+<li><p>绘制学习曲线，决定是增加更多数据，或者添加更多特征，还是其他选择</p>
+</li>
+<li><p>进行误差分析：人工检查交叉验证集中我们算法中产生预测误差的样本，看看这些样本是否有某种系统化的趋势</p>
+</li>
+</ol>
+<p>假设交叉验证集上有500个邮件样本，其中算法错分了100个邮件，那么我们就人工来检查这100个bad case, 并且按如下的方式对它们进行分类：</p>
+<ul>
+<li>(i) 邮件是什么类型的？</li>
+<li>(ii) 什么样的线索或特征你认为有可能对算法的正确分类有帮助？</li>
+</ul>
+<p>数值评估的重要性：</p>
+<p>在对bad case进行分析后，我们可能会考虑如下的方法：</p>
+<ul>
+<li>对于discount/discounts/discounted/discounting 能否将它们看作是同一个词？</li>
+<li>能不能使用“词干化”的工具包来取单词的词干，例如“Porter stemmer”？</li>
+</ul>
+<p>错误分析不能决定上述方法是否有效，它只是提供了一种解决问题的思路和参考，只有在实际的尝试后才能看出这些方法是否有效。</p>
+<p>所以我们需要对算法进行数值评估（例如交叉验证集误差），来看看使用或不使用某种方法时的算法效果，例如：</p>
+<ul>
+<li>不对单词提前词干：5%错误率   vs 对单词提取词干：3% 错误率</li>
+<li>对大小写进行区分（Mom / mom): 3.2% 错误率</li>
+</ul>
+<h3 id="11-3-不对称性分类的错误评估-Error-metrics-for-skewed-classes"><a href="#11-3-不对称性分类的错误评估-Error-metrics-for-skewed-classes" class="headerlink" title="11.3 不对称性分类的错误评估(Error metrics for skewed classes)"></a>11.3 不对称性分类的错误评估(Error metrics for skewed classes)</h3><p>什么是<strong>不对称性分类</strong>？</p>
+<p>以癌症预测或者分类为例，我们训练了一个逻辑回归模型. 如果是癌症，y = 1, 其他则 y = 0。<br>在测试集上发现这个模型的错误率仅为1%（99%都分正确了），貌似是一个非常好的结果？<br>但事实上，仅有0.5%的病人得了癌症，如果我们不用任何学习算法，对于测试集中的所有人都预测y = 0，既没有癌症。那么这个预测方法的错误率仅为0.5%，比我们废好大力训练的逻辑回归模型的还要好。这就是一个不对称分类的例子，对于这样的例子，<strong>仅仅考虑错误率是有风险的</strong>。</p>
+<p>现在我们就来考虑一种标准的衡量方法：<strong>Precision/Recall(精确度和召回率)</strong></p>
+<p>首先对正例和负例做如下的定义：<img src="http://52opencourse.com/?qa=blob&qa_blobid=5923680306589653738" alt="正负例问题-我爱公开课-52opencourse.com"></p>
+<p>其中：</p>
+<p>True Positive （真正例, TP）被模型预测为正的正样本；可以称作判断为真的正确率</p>
+<p>True Negative（真负例 , TN）被模型预测为负的负样本 ；可以称作判断为假的正确率</p>
+<p>False Positive （假正例, FP）被模型预测为正的负样本；可以称作误报率</p>
+<p>False Negative（假负例 , FN）被模型预测为负的正样本；可以称作漏报率  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th><strong>预测值</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td><strong>Positive</strong></td>
+<td><strong>Negtive</strong></td>
+</tr>
+<tr>
+<td><strong>实际值</strong></td>
+<td><strong>Positive</strong></td>
+<td><strong>TP</strong></td>
+<td><strong>FN</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Negtive</strong></td>
+<td><strong>FP</strong></td>
+<td><strong>TN</strong></td>
+</tr>
+</tbody></table>
+<p>那么对于癌症预测这个例子我们可以定义：</p>
+<p>Precision（精确度）-预测中实际得癌症的病人数量(真正例)除以我们预测的得癌症的病人数量：</p>
+<p>$\frac{True\ positives}{predocted\ positive}=\frac{True\ Positive }{True\ Positive + False\ Positive}$</p>
+<p><strong>Precision = TP/(TP+FP)</strong></p>
+<p>Recall（召回率）-预测中实际得癌症的病人数量(真正例)除以实际得癌症的病人数量：</p>
+<p>$\frac{True\ positives}{actual\ positive}=\frac{True\ Positive }{True\ Positive + False\ Negative}​$</p>
+<p><strong>Recall = TP/(TP+FN)</strong></p>
+<h3 id="11-4-精确度和召回率的权衡-Trading-off-precision-and-recall"><a href="#11-4-精确度和召回率的权衡-Trading-off-precision-and-recall" class="headerlink" title="11.4 精确度和召回率的权衡(Trading off precision and recall)"></a>11.4 精确度和召回率的权衡(Trading off precision and recall)</h3><p>假设我们的分类器使用了逻辑回归模型，预测值在0到1之间:， 一种通常的判断正负例的方法是设置一个阈值，例如0.5：</p>
+<ul>
+<li>如果 ，则预测为1， 正例；</li>
+<li>如果 , 则预测为0， 负例；</li>
+</ul>
+<p>这个时候，我们就可以计算这个分类器的<strong>precision and recall(精确度和召回率)</strong>:</p>
+<ul>
+<li><p><strong>Precision = TP/(TP+FP)</strong> 例，在所有我们预测有恶性肿瘤的病人中，实际上有恶性肿瘤的病人的百分比，越高越好。</p>
+</li>
+<li><p><strong>Recall = TP/(TP+FN)</strong> 例，在所有实际上有恶性肿瘤的病人中，成功预测有恶性肿瘤的病人的百分比，越高越好。</p>
+</li>
+</ul>
+<p>这个时候，不同的阈值会导致不同的精确度和召回率，那么如何来权衡这二值？</p>
+<p>对于癌症预测这个例子:</p>
+<p>假设我们非常有把握时才预测病人得癌症（y=1)， 这个时候，我们常常将阈值设置的很高，这会导致高精确度，低召回率(Higher precision, lower recall);</p>
+<p>假设我们不希望将太多的癌症例子错分（避免假负例，本身得了癌症，确被分类为没有得癌症）, 这个时候，阈值就可以设置的低一些，这又会导致高召回率，低精确度(Higher recall, lower precision);</p>
+<p>这些问题，可以归结到一张Precision Recall曲线，简称PR-Curve:</p>
+<p><img src="http://52opencourse.com/?qa=blob&qa_blobid=333243597623131971" alt="Precision Recall 曲线-PR 曲线-我爱公开课-52opencourse.com"></p>
+<p>通常我们会考虑用它们的均值来做比较，但是这会引入一个问题，例如上面三组Precision/Recall的均值分别是：0.45, 0.4, 0.51，最后一组最好，但是最后一组真的好吗？如果我们将阈值定的很低，甚至为0， 那么对于所有的测试集，我们的预测都是y = 1, 那么recall 就是1.0，我们根本就不需要什么复杂的机器学习算法，直接预测y = 1就得了，所以，用Precison/Recall的均值不是一个好办法。</p>
+<p>我们希望有一个帮助我们选择这个阀值的方法。一种方法是计算<strong>标准的F值或者F1-score:</strong></p>
+<p>其计算公式为：${F}_{1}Score:2\frac{PR}{P+R}$</p>
+<p><strong>我们选择使得F1值最高的阀值。</strong></p>
+<p>F值是对精确度和召回率的一个很好的权衡，两种极端的情况也能很好的平衡</p>
+<h3 id="11-5-数据对于机器学习的重要性（Data-for-machine-learning）"><a href="#11-5-数据对于机器学习的重要性（Data-for-machine-learning）" class="headerlink" title="11.5 数据对于机器学习的重要性（Data for machine learning）"></a>11.5 数据对于机器学习的重要性（Data for machine learning）</h3><p>在设计一个高准确率的机器学习系统时，数据具有多大的意义？ 2001年的时候，Banko and Brill曾做了一个实验，对易混淆的单词进行分类，也就是在一个句子的上下文环境中选择一个合适的单词，例如：<br>For breakfast I ate ___ eggs  </p>
+<p>给定{to, two, too}，选择一个合适的单词。<br>他们用了如下几种机器学习算法：</p>
+<ul>
+<li>-Perceptron(Logistic regression)</li>
+<li>-Winnow</li>
+<li>-Memory-based</li>
+<li>-Naïve Bayes</li>
+</ul>
+<p>根据训练集的不同规模记录这几种算法的准确率，并且做了如下的图：</p>
+<p><img src="http://52opencourse.com/?qa=blob&qa_blobid=9727548652199519336" alt="数据对于机器学习的意义"></p>
+<p>最终得到的结论是：</p>
+<p><strong>“It’s not who has the best algorithm that wins. It’s who has the most data.”</strong></p>
+<p>选择大数据的理由？</p>
+<p>假设我们的特征有很多的信息来准确的预测y, 例如，上面的易混淆词分类的例子，它有整个句子的上下文可以利用；</p>
+<p>反过来，例如预测房价的时候，如果仅有房屋大小这个特征，没有其他的特征，能预测准确吗？</p>
+<p>对于这样的问题，一种简单的测试方法是给定这样的特征，一个人类专家能否准确的预测出y?</p>
+<p>如果一个学习算法有很多的参数，例如逻辑回归/线性回归有很多的特征，神经网络有很多隐藏的单元，那么它的训练集误差将会很小，但容易陷入过拟合；如果再使用很大的训练数据，那么它将很难过拟合，它的训练集误差和测试集误差将会近似相等，并且很小。所以大数据对于机器学习还是非常重要的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 吴恩达机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%EF%BC%89%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/" rel="next" title="吴恩达机器学习（十）应用机器学习的建议">
+                <i class="fa fa-chevron-left"></i> 吴恩达机器学习（十）应用机器学习的建议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BASVM/" rel="prev" title="吴恩达机器学习（十二）支持向量机SVM">
+                吴恩达机器学习（十二）支持向量机SVM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、机器学习系统的设计"><span class="nav-number">1.</span> <span class="nav-text">十一、机器学习系统的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-0-工作的优先级：垃圾邮件分类例子"><span class="nav-number">1.1.</span> <span class="nav-text">11.0 工作的优先级：垃圾邮件分类例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-1-首先要做什么"><span class="nav-number">1.2.</span> <span class="nav-text">11.1 首先要做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-2-误差分析（Error-Analysis）"><span class="nav-number">1.3.</span> <span class="nav-text">11.2 误差分析（Error Analysis）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-3-不对称性分类的错误评估-Error-metrics-for-skewed-classes"><span class="nav-number">1.4.</span> <span class="nav-text">11.3 不对称性分类的错误评估(Error metrics for skewed classes)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-4-精确度和召回率的权衡-Trading-off-precision-and-recall"><span class="nav-number">1.5.</span> <span class="nav-text">11.4 精确度和召回率的权衡(Trading off precision and recall)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-5-数据对于机器学习的重要性（Data-for-machine-learning）"><span class="nav-number">1.6.</span> <span class="nav-text">11.5 数据对于机器学习的重要性（Data for machine learning）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

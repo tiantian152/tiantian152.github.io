@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计组," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第1章  概论1.1 计算机系统简介软硬件概念计算机系统由硬件和软件两大部分组成：系统软件，软硬件界面 计算机系统的层次结构五级层次结构   前三个是软件，后两个是硬件 将高级语言翻译成机器语言的软件称为翻译程序 编译程序：将用户编写的高级语言程序的全部语句一次性全部翻译成机器语言程序，然后在执行机器语言程序 解释程序：逐条翻译，直至全部翻译完成    计算机组成与体系结构计算机体系结构  用机器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（计算机组成原理）第一章 概述">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="第1章  概论1.1 计算机系统简介软硬件概念计算机系统由硬件和软件两大部分组成：系统软件，软硬件界面 计算机系统的层次结构五级层次结构   前三个是软件，后两个是硬件 将高级语言翻译成机器语言的软件称为翻译程序 编译程序：将用户编写的高级语言程序的全部语句一次性全部翻译成机器语言程序，然后在执行机器语言程序 解释程序：逐条翻译，直至全部翻译完成    计算机组成与体系结构计算机体系结构  用机器">
+<meta property="og:image" content="http://yoursite.com/images%5C1582677917230.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582679475845.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582679523790.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582680895172.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582680651138.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582855145138.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582855194094.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582855467472.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582859304863.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582857781237.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582859523451.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582859562392.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582859576036.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582859591318.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582861924954.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582861831928.png">
+<meta property="og:image" content="http://yoursite.com/images/1583049812502.png">
+<meta property="og:image" content="http://yoursite.com/images/1583049832011.png">
+<meta property="article:published_time" content="2020-03-20T08:24:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:25:05.678Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images%5C1582677917230.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/计组第一章 概述/"/>
+
+
+
+
+
+  <title>（计算机组成原理）第一章 概述 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">（计算机组成原理）第一章 概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:24:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第1章-概论"><a href="#第1章-概论" class="headerlink" title="第1章  概论"></a>第1章  概论</h1><h2 id="1-1-计算机系统简介"><a href="#1-1-计算机系统简介" class="headerlink" title="1.1 计算机系统简介"></a>1.1 计算机系统简介</h2><h3 id="软硬件概念"><a href="#软硬件概念" class="headerlink" title="软硬件概念"></a>软硬件概念</h3><p>计算机系统由<strong>硬件</strong>和<strong>软件</strong>两大部分组成：系统软件，软硬件界面</p>
+<h3 id="计算机系统的层次结构"><a href="#计算机系统的层次结构" class="headerlink" title="计算机系统的层次结构"></a><strong>计算机系统的层次结构</strong></h3><p>五级层次结构</p>
+<ul>
+<li><img src="/images%5C1582677917230.png" alt="1582677917230"></li>
+<li>前三个是软件，后两个是硬件</li>
+<li>将高级语言翻译成机器语言的软件称为翻译程序<ul>
+<li>编译程序：将用户编写的高级语言程序的全部语句一次性全部翻译成机器语言程序，然后在执行机器语言程序</li>
+<li>解释程序：逐条翻译，直至全部翻译完成</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机组成与体系结构"><a href="#计算机组成与体系结构" class="headerlink" title="计算机组成与体系结构"></a>计算机组成与体系结构</h2><p>计算机体系结构</p>
+<ul>
+<li>用机器语言（也包括汇编语言）编程的程序员所见到的计算机系统的属性概念性的结构与功能特性</li>
+<li>如：是否具备乘法指令功能</li>
+</ul>
+<p>计算机组成原理</p>
+<ul>
+<li>实现计算机体系结构所体现的属性</li>
+<li>如：实现乘法指令需要什么方式</li>
+</ul>
+<h2 id="1-2计算机的基本组成"><a href="#1-2计算机的基本组成" class="headerlink" title="1.2计算机的基本组成"></a>1.2计算机的基本组成</h2><h3 id="1-2-1-冯诺依曼计算机的特点"><a href="#1-2-1-冯诺依曼计算机的特点" class="headerlink" title="1.2.1 冯诺依曼计算机的特点"></a>1.2.1 冯诺依曼计算机的特点</h3><p>1945年，数学家冯诺依曼在研究EDVAC机时提出了“存储程序”的概念。一次概念为基础的各类计算机统称为冯诺依曼机。特点如下：</p>
+<ul>
+<li>计算机有运算器、存储器、控制器、输入设备和输出设备五大部件组成</li>
+<li>指令和数据以同等地位存放于存储器内。并可按地址访问。</li>
+<li>指令和数据均可用二进制表示</li>
+<li>指令由操作码和地址码组成。操作码表示操作的性质、地址码表示操作数在存储器中的位置。</li>
+<li>指令在存储器中按顺序存放。通常，指令时顺序执行的。在特殊情况下，可根据运算结果或指定的条件来改变运算顺序。</li>
+<li>机器以运算器为中心。输入输出设备和存储器之间的数据传送通过运算器完成、</li>
+</ul>
+<h3 id="1-2-2-计算机的硬件框图"><a href="#1-2-2-计算机的硬件框图" class="headerlink" title="1.2.2 计算机的硬件框图"></a>1.2.2 计算机的硬件框图</h3><p>经典的冯诺依曼计算机是以运算器为中心的</p>
+<p><img src="/images%5C1582679475845.png" alt="1582679475845"></p>
+<p>现代计算机已经以存储器为中心</p>
+<p><img src="/images%5C1582679523790.png" alt="1582679523790"></p>
+<p>图中各部件的功能如下</p>
+<p><img src="/images%5C1582680895172.png" alt="1582680895172"></p>
+<ul>
+<li><p>控制器：计算机的控制系统，控制、指挥程序和数据的输入、运行以及处理运算结果</p>
+</li>
+<li><p>运算器：计算机的运算系统</p>
+<ul>
+<li>逻辑运算（判断事物的对与错）</li>
+<li>数学运算（1+1）</li>
+<li>控制器 + 运算器 = 中央处理器（CPU）</li>
+</ul>
+</li>
+<li><p>存储器：计算机存储系统，用于存放数据和程序</p>
+<ul>
+<li>内存<ul>
+<li>基于电工作的</li>
+<li>优点：读取速度快</li>
+<li>缺点：断电数据丢失</li>
+</ul>
+</li>
+<li>外存<ul>
+<li>优点：可以永久存储数据</li>
+<li>缺点：读取速度慢</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>输入设备：将人们所熟悉的信息形式转化为机器能识别的信息形式</p>
+<ul>
+<li>键盘、鼠标、麦克风、摄像头、触摸屏等</li>
+</ul>
+</li>
+<li><p>输出设备：将机器的运算结果转化为人们所熟悉的信息形式</p>
+<ul>
+<li>显示器、音响、打印机</li>
+</ul>
+</li>
+</ul>
+<p>运算器和控制器常常集合在同一芯片上，即CPU。算数逻辑单元（ALU）完成算数逻辑运算；控制单元（CU）用来解释存储器中的指令，并发出各种操作命令来执行指令</p>
+<p>把输入与输出设备简称为I/O设备</p>
+<p>这样，现代计算机可认为由三大组成部分组成：CPU，I/O设备，主存储器</p>
+<p><img src="/images%5C1582680651138.png" alt="1582680651138"></p>
+<h2 id="1-3-计算机的工作步骤"><a href="#1-3-计算机的工作步骤" class="headerlink" title="1.3 计算机的工作步骤"></a>1.3 计算机的工作步骤</h2><h4 id="上机前的准备"><a href="#上机前的准备" class="headerlink" title="上机前的准备"></a>上机前的准备</h4><ol>
+<li><p>建立数学模型</p>
+</li>
+<li><p>确定计算方法</p>
+</li>
+<li><p>编写解题程序</p>
+<ul>
+<li><strong>以$ax^2+bx+c$为例</strong></li>
+</ul>
+<ol>
+<li>将$x​$取至运算器中</li>
+<li>乘以$x$，得$x^2$，存于运算器中</li>
+<li>再乘以$x​$，得$ax^2​$，存于运算器中</li>
+<li>将$ax^2$送至存储器中</li>
+<li>取$b$送至运算器</li>
+<li>乘以$x​$，得$bx​$，存于运算器中</li>
+<li>将$ax^2​$从存储器中取出与$bx​$相加，得$ax^2+bx​$，存于运算器中</li>
+<li>再取$c$与$ax^2+bx$相加，得$ax^2+bx+c$，存于运算器中</li>
+</ol>
+<ul>
+<li>可见不包含停机，输出打印共需8步</li>
+<li>如果将上例改为$(ax+b)x+c​$，步骤可简化为：</li>
+</ul>
+<ol>
+<li>将$x​$取至运算器中</li>
+<li>乘以$a​$，得$ax​$，存于运算器中</li>
+<li>加$b​$，得$ax+b​$，存于运算器中</li>
+<li>再乘以$x​$，得$(ax+b)x​$，存于运算器中</li>
+<li>再取$c$与$(ax+b)x$相加，得$(ax+b)x+c$，存于运算器中</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p><img src="/images%5C1582855145138.png" alt="1582855145138"></p>
+</li>
+<li><p><img src="/images%5C1582855194094.png" alt="1582855194094"></p>
+</li>
+<li><p>指令和数据都是保存在存储器中</p>
+</li>
+</ul>
+<ol start="4">
+<li>上机运行</li>
+</ol>
+<h4 id="计算机的工作过程"><a href="#计算机的工作过程" class="headerlink" title="计算机的工作过程"></a>计算机的工作过程</h4><h5 id="存储器的基本组成"><a href="#存储器的基本组成" class="headerlink" title="存储器的基本组成"></a>存储器的基本组成</h5><p><img src="/images%5C1582855467472.png" alt="1582855467472"></p>
+<h5 id="主存储器（主存-内存）"><a href="#主存储器（主存-内存）" class="headerlink" title="主存储器（主存/内存）"></a>主存储器（主存/内存）</h5><ul>
+<li><strong>存储体</strong><ul>
+<li>存储体由很多存储单元组成，每个存储单元又包含很多存储元件</li>
+<li>存储单元：一个存储单元可存储一串二进制代码</li>
+<li>存储字：一个存储单元存储的二进制代码为一个存储字<ul>
+<li>可以代表一个二进制数</li>
+<li>也可代表一串字符</li>
+<li>还可代表一条指令</li>
+</ul>
+</li>
+<li>存储字长：这串二进制代码的位长，可以是8，16，32位等，必须是字节的整数倍（1Byte=8bit）</li>
+<li>按地址进行寻址（仿存）</li>
+</ul>
+</li>
+<li><strong>MAR</strong>：存储器地址寄存器<ul>
+<li>用于存放欲访问的存储单元的地址</li>
+<li><strong>位数对应存储单元的个数</strong>（如MAR为10位，则有$2^{10}=1024​$个存储单元，记为1K）</li>
+</ul>
+</li>
+<li><strong>MDR</strong>：存储器数据寄存器<ul>
+<li>存放存储体某单元取出的代码或者准备往某单元存入的代码</li>
+<li><strong>位数与存储字长相等</strong></li>
+</ul>
+</li>
+<li>当然想要完成一个完整的取或存操作，CPU还要给主存加以各种控制信号，如读命令、写命令、地址译码驱动信号等。</li>
+</ul>
+<h5 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h5><ul>
+<li>运算器中至少包含3个寄存器和一个算数逻辑单元（AlU）<ul>
+<li>ACC为累加器</li>
+<li>MQ为乘商寄存器</li>
+<li>X为操作数寄存器</li>
+<li><img src="/images%5C1582859304863.png" alt="1582859304863"></li>
+<li><img src="/images%5C1582857781237.png" alt="1582857781237"></li>
+</ul>
+</li>
+</ul>
+<p>M：存储器的任一地址号</p>
+<p>[M]：对应M地址号单元中的内容</p>
+<p>ACC：累加器</p>
+<p>[ACC]：累加器中的内容</p>
+<p>其余类似</p>
+<p>加法操作</p>
+<p><img src="/images%5C1582859523451.png" alt="1582859523451"></p>
+<p>减法操作</p>
+<p><img src="/images%5C1582859562392.png" alt="1582859562392"></p>
+<p>乘法操作</p>
+<ul>
+<li>ACC中已有被乘数</li>
+</ul>
+<p><img src="/images%5C1582859576036.png" alt="1582859576036"></p>
+<p>除法操作</p>
+<p><img src="/images%5C1582859591318.png" alt="1582859591318"></p>
+<h5 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h5><ul>
+<li>操作过程<ul>
+<li>取指令</li>
+<li>分析</li>
+<li>执行指令</li>
+</ul>
+</li>
+<li>组成<ul>
+<li>程序计数器（Program Counter， <strong>PC</strong>）<ul>
+<li>存放当前欲执行指令的地址</li>
+<li>它与主存的MAR之间有一条直接通路，具有自动加1的功能，即可自动形成下一条指令的地址</li>
+</ul>
+</li>
+<li>指令寄存器（Instruction Register， <strong>IR</strong>）<ul>
+<li>存放当前的指令</li>
+<li>内容来自主存的MDR</li>
+<li>IR中的操作码(OP(IR))送至CU，记作$OP(IR)\to CU$，用于分析指令</li>
+<li>其地址码(Ad(IR))作为操作数的地址送至存储器的MAR，记作$Ad(IR)\to MAR​$</li>
+</ul>
+</li>
+<li>控制单元（CU）<ul>
+<li>用来分析当前所需完成的操作，并发出各种微操作命令序列，用以控制所有被控对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="主机完成一条指令的过程"><a href="#主机完成一条指令的过程" class="headerlink" title="主机完成一条指令的过程"></a>主机完成一条指令的过程</h5><p>取数：</p>
+<p><img src="/images%5C1582861924954.png" alt="1582861924954"></p>
+<ul>
+<li>例读数操作，操作码：000001，地址码：0000001000</li>
+</ul>
+<ol>
+<li>启动机器后，控制器将PC的内用送至主存的MAR中（$PC \to MAR$）</li>
+<li>并命令存储器做读操作</li>
+<li>此时主存中对应地址的内容被送至MDR中</li>
+<li>$MDR\to IR$，完成了一条指令的取指操作</li>
+<li>经CU分析（$OP(IR)\to CU​$），操作码为取数指令</li>
+<li>于是CU又将IR中的地址码送至MAR（$Ad(IR)\to MAR$）</li>
+<li>并命令存储器做读操作</li>
+<li>将改地址单元中的操作数x送至MDR</li>
+<li>再由MDR送至运算器ACC中（$MDR\to ACC$）</li>
+<li>第一条取数指令的全过程已全部结束，PC同时完成自动加1的操作，继续进行操作直至打印出结果，最后执行完停机指令，机器便自动停机。</li>
+</ol>
+<p>存数：</p>
+<p><img src="/images%5C1582861831928.png" alt="1582861831928"></p>
+<h5 id="ax-2-bx-c-的过程"><a href="#ax-2-bx-c-的过程" class="headerlink" title="$ax^2+bx+c$的过程"></a>$ax^2+bx+c$的过程</h5><ul>
+<li>将程序通过输入设备送至计算机</li>
+<li>程序将首地址 $\to​$ PC</li>
+<li>启动程序运行</li>
+<li>取指令 PC$\to​$ MAR $\to​$ M $\to​$ MDR$\to​$ IR，(PC)+1$\to​$PC</li>
+<li>分析指令 OP(IR) $\to​$ CU</li>
+<li>执行指令 Ad(IR) $\to$ MAR $\to$ M $\to$ MDR $\to​$ ACC</li>
+<li>……</li>
+<li>打印结果</li>
+<li>停机</li>
+</ul>
+<h2 id="1-4-计算机硬件的主要技术指标"><a href="#1-4-计算机硬件的主要技术指标" class="headerlink" title="1.4 计算机硬件的主要技术指标"></a>1.4 计算机硬件的主要技术指标</h2><h3 id="1-4-1-机器字长"><a href="#1-4-1-机器字长" class="headerlink" title="1.4.1 机器字长"></a>1.4.1 机器字长</h3><p>CPU一次能处理数据的位数，通常与CPU的<strong>寄存器位数</strong>有关</p>
+<p>字长越长，数的表示范围越大，精度也越高。</p>
+<p>机器的字长也会影响机器的运行速度</p>
+<p>会直接影响加法器（或ALU）、数据总线以及存储字长的位数</p>
+<h3 id="1-4-2-存储容量"><a href="#1-4-2-存储容量" class="headerlink" title="1.4.2 存储容量"></a>1.4.2 存储容量</h3><p>包括主存容量和辅存容量</p>
+<p>主存容量：主存中存放二进制代码的总位数<br>    <strong>存储容量 = 存储单元个数 * 存储字长</strong></p>
+<p>MAR的位数反映了存储单元的个数，MDR反映了存储字长</p>
+<p>如MAR为16位，则存储体中有$2^{16}=65536$个存储单元（即64K个存储字）</p>
+<p>MDR为32位，表示存储容量为$2^{16}\times 32 = 2M$位（1M=$2^{20}=2^{18}B=256KB$）</p>
+<h3 id="1-4-3-运算速度"><a href="#1-4-3-运算速度" class="headerlink" title="1.4.3 运算速度"></a>1.4.3 运算速度</h3><p><strong>普通法</strong>：早期用完成一次加法或乘法所需的时间来衡量运算速度</p>
+<p><strong>吉普森法</strong>（Gibson）：综合考虑每条指令的执行时间以及他们在全部操作中所占的百分比$T_M=\sum\limits_{i=1}^nf_it_i$<br>参数分别表示机器运行速度，第i种指令所占百分比数，第i种指令的执行时间</p>
+<p><strong>现在的方法</strong>：单位时间内执行指令的平均条数</p>
+<ul>
+<li>主频</li>
+<li>核数，每个核支持的线程数</li>
+<li>吉普森法</li>
+<li>CPI 执行一条指令所需时钟周期</li>
+<li>MITS 每秒能执行百万条指令</li>
+<li>FLOPS 每秒浮点运算次数</li>
+</ul>
+<h2 id="1-5-本书结构"><a href="#1-5-本书结构" class="headerlink" title="1.5 本书结构"></a>1.5 本书结构</h2><p><img src="/images/1583049812502.png" alt="1583049812502"></p>
+<p><img src="/images/1583049832011.png" alt="1583049832011"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%BB%84/" rel="tag"># 计组</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/" rel="next" title="第三章 分组密码">
+                <i class="fa fa-chevron-left"></i> 第三章 分组密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%8A%E5%BA%94%E7%94%A8/" rel="prev" title="（计算机组成原理）第二章 计算机的发展及应用">
+                （计算机组成原理）第二章 计算机的发展及应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第1章-概论"><span class="nav-number">1.</span> <span class="nav-text">第1章  概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-计算机系统简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 计算机系统简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软硬件概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">软硬件概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机系统的层次结构"><span class="nav-number">1.1.2.</span> <span class="nav-text">计算机系统的层次结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机组成与体系结构"><span class="nav-number">1.2.</span> <span class="nav-text">计算机组成与体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2计算机的基本组成"><span class="nav-number">1.3.</span> <span class="nav-text">1.2计算机的基本组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-冯诺依曼计算机的特点"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.2.1 冯诺依曼计算机的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-计算机的硬件框图"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.2.2 计算机的硬件框图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-计算机的工作步骤"><span class="nav-number">1.4.</span> <span class="nav-text">1.3 计算机的工作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上机前的准备"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">上机前的准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机的工作过程"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">计算机的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器的基本组成"><span class="nav-number">1.4.0.2.1.</span> <span class="nav-text">存储器的基本组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主存储器（主存-内存）"><span class="nav-number">1.4.0.2.2.</span> <span class="nav-text">主存储器（主存&#x2F;内存）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算器"><span class="nav-number">1.4.0.2.3.</span> <span class="nav-text">运算器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制器"><span class="nav-number">1.4.0.2.4.</span> <span class="nav-text">控制器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#主机完成一条指令的过程"><span class="nav-number">1.4.0.2.5.</span> <span class="nav-text">主机完成一条指令的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ax-2-bx-c-的过程"><span class="nav-number">1.4.0.2.6.</span> <span class="nav-text">$ax^2+bx+c$的过程</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-计算机硬件的主要技术指标"><span class="nav-number">1.5.</span> <span class="nav-text">1.4 计算机硬件的主要技术指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-机器字长"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.4.1 机器字长</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-存储容量"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.4.2 存储容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-运算速度"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.4.3 运算速度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-本书结构"><span class="nav-number">1.6.</span> <span class="nav-text">1.5 本书结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

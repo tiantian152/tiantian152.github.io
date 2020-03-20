@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="密码学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第二章 流密码章节逻辑同步流密码加密器  密钥流产生器：参数为k的有限状态自动机 驱动部分：控制生成器的状态转移，并为非线性组合部分提供统计性能好的序列 驱动部分是一个或多个线性反馈移位寄存器 n个二元存储器 线性反馈函数     非线性组合部分：利用这些序列组合出满足要求的密钥流序列 Geffe 序列生成器 JK触发器 Pless 生成器 钟控序列生成器 A5流密码算法     加密变换器  2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章 流密码">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%B5%81%E5%AF%86%E7%A0%81/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="第二章 流密码章节逻辑同步流密码加密器  密钥流产生器：参数为k的有限状态自动机 驱动部分：控制生成器的状态转移，并为非线性组合部分提供统计性能好的序列 驱动部分是一个或多个线性反馈移位寄存器 n个二元存储器 线性反馈函数     非线性组合部分：利用这些序列组合出满足要求的密钥流序列 Geffe 序列生成器 JK触发器 Pless 生成器 钟控序列生成器 A5流密码算法     加密变换器  2">
+<meta property="og:image" content="http://yoursite.com/images%5C1582791083519.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582791106385.png">
+<meta property="og:image" content="http://yoursite.com/images/1583051414929.png">
+<meta property="og:image" content="http://yoursite.com/images/1583051470981.png">
+<meta property="og:image" content="http://yoursite.com/images/1583051714501.png">
+<meta property="og:image" content="http://yoursite.com/images/1583051741823.png">
+<meta property="og:image" content="http://yoursite.com/images/1583051761114.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582793079945.png">
+<meta property="og:image" content="http://yoursite.com/images/1583052024014.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582793963830.png">
+<meta property="og:image" content="http://yoursite.com/images/1583502125215.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582794593139.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582794671240.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582794690501.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582794977731.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582795154884.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582795189762.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582795314397.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582795438249.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582797218789.png">
+<meta property="og:image" content="http://yoursite.com/images/1583052391810.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582797500363.png">
+<meta property="og:image" content="http://yoursite.com/images/1583124752819.png">
+<meta property="og:image" content="http://yoursite.com/images/1583124432404.png">
+<meta property="og:image" content="http://yoursite.com/images/1583125142313.png">
+<meta property="og:image" content="http://yoursite.com/images/1583503972616.png">
+<meta property="og:image" content="http://yoursite.com/images/1583503996196.png">
+<meta property="og:image" content="http://yoursite.com/images/1583125738820.png">
+<meta property="og:image" content="http://yoursite.com/images/1583125723323.png">
+<meta property="og:image" content="http://yoursite.com/images/1583125836227.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126069728.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126211940.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126384146.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126449021.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126648309.png">
+<meta property="og:image" content="http://yoursite.com/images/1583126775735.png">
+<meta property="og:image" content="http://yoursite.com/images/1583127194854.png">
+<meta property="og:image" content="http://yoursite.com/images%5C1582795154884.png">
+<meta property="og:image" content="http://yoursite.com/images/1583129431636.png">
+<meta property="og:image" content="http://yoursite.com/images/1583130605109.png">
+<meta property="og:image" content="http://yoursite.com/images/1583130633337.png">
+<meta property="og:image" content="http://yoursite.com/images/1583130644193.png">
+<meta property="og:image" content="http://yoursite.com/images/1583131272379.png">
+<meta property="og:image" content="http://yoursite.com/images/1583132397990.png">
+<meta property="og:image" content="http://yoursite.com/images/1583132420659.png">
+<meta property="og:image" content="http://yoursite.com/images/1583132115414.png">
+<meta property="og:image" content="http://yoursite.com/images/1583132184563.png">
+<meta property="og:image" content="http://yoursite.com/images/1583133848129.png">
+<meta property="og:image" content="http://yoursite.com/images/1583394710088.png">
+<meta property="og:image" content="http://yoursite.com/images/1583394745059.png">
+<meta property="og:image" content="http://yoursite.com/images/1583394826295.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395021753.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395606341.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395526718.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395667237.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395707131.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395722436.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395864935.png">
+<meta property="og:image" content="http://yoursite.com/images/1583395940209.png">
+<meta property="og:image" content="http://yoursite.com/images/1583396063133.png">
+<meta property="og:image" content="http://yoursite.com/images/1583397214697.png">
+<meta property="og:image" content="http://yoursite.com/images/1583397223428.png">
+<meta property="og:image" content="http://yoursite.com/images/1583397232128.png">
+<meta property="og:image" content="http://yoursite.com/images/1583505054783.png">
+<meta property="og:image" content="http://yoursite.com/images/1583398226204.png">
+<meta property="og:image" content="http://yoursite.com/images/1583398238164.png">
+<meta property="og:image" content="http://yoursite.com/images/1583398252726.png">
+<meta property="article:published_time" content="2020-03-20T08:17:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:17:25.192Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images%5C1582791083519.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/第二章 流密码/"/>
+
+
+
+
+
+  <title>第二章 流密码 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%B5%81%E5%AF%86%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第二章 流密码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:17:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">密码学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第二章-流密码"><a href="#第二章-流密码" class="headerlink" title="第二章 流密码"></a>第二章 流密码</h2><h3 id="章节逻辑"><a href="#章节逻辑" class="headerlink" title="章节逻辑"></a>章节逻辑</h3><p>同步流密码加密器</p>
+<ul>
+<li><a href="#密钥流产生器">密钥流产生器</a>：参数为k的<a href="#有限状态自动机">有限状态自动机</a><ul>
+<li><a href="#驱动部分">驱动部分</a>：控制生成器的状态转移，并为非线性组合部分提供统计性能好的序列<ul>
+<li>驱动部分是一个或多个<a href="#线性反馈移位寄存器">线性反馈移位寄存器</a><ul>
+<li>n个二元存储器</li>
+<li>线性反馈函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#非线性组合部分">非线性组合部分</a>：利用这些序列组合出满足要求的密钥流序列<ul>
+<li>Geffe 序列生成器</li>
+<li>JK触发器</li>
+<li>Pless 生成器</li>
+<li>钟控序列生成器</li>
+<li>A5流密码算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>加密变换器</li>
+</ul>
+<h3 id="2-1-流密码的基本概念"><a href="#2-1-流密码的基本概念" class="headerlink" title="2.1 流密码的基本概念"></a>2.1 流密码的基本概念</h3><h4 id="一次一密"><a href="#一次一密" class="headerlink" title="一次一密"></a>一次一密</h4><p>一种理想的加密方案，叫做一次一密密码（one-time pad），由Major Joseph Mauborgne和AT&amp;T公司的Gilbert Vernam1917年发明的</p>
+<ul>
+<li><p>明文：$x=x_0 x_1 x_2… $</p>
+</li>
+<li><p>密钥：$k=k_0k_1k_2 …$ </p>
+</li>
+<li><p>密文：$y=y_0y_1y_2 …$ </p>
+</li>
+<li><p>加密函数：$y_i=x_i+k_i (mod26)$</p>
+</li>
+<li><p>解密函数：$x_i=y_i-k_i (mod26)​$ </p>
+</li>
+<li><p>注：密钥为随机产生的，而且只使用一次</p>
+</li>
+</ul>
+<p>特点</p>
+<ul>
+<li><p>优点</p>
+<ul>
+<li><p>密钥随机产生，仅使用一次 </p>
+</li>
+<li><p>无条件安全 </p>
+</li>
+<li><p>加密和解密为加法运算，效率较高</p>
+</li>
+</ul>
+</li>
+<li><p>缺点： </p>
+<ul>
+<li>密钥长度至少与明文长度一样长，密钥共享困难，不太实用</li>
+</ul>
+</li>
+</ul>
+<h4 id="流密码的定义"><a href="#流密码的定义" class="headerlink" title="流密码的定义"></a>流密码的定义</h4><p>流密码(stream cipher)是一种重要的密码体制 </p>
+<ul>
+<li><p>明文消息按字符或比特逐位加密 </p>
+</li>
+<li><p><strong>流密码也称为序列密码</strong>(Sequence Cipher)</p>
+</li>
+</ul>
+<p>流密码在20世纪50年代得到飞跃式发展 </p>
+<ul>
+<li>密钥流可以用移位寄存器电路来产生，也促进了线性和非线性移位寄存器发展 </li>
+<li>流密码主要是基于硬件实现</li>
+<li>比如恩尼格玛密码机</li>
+</ul>
+<p><strong>基本思想</strong></p>
+<ul>
+<li><p>利用密钥k产生一个密钥流$z=z_0z_1z_2…$，并使用如下规则对明文串$x=x_0x_1x_2…$加密：$y=y_0y_1y_2…＝E_{z0}(x0)E_{z1}(x1) E_{z2}(x2 )…，$ </p>
+</li>
+<li><p>密钥流由密钥流发生器 f 产生：$z_i＝f(k,\sigma_i)​$</p>
+</li>
+<li><p>$\sigma_i$是加密器中的记忆元件在时刻 $i$ 的状态 </p>
+</li>
+<li><p>$f$ 是由$k$, $\sigma_i$产生的函数</p>
+</li>
+</ul>
+<p><img src="/images%5C1582791083519.png" alt="1582791083519"></p>
+<p>内部记忆元件由一组移位寄存器构成</p>
+<p><img src="/images%5C1582791106385.png" alt="1582791106385"></p>
+<h4 id="同步流密码"><a href="#同步流密码" class="headerlink" title="同步流密码"></a>同步流密码</h4><p>根据加密器中的记忆元件的存储状态$\sigma_i$是否依赖于输入的明文字符流密码可以分成两类，独立于明文字符的叫做<strong>同步流密码</strong>，否则叫做<strong>自同步流密码</strong>。 </p>
+<p>在同步流密码中，由于$z_i＝f(k,\sigma_i)$与明文字符无关，因而此时密文字符$y_i=E_{zi}(x_i)$也<strong>不依赖于此前的明文字符</strong>。因此，可将同步流密码的加密器分成<strong><a href="#密钥流产生器">密钥流产生器</a></strong>和<strong>加密变换器</strong>两个部分。</p>
+<p>同步流密码的模型如下：</p>
+<p><img src="/images/1583051414929.png" alt="1583051414929"></p>
+<p>最常用的同步流密码为同步加法流密码，模型如下：</p>
+<p><img src="/images/1583051470981.png" alt="1583051470981"></p>
+<h4 id="流密码的需求"><a href="#流密码的需求" class="headerlink" title="流密码的需求"></a>流密码的需求</h4><ul>
+<li><p>一次一密密码是加法流密码的原型 </p>
+<ul>
+<li>如果密钥用作滚动密钥流，则加法流密码就退化成一次一密密码。 （$z_i = k_i$）</li>
+</ul>
+</li>
+<li><p>密码设计者的最大愿望是设计出一个滚动密钥生成器，使得密钥经其扩展成的密钥流序列具有如下性质： </p>
+<ul>
+<li><strong>极大的周期</strong> </li>
+<li><strong>良好的统计特性</strong> </li>
+<li><strong>抗线性分析</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-有限状态自动机"><a href="#2-2-有限状态自动机" class="headerlink" title="2.2 有限状态自动机"></a>2.2 <span id="有限状态自动机">有限状态自动机</span></h3><h4 id="有限状态自动机的模型"><a href="#有限状态自动机的模型" class="headerlink" title="有限状态自动机的模型"></a>有限状态自动机的模型</h4><p>有限状态自动机是具有离散输入和输出（输入集和输出集均有限）的一种数学模型，由以下3部分组成： </p>
+<p>① 有限状态集$S={s_i | i=1,2,…,l }$。 </p>
+<p>② 有限输入字符集$A_1={ A^{(1)}_j| j=1,2,…,m}$和有限输出字符集$A_2={A^{(2)}_k |k=1,2,…,n}$。 </p>
+<p>③ 转移函数$A^{(2)}_k=f_1(s_i , A^{(1)}_j )，s_h=f_2(s_i , A^{(1)}_j)$ </p>
+<p>即在状态为$s_i$，输入为$A^{(1)}_j$时，输出为$A^{(2)}_k$，而状态转移为$s_h$。</p>
+<p><strong>有限状态自动机可用有向图表示，成为转移图</strong></p>
+<p><img src="/images/1583051714501.png" alt="1583051714501"></p>
+<p>矩阵中上面一半是输出矩阵</p>
+<ul>
+<li>在$f_1$的控制下</li>
+<li>初始状态为$s_i$,输入为$A_i^{(j)}$</li>
+<li>输出见矩阵</li>
+</ul>
+<p>下面一半是状态矩阵</p>
+<ul>
+<li>在$f_2$的控制下</li>
+<li>初始状态为$s_i$,输入为$A_i^{(j)}$</li>
+<li>状态转移见矩阵</li>
+</ul>
+<p><img src="/images/1583051741823.png" alt="1583051741823"></p>
+<p><img src="/images/1583051761114.png" alt="1583051761114"></p>
+<p>上图是沿箭头跟矩阵结果走的，线上前一个是输入，后一个是输出</p>
+<h4 id="密钥流生成器"><a href="#密钥流生成器" class="headerlink" title="密钥流生成器"></a><span id="密钥流生成器">密钥流生成器</span></h4><p><strong>同步流密码的关键是密钥流产生器</strong></p>
+<ul>
+<li><p>密钥流产生器: 参数为k的有限状态自动机，</p>
+</li>
+<li><p>一个输出符号集$Z$、一个状态集$∑$、两个函数$φ$和$ψ$以及一个初始状态$\sigma_0$组成。 </p>
+</li>
+<li><p>状态转移函数$φ:\sigma_i→\sigma_i+1$，将当前状态$\sigma_i$变为一个新状态$\sigma_i+1$， </p>
+</li>
+<li><p>输出函数$ψ:\sigma_i→z_i$，当前状态$\sigma_i$变为输出符号集中的一个元素$z_i$</p>
+</li>
+</ul>
+<p><img src="/images%5C1582793079945.png" alt="1582793079945"></p>
+<p>关键在于：<strong>找出适当的状态转移函数$φ$和输出函数$ψ$</strong>，使得输出序列$z$满足密钥流序列$z$应满足的随机性条件，并且要求在设备上是节省的和容易实现的。 </p>
+<p> 一般采用<strong>线性的$φ​$和非线性的$ψ​$</strong>，这样将能够进行深入的分析并可以得到好的生成器</p>
+<h5 id="密钥流生成器的分解"><a href="#密钥流生成器的分解" class="headerlink" title="密钥流生成器的分解"></a>密钥流生成器的分解</h5><ul>
+<li><p>密钥流生成器可分成<strong>驱动部分</strong>和<strong>非线性组合部分</strong> </p>
+<ul>
+<li>驱动部分控制生成器的状态转移，并为非线性组合部分提供统计性能好的序列</li>
+<li>非线性组合部分要利用这些序列组合出满足要求的密钥流序列</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/1583052024014.png" alt="1583052024014"></p>
+<h5 id="常见的两种密钥流产生器"><a href="#常见的两种密钥流产生器" class="headerlink" title="常见的两种密钥流产生器"></a>常见的两种密钥流产生器</h5><p>目前最为流行和实用的密钥流产生器，其<strong><span id="驱动部分">驱动部分是一个或多个线性反馈移位寄存器</span></strong>。 </p>
+<ul>
+<li><p>前者称为滤波生成器，或前馈生成器 </p>
+</li>
+<li><p>后者称为非线性组合生成器 </p>
+</li>
+<li><p>还有钟控生成器，缩减生成器，停走生成器等</p>
+</li>
+</ul>
+<p><img src="/images%5C1582793963830.png" alt="1582793963830"></p>
+<h3 id="2-3-二元序列的伪随机性"><a href="#2-3-二元序列的伪随机性" class="headerlink" title="2.3 二元序列的伪随机性"></a>2.3 二元序列的伪随机性</h3><h4 id="二元序列的相关概念"><a href="#二元序列的相关概念" class="headerlink" title="二元序列的相关概念"></a>二元序列的相关概念</h4><p>GF(2)：<strong>Galois field</strong>，有限域</p>
+<p><img src="/images/1583502125215.png" alt="1583502125215"></p>
+<p><img src="/images%5C1582794593139.png" alt="1582794593139"></p>
+<p><img src="/images%5C1582794671240.png" alt="1582794671240"></p>
+<h5 id="游程的定义"><a href="#游程的定义" class="headerlink" title="游程的定义"></a>游程的定义</h5><p><img src="/images%5C1582794690501.png" alt="1582794690501"></p>
+<p>游程的例子</p>
+<p><img src="/images%5C1582794977731.png" alt="1582794977731"></p>
+<h5 id="自相关函数"><a href="#自相关函数" class="headerlink" title="自相关函数"></a>自相关函数</h5><p>$R(t)=\frac{1}{T}\sum\limits_{k=1}^T(-1)^{a_k}(-1)^{a^{k+r}}$</p>
+<p>表示序列 ${a_i}​$ 和序列 ${a^{i+r}}​$ （序列${a_i}​$平移 t 位得到）在一个周期内，对应位相同的位数和对应位不同的位数之差</p>
+<p>当 $t=0$ 时，$R(t)=1$<br>当 $t\ne0$ 时，$R(t)​$ 称为<strong>异相自相关函数</strong></p>
+<p><strong>直观的含义就是： 把信号平移一段距离后， 和原先的信号有多相似</strong></p>
+<h4 id="伪随机序列"><a href="#伪随机序列" class="headerlink" title="伪随机序列"></a>伪随机序列</h4><h5 id="Golomb伪随机公设"><a href="#Golomb伪随机公设" class="headerlink" title="Golomb伪随机公设"></a>Golomb伪随机公设</h5><p><img src="/images%5C1582795154884.png" alt="1582795154884"></p>
+<p>满足上述三个公设的序列为伪随机序列</p>
+<h5 id="伪随机序列的定义"><a href="#伪随机序列的定义" class="headerlink" title="伪随机序列的定义"></a>伪随机序列的定义</h5><p>如果一个<a href="https://baike.tw.wjbk.site/baike-%E5%BA%8F%E5%88%97" target="_blank" rel="noopener">序列</a>，一方面它是可以预先确定的，并且是可以重复地生产和复制的；一方面它又具有某种<a href="https://baike.tw.wjbk.site/baike-%E9%9A%8F%E6%9C%BA%E5%BA%8F%E5%88%97" target="_blank" rel="noopener">随机序列</a>的随机特性（即统计特性），我们便称这种序列为<strong>伪随机序列</strong>。</p>
+<p>下面是ppt截图，说的不是人话</p>
+<p><img src="/images%5C1582795189762.png" alt="1582795189762"></p>
+<h5 id="伪随机序列还应满足的条件"><a href="#伪随机序列还应满足的条件" class="headerlink" title="伪随机序列还应满足的条件"></a>伪随机序列还应满足的条件</h5><ol>
+<li>${a_i}$ 的周期相当大</li>
+<li>${a_i}$ 的确定在计算上是容易的</li>
+<li>有密文及相应的明文的部分信息，不能确定整个 ${a_i}$，这一条决定了密码的强度，是流密码理论的核心</li>
+</ol>
+<p>下面为ppt截图，说的不像是人话一样</p>
+<p><img src="/images%5C1582795314397.png" alt="1582795314397"></p>
+<p>C3决定了密码的强度，是流密码理论的核心</p>
+<h3 id="2-4-线性反馈移位寄存器"><a href="#2-4-线性反馈移位寄存器" class="headerlink" title="2.4 线性反馈移位寄存器"></a>2.4 <span id="线性反馈移位寄存器">线性反馈移位寄存器</span></h3><h4 id="反馈移位寄存器"><a href="#反馈移位寄存器" class="headerlink" title="反馈移位寄存器"></a>反馈移位寄存器</h4><p>移位寄存器是流密码<strong>产生密钥流</strong>的一个主要组成部分</p>
+<p>GF(2)上一个n级反馈移位寄存器由<strong>n个二元存储器</strong>与一个<strong>反馈函数 f(a1,a2,…,an)</strong>组成，如下图所示。 </p>
+<p><img src="/images%5C1582795438249.png" alt="1582795438249"></p>
+<p><strong>首先给定存储器初始值，然后将初始值输入到反馈函数，然后将$a_1$作为输出，其余依次索引减1，然后将反馈函数计算出的值传入$a_n$位</strong></p>
+<p>在任一时刻，这些级的内容构成该反馈移位寄存器的状态，每一状态对应于GF(2)上的一个n维向量，共有<strong>$2^n$种</strong>可能的状态。 </p>
+<p>每一时刻的状态可用n维向量$(a_1,a_2 ,…,a_n)​$，表示，其中$a_i​$是第 i 级存储器的内容</p>
+<p><strong>初始状态</strong>由用户确定。</p>
+<p><strong>反馈函数$f(a_1,a_2 ,…,a_n)​$</strong>是n元布尔函数，即函数的自变量和因变量只取0和1这两个可能的值。 </p>
+<p>函数中的运算有<strong>逻辑与、逻辑或、逻辑补</strong>等运算。</p>
+<p><strong>例子</strong></p>
+<p><img src="/images%5C1582797218789.png" alt="1582797218789"></p>
+<h4 id="线性反馈移位寄存器（LFSR）"><a href="#线性反馈移位寄存器（LFSR）" class="headerlink" title="线性反馈移位寄存器（LFSR）"></a>线性反馈移位寄存器（LFSR）</h4><p>移位寄存器的反馈函数是线性函数</p>
+<p><img src="/images/1583052391810.png" alt="1583052391810"></p>
+<p><strong>线性反馈移位寄存器</strong>：实现简单、速度快、有较为成熟的理论，成为构造<strong>密钥流生成器的最重要的部件之一</strong></p>
+<p><img src="/images%5C1582797500363.png" alt="1582797500363"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">31</span>):</span><br><span class="line">    result.append(a[<span class="number">0</span>])</span><br><span class="line">    temp = a[<span class="number">0</span>] ^ a[<span class="number">2</span>]</span><br><span class="line">    a[<span class="number">0</span>] = a[<span class="number">1</span>]</span><br><span class="line">    a[<span class="number">1</span>] = a[<span class="number">2</span>]</span><br><span class="line">    a[<span class="number">2</span>] = a[<span class="number">3</span>]</span><br><span class="line">    a[<span class="number">3</span>] = a[<span class="number">4</span>]</span><br><span class="line">    a[<span class="number">4</span>] = temp</span><br><span class="line">    print(a)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<h5 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h5><p><img src="/images/1583124752819.png" alt="1583124752819"></p>
+<h3 id="2-5-m-序列"><a href="#2-5-m-序列" class="headerlink" title="2.5 m-序列"></a>2.5 m-序列</h3><p>m序列是最长线性移位寄存器序列的简称</p>
+<p>线性移位寄存器的一元多项式表示</p>
+<p><img src="/images/1583124432404.png" alt="1583124432404"></p>
+<ul>
+<li>LFSR：线性移位寄存器</li>
+</ul>
+<p><img src="/images/1583125142313.png" alt="1583125142313"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; GF(2)是最简单的有限域只有0,1二元及（异或运算）（与运算）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_45015947&#x2F;article&#x2F;details&#x2F;89891757</span><br><span class="line">这个博主写的这部分十分清楚</span><br></pre></td></tr></table></figure>
+
+<p>当 $p(x)$ 满足下列三个条件时（满足条件的多项式称为本原多项式），就一定能产生m序列：**</p>
+<p>（1） $p(x)$ 是不可约的，即不能再分解多项式；</p>
+<p>（2） $p(x)$ 可整除 $x^n+1$，这里 $p=2^n+1$；</p>
+<p>（3） $p(x)​$ 不能整除 $x^n+1​$</p>
+<p>那么如何想寻找本元多项式呢？</p>
+<p><strong>求n次本原多项式 $p(x)$ 的方法：</strong></p>
+<p>（1）将 $x^m+1（x^m-1）(m=x^n-1)$因式分解到已经不能再分解；</p>
+<p>（2）在得到的因式集合中，排除掉所有少于n次的因式；</p>
+<p>（3）其余的因式若不能整除任何 $x^q+1（q&lt;m）$，则这个因式为本原多项式 $p(x)$，可能不止一个。</p>
+<p>（注：这里的n可理解成线性反馈移位寄存器的级数）</p>
+<p><strong>本原多项式F（x）与m序列的联系：</strong></p>
+<p>（1）m序列的特征多项式即为n阶本原多项式；</p>
+<p>（2）$\frac{1}{p(x)}​$ 作多项式长除法得到的商多项式系数序列就是m序列。</p>
+<p><strong>例子：求n=4本原多项式并得到m序列（n=4相当于级数为4）</strong></p>
+<p>$x^m+1=x^m - 1=（x^4 + x^3 + x^2 + x + 1) (x^4 + x + 1) (x^4 + x^3 + 1) ( x^2 + x + 1) (x+1)​$</p>
+<p>其中 $( x^2 + x + 1) 、(x+1)​$的次数小于4被排除。</p>
+<p>其中$(x^4 + x^3 + x^2 + x + 1)​$可整除 $x^5 + 1 = x^5 - 1​$，也被排除。其长除法如下图</p>
+<p><img src="/images/1583503972616.png" alt="1583503972616"></p>
+<p>故本原多项式有 $x^4 + x + 1、 x^4 + x^3 + 1。​$</p>
+<p>$p_1(x)= x^4 + x + 1，p_2(x)= x^4 + x^3 + 1$ 分别对应一个m序列</p>
+<p>可以由多项式$\frac{1}{p(x)}​$ 长除法算出m序列，如下图</p>
+<p><img src="/images/1583503996196.png" alt="1583503996196"></p>
+<p>$q(x)= x^{-4} + x^{-7} + x^{-8} + x^{-10} + ^{x-12} + x^{-13}+ x^{-14} + x^{-15} +x^{-19}+…​$</p>
+<p>对应m序列：100110101101000（15个码元，即周期为15）、100110101101000…（周期性循环）</p>
+<p>下面的定义和定理为ppt上内容，也是为了解释如何生成m序列，但叙述过于复杂，内容原理差不多，尽量不要看了</p>
+<p><strong>定义2-1：</strong>给定序列 ${a_i}​$，幂函数 $A(x)=\sum\limits_{i=1}^\infty a_ix^{i-1}​$ 称为该序列的<strong>生成函数</strong></p>
+<p><strong>定理2-1：</strong>设 $p(x)=1+c_1x+\cdots+c_{n-1}x^{n-1}+c_nx^n​$ 是GF(2) 上的多项式，$G(p(x))​$ 中的任一序列 ${a_i}​$ 的生成函数 $A(x)​$ 满足：$A(x)=\frac{\phi(x)}{p(x)}​$，其中 $\phi(x)=\sum\limits_{i=1}^n(c_{n-i}x^{n-i}\sum\limits_{j=1}^ia_jx^{j-1})​$</p>
+<p><img src="/images/1583125738820.png" alt="1583125738820"></p>
+<p><img src="/images/1583125723323.png" alt="1583125723323"></p>
+<p><strong>定理2-2：</strong> $p(x)|q(x)​$ 的充要条件是 $G(p(x)) \subset G(q(x))​$</p>
+<p><img src="/images/1583125836227.png" alt="1583125836227"></p>
+<p><strong>定义2-2：</strong>设 $p(x)​$ 是 $GF(2)​$ 上的多项式，使 $p(x)|(x^p-1)​$ 的最小 $p​$ 称为 $p(x)​$ 的<strong>周期或阶</strong></p>
+<p><strong>定理2-3：</strong>若序列 ${a_i}$ 特征多项式定义在 $p(x)$ 上，$p$ 是 $p(x)$ 的周期，则 ${a_i}$的周期为 $r|p$ </p>
+<p><img src="/images/1583126069728.png" alt="1583126069728"></p>
+<p><strong>定义2-3：</strong>仅能被非0常数或自身的常数倍除尽，但不能被其他多项式除尽的多项式称为<strong>即约多项式</strong>或<strong>不可约多项式</strong></p>
+<p><img src="/images/1583126211940.png" alt="1583126211940"></p>
+<p><strong>定理2-4：</strong>设 $p(x)$ 是 $n$ 次<strong>不可约多项式</strong>，周期为 $m$，序列 ${a_i}\in G(p(x))$ ，则 ${a_i}$ 的周期为 $m$</p>
+<p><img src="/images/1583126384146.png" alt="1583126384146"></p>
+<p><strong>定理2-5：</strong>$n​$ 级LFSR产生的序列最大周期 $2^n-1​$ 的<strong>必要条件</strong>是其特征多项式为不可约的</p>
+<p><img src="/images/1583126449021.png" alt="1583126449021"></p>
+<p><strong>定义2-4：</strong>若 n 次不可约多项式 $p(x)​$ 的阶为 $2^n-1​$，则称 $p(x)​$ 是 <strong>n 次本原多项式</strong></p>
+<p><strong>定理2-6：</strong>设 ${a_i}\in G(p(x))​$，${a_i}​$ 为m序列的<strong>充要条件</strong>是 $p(x)​$ 为本元多项式</p>
+<p><img src="/images/1583126648309.png" alt="1583126648309"></p>
+<p><img src="/images/1583126775735.png" alt="1583126775735"></p>
+<p>$\varphi$ 为欧拉函数</p>
+<p>对于任意的正整数n，至少存在一个n次本元多项式。所以对于任意的n级LFSR，至少存在一种连接方式使其输出序列为m序列</p>
+<p><strong>例：</strong><img src="/images/1583127194854.png" alt="1583127194854"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> operator</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">c = [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">31</span>):</span><br><span class="line">    result.append(a[<span class="number">0</span>])</span><br><span class="line">    temp = a[<span class="number">0</span>]</span><br><span class="line">    a[<span class="number">0</span>] = a[<span class="number">1</span>]</span><br><span class="line">    a[<span class="number">1</span>] = a[<span class="number">2</span>]</span><br><span class="line">    a[<span class="number">2</span>] = a[<span class="number">3</span>]</span><br><span class="line">    a[<span class="number">3</span>] = a[<span class="number">2</span>] ^ temp</span><br><span class="line">    print(i, a)</span><br><span class="line">    <span class="keyword">if</span> operator.eq(a,c):</span><br><span class="line">        print(i+<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-6-m-序列的伪随机性"><a href="#2-6-m-序列的伪随机性" class="headerlink" title="2.6 m-序列的伪随机性"></a>2.6 m-序列的伪随机性</h3><h4 id="序列的伪随机性回顾"><a href="#序列的伪随机性回顾" class="headerlink" title="序列的伪随机性回顾"></a>序列的伪随机性回顾</h4><p><strong>游程</strong></p>
+<p><strong>自相关函数</strong></p>
+<p>$GF(2)​$上的周期为 T 的序列 ${a_i}​$ 的自相关函数的定义：$R(t)=\sum\limits_{k=1}^T (-1)^{a_k}(-1)^{a_{k+t}},\ 0\le t\le T-1​$</p>
+<p>当 $t=0$ 时，$R(t)=T$；当 $t\ne 0$ 时，称 $R(t)$ 为异相自相关函数</p>
+<p>Golomb伪随机公设</p>
+<p><img src="/images%5C1582795154884.png" alt="1582795154884"></p>
+<p>满足上述三个公设的序列是伪随机序列</p>
+<p>伪随机序列还应满足：</p>
+<ul>
+<li>${a_i}​$ 的周期相当大</li>
+<li>${a_i}​$ 的确定在计算上是容易的</li>
+<li>由密文及相应的明文的部分信息，不能确定整个${a_i}​$ </li>
+</ul>
+<h4 id="m-序列的伪随机性"><a href="#m-序列的伪随机性" class="headerlink" title="m-序列的伪随机性"></a>m-序列的伪随机性</h4><p><strong>m-序列满足Golomb的三个伪随机公设</strong></p>
+<p><img src="/images/1583129431636.png" alt="1583129431636"></p>
+<p>m序列没有长为n的0游程，也没有长为n-1的1游程，一个周期内的总游程数为 $2^{n-1}​$ 个</p>
+<p><img src="/images/1583130605109.png" alt="1583130605109"></p>
+<p><img src="/images/1583130633337.png" alt="1583130633337"></p>
+<p><img src="/images/1583130644193.png" alt="1583130644193"></p>
+<h3 id="2-7-m-序列的安全性（破译）"><a href="#2-7-m-序列的安全性（破译）" class="headerlink" title="2.7 m-序列的安全性（破译）"></a>2.7 m-序列的安全性（破译）</h3><p>有限域GF(2)上的二元加法流密码是目前最为常用的流密码体制，设滚动密钥生成器是线性反馈移位寄存器，产生的密钥是m序列</p>
+<p>寻找m序列的递推关系式</p>
+<ul>
+<li>已知一段序列，如果知道其反馈多项式，就可以将<strong>其后的序列</strong>依次求出，会对流密码的安全性造成影响</li>
+<li>已知<strong>序列</strong>能否获得相应的<strong>反馈多项式(或线性递推式)</strong>呢？下面是两种方法<ul>
+<li>解方程方法——已知序列 ${a_i}$ 是由<strong>n 级</strong>线性移存器产生的，并且知道 ${a_i}$ 的<strong>连续 $2n$ 位</strong>，可用解线性方程组的方法得到反馈多项式 </li>
+<li>线性反馈移位寄存器综合解——Berlekamp-Massey算法（这部分上课的要求是了解即可）</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-解方程方法"><a href="#1-解方程方法" class="headerlink" title="1. 解方程方法"></a>1. 解方程方法</h4><p>从两个例子感受一下即可</p>
+<p><img src="/images/1583131272379.png" alt="1583131272379"></p>
+<p>第二个例子的a6，a7……是密码流中对应的数组，c同理</p>
+<p><img src="/images/1583132397990.png" alt="1583132397990"></p>
+<p><img src="/images/1583132420659.png" alt="1583132420659"></p>
+<h4 id="2-线性反馈移位寄存器综合解（-不做要求）"><a href="#2-线性反馈移位寄存器综合解（-不做要求）" class="headerlink" title="2. 线性反馈移位寄存器综合解（*不做要求）"></a>2. 线性反馈移位寄存器综合解（*不做要求）</h4><p> 当不知道级数等信息的时候，由于密码学的需要，LFSR主要考虑下面两个问题：</p>
+<ul>
+<li><p>如何利用级数尽可能短的LFSR产生<strong>周期大、随机性能良好</strong>的序列。</p>
+<ul>
+<li>这是从密钥生成角度考虑，希望用最小的代价产生尽可能好的、参与密码变换的序列。 </li>
+</ul>
+</li>
+<li><p>当已知一个长为N的序列时，如何构造一个<strong>级数尽可能小</strong>的LFSR来产生它。 </p>
+<ul>
+<li>这是从密码分析角度来考虑，要想用线性方法重构密钥序列所必须付出的最小代价。</li>
+</ul>
+</li>
+</ul>
+<p>就是给定序列后，求其特征多项式，进而可求出其反馈多项式的一个方法</p>
+<p><img src="/images/1583132115414.png" alt="1583132115414"></p>
+<h5 id="线性移位寄存器的综合问题"><a href="#线性移位寄存器的综合问题" class="headerlink" title="线性移位寄存器的综合问题"></a>线性移位寄存器的综合问题</h5><p><img src="/images/1583132184563.png" alt="1583132184563"></p>
+<h5 id="Berlekamp-Massey算法（B-M算法）（-不做要求）"><a href="#Berlekamp-Massey算法（B-M算法）（-不做要求）" class="headerlink" title="Berlekamp-Massey算法（B-M算法）（*不做要求）"></a>Berlekamp-Massey算法（B-M算法）（*不做要求）</h5><p>用来求一个序列的最短递推式</p>
+<p><a href="https://www.cnblogs.com/zzqsblog/p/6877339.html" target="_blank" rel="noopener">https://www.cnblogs.com/zzqsblog/p/6877339.html</a></p>
+<h3 id="2-8-非线性序列"><a href="#2-8-非线性序列" class="headerlink" title="2.8 非线性序列"></a>2.8 <span id="非线性组合部分">非线性序列</span></h3><p><img src="/images/1583133848129.png" alt="1583133848129"></p>
+<p><img src="/images/1583394710088.png" alt="1583394710088"></p>
+<p><img src="/images/1583394745059.png" alt="1583394745059"></p>
+<h4 id="2-8-1-Geffe-序列生成器"><a href="#2-8-1-Geffe-序列生成器" class="headerlink" title="2.8.1 Geffe 序列生成器"></a>2.8.1 Geffe 序列生成器</h4><p><img src="/images/1583394826295.png" alt="1583394826295"></p>
+<p>由三个 LFSR 组成，其中 LFSR2 作为控制生成器使用</p>
+<ul>
+<li>左图中</li>
+</ul>
+<p><img src="/images/1583395021753.png" alt="1583395021753"></p>
+<ul>
+<li>右图中<ul>
+<li>LFSR1 和 LFSR3 作为多路复合器的输入，LFSR2 控制多路复合器的输出。</li>
+<li>设 $LFSR_i$ 的的特征多项式分别为 $n_i$ 次本元多项式，且 $n_i$ 两两互素，则 Geffe 的<strong>周期</strong>为 $\prod\limits_{i=1}^3(2^{n_i}-1)$</li>
+<li><strong>线性复杂度</strong>为 $\delta = (n_1 + n_3)n_2+n_3$</li>
+</ul>
+</li>
+</ul>
+<p>Geffe 序列的周期实现了极大化，且0与1之间的分布大体上是平衡的</p>
+<h4 id="2-8-2-JK触发器"><a href="#2-8-2-JK触发器" class="headerlink" title="2.8.2 JK触发器"></a>2.8.2 JK触发器</h4><p><img src="/images/1583395606341.png" alt="1583395606341"></p>
+<p><img src="/images/1583395526718.png" alt="1583395526718"></p>
+<p><img src="/images/1583395667237.png" alt="1583395667237"></p>
+<p><img src="/images/1583395707131.png" alt="1583395707131"></p>
+<p><img src="/images/1583395722436.png" alt="1583395722436"></p>
+<p>缺点见下图后半部分</p>
+<p><img src="/images/1583395864935.png" alt="1583395864935"></p>
+<h4 id="2-8-3-Pless-生成器"><a href="#2-8-3-Pless-生成器" class="headerlink" title="2.8.3 Pless 生成器"></a>2.8.3 Pless 生成器</h4><p><img src="/images/1583395940209.png" alt="1583395940209"></p>
+<h4 id="2-8-4-钟控序列生成器"><a href="#2-8-4-钟控序列生成器" class="headerlink" title="2.8.4 钟控序列生成器"></a>2.8.4 钟控序列生成器</h4><p>钟控序列生成器最基本的模型是用一个LFSR来控制另一个LFSR的移位时钟脉冲</p>
+<p><img src="/images/1583396063133.png" alt="1583396063133"></p>
+<ul>
+<li><p>假设LFSR1和LFSR2分别输出序列{ak}和{bk}，其周期分别为p1和p2。 </p>
+</li>
+<li><p>当LFSR1输出1时，移位时钟脉冲通过与门使LFSR2进行一次移位，从而生成下一位。 </p>
+</li>
+<li><p>当LFSR1输出0时，移位时钟脉冲无法通过与门影响LFSR2。因此LFSR2重复输出前一位。</p>
+</li>
+</ul>
+<p><strong>周期：</strong></p>
+<ul>
+<li><p>假设LFSR1和LFSR2分别输出序列{ak}和{bk}，其周期分别为p1和p2。假设钟控序列{ck}的周期为 $p$ ，可得如下关系：$p=\frac{p_1p_2}{gcd(w_1,p_2)}$ 其中 $w_1=\sum\limits_{i=1}^{p_1-1}a_i$</p>
+</li>
+<li><p>周期之多为 $p_1*p_2​$</p>
+</li>
+<li><p>若{ak}和{bk}的极小特征多项式分别为 GF(2) 上的m和n次本原多项式 $f_1(x)$ 和 $f_2(x)$，且 ，m|n</p>
+<ul>
+<li>则 $p_1=2^m-1, p_2=2^n-1​$</li>
+<li>$w_1​$ 为｛ak｝一个周期内1的个数，因此 $w_1=2^{m-1}​$</li>
+<li>故$gcd(w_1,p_1)=1$，所以$p=p_1p_2=(2^m-1)(2^n-1)​$ </li>
+</ul>
+</li>
+</ul>
+<p><strong>线性复杂度</strong></p>
+<ul>
+<li>$n(2^m-1)$</li>
+</ul>
+<p><strong>极小特征多项式</strong></p>
+<ul>
+<li>$f_2(x^{2^m-1})​$</li>
+</ul>
+<p><img src="/images/1583397214697.png" alt="1583397214697"></p>
+<p><img src="/images/1583397223428.png" alt="1583397223428"></p>
+<p><img src="/images/1583397232128.png" alt="1583397232128"></p>
+<p>作业例子</p>
+<p><img src="/images/1583505054783.png" alt="1583505054783"></p>
+<p>设计性能良好的序列密码是一项十分困难的任务。</p>
+<p>最基本的实际原则是“密钥流生成器的不可预测性”，可分解为：</p>
+<ul>
+<li>长周期</li>
+<li>高线性复杂度</li>
+<li>统计性能良好</li>
+<li>足够“混乱“</li>
+<li>足够“扩散”</li>
+<li>抵抗不同形式的攻击</li>
+</ul>
+<h3 id="2-9-A5流密码算法-看ppt吧，东西太多"><a href="#2-9-A5流密码算法-看ppt吧，东西太多" class="headerlink" title="2.9 A5流密码算法(看ppt吧，东西太多)"></a>2.9 A5流密码算法(看ppt吧，东西太多)</h3><h4 id="2-9-1-A5流密码算法的基本用法"><a href="#2-9-1-A5流密码算法的基本用法" class="headerlink" title="2.9.1 A5流密码算法的基本用法"></a>2.9.1 A5流密码算法的基本用法</h4><p>A5/1流密码算法的基本用法</p>
+<ul>
+<li><p>用于蜂窝式移动电话系统语音和数字加密。</p>
+<ul>
+<li>A5/1算法用于用户的手机到基站之间的通信加密，通信内容到基站后先解密变成明文，然后再进行基站到基站之间、以及基站到用户手机之间的信息加密，完成通信内容在通信过程的加密保护</li>
+</ul>
+</li>
+<li><p>应用环节 </p>
+<ul>
+<li>只需考察用户A到基站1之间通信内容的加解密，中间消息的传送由基站到基站之间的加密完成，而接收方用户B对消息的加解密与用户A到基站1之间的通信完全类似，只不过是用户B先解密消息。</li>
+</ul>
+</li>
+<li><p>基本密钥 $K_{A1}$ </p>
+<ul>
+<li>基本密钥 $K_{A1}$：预置在SIM卡中，与基站1共享。 </li>
+<li>生存期：一旦植入SIM卡将不再改变。 </li>
+<li>用途：用来分配用户和基站之间的会话密钥。</li>
+</ul>
+</li>
+<li><p>会话密钥k </p>
+<ul>
+<li>产生方式：在每次会话时，基站产生一个64比特的随机数k。 </li>
+<li>分配方式：利用基本密钥KA1，使用其它密码算法将k加密传给用户手机。 </li>
+<li>生存期：仅用于一次通话时间</li>
+</ul>
+</li>
+<li><p>明文处理 </p>
+<ul>
+<li>按每帧228比特分为若干帧后逐帧加密，每帧处理方式相同。</li>
+<li>$M=M_1||M_2||…||M_i||…\ \ \ |M_i|=288$</li>
+<li><img src="/images/1583398226204.png" alt="1583398226204"></li>
+</ul>
+</li>
+<li><p>加密方式 </p>
+<ul>
+<li>加密： $E_k(M)=E_{k1}(M_1)E_{k2}(M_2)\cdots$</li>
+<li>一次通话使用一个会话密钥，对每帧使用不同的帧密钥 </li>
+<li>帧会话密钥：帧序号，长度为22比特 </li>
+<li>帧会话密钥共产生228比特密钥流，实现对本帧228比特通信数据的加解密 </li>
+<li>明密结合方式：逐位异或 </li>
+<li>一次通话量：至多$2^{22}$帧数据，约$0.89×2^{30}$比特</li>
+</ul>
+</li>
+</ul>
+<p>A5/1序列密码算法中的线性反馈移位寄存器</p>
+<p>算法使用3个级数为19、22和23的本原移存器</p>
+<p><img src="/images/1583398238164.png" alt="1583398238164"></p>
+<p>注：A5/1算法中，LFSR的移位方式是左移方式。 各寄存器的编号从第0级编号到第n-1级。</p>
+<p>算法初始化</p>
+<ul>
+<li>初始化是利用一次通话的会话密钥k和帧序号设定三个移存器的起点，即初始状态。 </li>
+<li>Step 1：将三个LFSR的初态都设置为全零向量； </li>
+<li>Step 2：(密钥参与) 三个LFSR都规则动作64次，每次动作1步。 </li>
+<li>在第i步动作时，三个LFSR的反馈内容都首先与密钥的第i比特异或，并将异或结果作为LFSR反馈的内容</li>
+<li><img src="/images/1583398252726.png" alt="1583398252726"></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag"># 密码学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/" rel="next" title="第一章 概述">
+                <i class="fa fa-chevron-left"></i> 第一章 概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/" rel="prev" title="第三章 分组密码">
+                第三章 分组密码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-流密码"><span class="nav-number">1.</span> <span class="nav-text">第二章 流密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#章节逻辑"><span class="nav-number">1.1.</span> <span class="nav-text">章节逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-流密码的基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">2.1 流密码的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一次一密"><span class="nav-number">1.2.1.</span> <span class="nav-text">一次一密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流密码的定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">流密码的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步流密码"><span class="nav-number">1.2.3.</span> <span class="nav-text">同步流密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流密码的需求"><span class="nav-number">1.2.4.</span> <span class="nav-text">流密码的需求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-有限状态自动机"><span class="nav-number">1.3.</span> <span class="nav-text">2.2 有限状态自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有限状态自动机的模型"><span class="nav-number">1.3.1.</span> <span class="nav-text">有限状态自动机的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#密钥流生成器"><span class="nav-number">1.3.2.</span> <span class="nav-text">密钥流生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#密钥流生成器的分解"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">密钥流生成器的分解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的两种密钥流产生器"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">常见的两种密钥流产生器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-二元序列的伪随机性"><span class="nav-number">1.4.</span> <span class="nav-text">2.3 二元序列的伪随机性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二元序列的相关概念"><span class="nav-number">1.4.1.</span> <span class="nav-text">二元序列的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#游程的定义"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">游程的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自相关函数"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">自相关函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪随机序列"><span class="nav-number">1.4.2.</span> <span class="nav-text">伪随机序列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Golomb伪随机公设"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">Golomb伪随机公设</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪随机序列的定义"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">伪随机序列的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪随机序列还应满足的条件"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">伪随机序列还应满足的条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-线性反馈移位寄存器"><span class="nav-number">1.5.</span> <span class="nav-text">2.4 线性反馈移位寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#反馈移位寄存器"><span class="nav-number">1.5.1.</span> <span class="nav-text">反馈移位寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性反馈移位寄存器（LFSR）"><span class="nav-number">1.5.2.</span> <span class="nav-text">线性反馈移位寄存器（LFSR）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#性质"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-m-序列"><span class="nav-number">1.6.</span> <span class="nav-text">2.5 m-序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-m-序列的伪随机性"><span class="nav-number">1.7.</span> <span class="nav-text">2.6 m-序列的伪随机性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列的伪随机性回顾"><span class="nav-number">1.7.1.</span> <span class="nav-text">序列的伪随机性回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#m-序列的伪随机性"><span class="nav-number">1.7.2.</span> <span class="nav-text">m-序列的伪随机性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-m-序列的安全性（破译）"><span class="nav-number">1.8.</span> <span class="nav-text">2.7 m-序列的安全性（破译）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-解方程方法"><span class="nav-number">1.8.1.</span> <span class="nav-text">1. 解方程方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-线性反馈移位寄存器综合解（-不做要求）"><span class="nav-number">1.8.2.</span> <span class="nav-text">2. 线性反馈移位寄存器综合解（*不做要求）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性移位寄存器的综合问题"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">线性移位寄存器的综合问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Berlekamp-Massey算法（B-M算法）（-不做要求）"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">Berlekamp-Massey算法（B-M算法）（*不做要求）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-非线性序列"><span class="nav-number">1.9.</span> <span class="nav-text">2.8 非线性序列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-1-Geffe-序列生成器"><span class="nav-number">1.9.1.</span> <span class="nav-text">2.8.1 Geffe 序列生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-2-JK触发器"><span class="nav-number">1.9.2.</span> <span class="nav-text">2.8.2 JK触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-3-Pless-生成器"><span class="nav-number">1.9.3.</span> <span class="nav-text">2.8.3 Pless 生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-4-钟控序列生成器"><span class="nav-number">1.9.4.</span> <span class="nav-text">2.8.4 钟控序列生成器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-A5流密码算法-看ppt吧，东西太多"><span class="nav-number">1.10.</span> <span class="nav-text">2.9 A5流密码算法(看ppt吧，东西太多)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-1-A5流密码算法的基本用法"><span class="nav-number">1.10.1.</span> <span class="nav-text">2.9.1 A5流密码算法的基本用法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CNN," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="卷积神经网络卷积层（Convolutional layer）卷积层是卷积神经网络的核心基石。 作用是提取图像特征 重要特性：  局部连接 权重共享  卷积层的计算过程  滑动步长：stride 滤波器（卷积核）：filter（高度必须与输入特征图一致,在一层卷积操作里可以有多个filter，他们是尺寸必须相同） 在图像外围加0的圈数：+pad n（加n圈0）  目的主要是使卷积后的图像大小与原图像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="卷积神经网络卷积层（Convolutional layer）卷积层是卷积神经网络的核心基石。 作用是提取图像特征 重要特性：  局部连接 权重共享  卷积层的计算过程  滑动步长：stride 滤波器（卷积核）：filter（高度必须与输入特征图一致,在一层卷积操作里可以有多个filter，他们是尺寸必须相同） 在图像外围加0的圈数：+pad n（加n圈0）  目的主要是使卷积后的图像大小与原图像">
+<meta property="og:image" content="f:%5Cworkspace%5Cpython%5C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%5CKeras&%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%5Cimages%5Cdl_3_12.gif">
+<meta property="og:image" content="http://yoursite.com/images%5C1093303-20170430194958725-2144325242.png">
+<meta property="article:published_time" content="2020-03-20T08:38:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:38:45.799Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="CNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="f:%5Cworkspace%5Cpython%5C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%5CKeras&%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%5Cimages%5Cdl_3_12.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/卷积神经网络CNN/"/>
+
+
+
+
+
+  <title>卷积神经网络 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">卷积神经网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:38:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">神经网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><h2 id="卷积层（Convolutional-layer）"><a href="#卷积层（Convolutional-layer）" class="headerlink" title="卷积层（Convolutional layer）"></a>卷积层（Convolutional layer）</h2><p>卷积层是卷积神经网络的核心基石。</p>
+<p><strong>作用是提取图像特征</strong></p>
+<p>重要特性：</p>
+<ul>
+<li>局部连接</li>
+<li>权重共享</li>
+</ul>
+<p>卷积层的计算过程</p>
+<p><img src="F:%5Cworkspace%5Cpython%5C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%5CKeras&%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%5Cimages%5Cdl_3_12.gif" alt="dl_3_12"></p>
+<p>滑动步长：stride</p>
+<p>滤波器（卷积核）：filter（高度必须与输入特征图一致,在一层卷积操作里可以有多个filter，他们是尺寸必须相同）</p>
+<p>在图像外围加0的圈数：+pad n（加n圈0）</p>
+<ul>
+<li>目的主要是使卷积后的图像大小与原图像大小相同</li>
+</ul>
+<p>一次卷积后的输出特征的尺寸是多少呢？</p>
+<p>$ h_{out}=\frac{h_{in}-Filter+2*Pad}{Stride}+1​$</p>
+<p>$w_{out}=\frac{w_{in}-Filter+2*Pad}{Stride}+1​$</p>
+<h2 id="激励层（ReLU-）"><a href="#激励层（ReLU-）" class="headerlink" title="激励层（ReLU ）"></a>激励层（ReLU ）</h2><p>把所有负数变成0</p>
+<p><img src="/images%5C1093303-20170430194958725-2144325242.png" alt="1093303-20170430194958725-2144325242"></p>
+<h2 id="池化层（Pooling-layer）"><a href="#池化层（Pooling-layer）" class="headerlink" title="池化层（Pooling layer）"></a>池化层（Pooling layer）</h2><p>池化（pool）即下采样（downsamples），目的是为了减少特征图，主要作用是通过减少网络的参数来减小计算量，并且能够在一定程度上控制过拟合。</p>
+<p>池化操作对每个深度切片独立，规模一般为 2＊2，相对于卷积层进行卷积运算</p>
+<p>池化层进行的运算一般有以下几种： </p>
+<ul>
+<li><p>最大池化（Max Pooling）。取4个点的最大值。这是最常用的池化 方法。 </p>
+</li>
+<li><p>均值池化（Mean Pooling）。取4个点的均值。 </p>
+</li>
+<li><p>高斯池化。借鉴高斯模糊的方法。不常用。 </p>
+</li>
+<li><p>可训练池化。训练函数 ff ，接受4个点为输入，出入1个点。不常用。</p>
+<p>池化操作将保存深度大小不变。如果池化层的输入单元大小不是二的整数倍，一般采取边缘补零（zero-padding）的方式补成2的倍数，然后再池化。</p>
+</li>
+</ul>
+<h2 id="全连接层（-Fully-Connected-layer）"><a href="#全连接层（-Fully-Connected-layer）" class="headerlink" title="全连接层（ Fully-Connected layer）"></a>全连接层（ Fully-Connected layer）</h2><p>识别目标部分</p>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2><h2 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h2><p>卷积——激活——卷积——激活——池化——……——池化——全连接——分类或回归</p>
+<h2 id="典型CNN"><a href="#典型CNN" class="headerlink" title="典型CNN"></a>典型CNN</h2><p>卷积神经网络之典型CNN<br>　　• LeNet，这是最早用于数字识别的CNN<br>　　• AlexNet， 2012 ILSVRC比赛远超第2名的CNN，比<br>　　• LeNet更深，用多层小卷积层叠加替换单大卷积层。<br>　　• ZF Net， 2013 ILSVRC比赛冠军<br>　　• GoogLeNet， 2014 ILSVRC比赛冠军<br>　　• VGGNet， 2014 ILSVRC比赛中的模型，图像识别略差于GoogLeNet，但是在很多图像转化学习问题(比如object detection)上效果奇好</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/Keras/" rel="next" title="Keras">
+                <i class="fa fa-chevron-left"></i> Keras
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E8%8E%AB%E7%83%A6%20Matplotlib/" rel="prev" title="莫烦 Matplotlib">
+                莫烦 Matplotlib <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卷积神经网络"><span class="nav-number">1.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积层（Convolutional-layer）"><span class="nav-number">1.1.</span> <span class="nav-text">卷积层（Convolutional layer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激励层（ReLU-）"><span class="nav-number">1.2.</span> <span class="nav-text">激励层（ReLU ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#池化层（Pooling-layer）"><span class="nav-number">1.3.</span> <span class="nav-text">池化层（Pooling layer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全连接层（-Fully-Connected-layer）"><span class="nav-number">1.4.</span> <span class="nav-text">全连接层（ Fully-Connected layer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播"><span class="nav-number">1.5.</span> <span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一般步骤"><span class="nav-number">1.6.</span> <span class="nav-text">一般步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#典型CNN"><span class="nav-number">1.7.</span> <span class="nav-text">典型CNN</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

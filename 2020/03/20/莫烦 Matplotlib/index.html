@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Matplotlib," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="莫烦 Matplotlib在学习了numpy&amp;pandas后 如果某天你发现自己要学习 Matplotlib, 很可能是因为:  Matplotlib 是一个非常强大的 Python 画图工具; 手中有很多数据, 可是不知道该怎么呈现这些数据.  所以就找到了 Matplotlib. 它能帮你画出美丽的:  线图;  散点图;  等高线图;  条形图;  柱状图;  3D 图形,  甚至是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫烦 Matplotlib">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E8%8E%AB%E7%83%A6%20Matplotlib/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="莫烦 Matplotlib在学习了numpy&amp;pandas后 如果某天你发现自己要学习 Matplotlib, 很可能是因为:  Matplotlib 是一个非常强大的 Python 画图工具; 手中有很多数据, 可是不知道该怎么呈现这些数据.  所以就找到了 Matplotlib. 它能帮你画出美丽的:  线图;  散点图;  等高线图;  条形图;  柱状图;  3D 图形,  甚至是">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_2_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_3_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_3_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_4_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_4_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_4_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_5_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_5_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_6_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_6_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_6_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_6_4.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_6_5.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_7_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/2_7_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_1_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_1_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_2_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_2_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_2_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_3_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_3_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_4_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_4_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_4_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_4.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_5.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/3_5_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_1_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_1_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_2_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_2_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_2_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_3_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_3_2.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_3_3.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_3_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/4_4_1.png">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/plt/5_1_1.png">
+<meta property="article:published_time" content="2020-03-20T08:39:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:39:56.123Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="Matplotlib">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://morvanzhou.github.io/static/results/plt/2_2_2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/莫烦 Matplotlib/"/>
+
+
+
+
+
+  <title>莫烦 Matplotlib | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E8%8E%AB%E7%83%A6%20Matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">莫烦 Matplotlib</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:39:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">神经网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="莫烦-Matplotlib"><a href="#莫烦-Matplotlib" class="headerlink" title="莫烦 Matplotlib"></a>莫烦 Matplotlib</h1><p>在学习了numpy&amp;pandas后</p>
+<p>如果某天你发现自己要学习 Matplotlib, 很可能是因为:</p>
+<ol>
+<li>Matplotlib 是一个非常强大的 Python 画图工具;</li>
+<li>手中有很多数据, 可是不知道该怎么呈现这些数据.</li>
+</ol>
+<p>所以就找到了 Matplotlib. 它能帮你画出美丽的:</p>
+<ul>
+<li><p>线图;</p>
+</li>
+<li><p>散点图;</p>
+</li>
+<li><p>等高线图;</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4></li>
+<li><p>条形图;</p>
+</li>
+<li><p>柱状图;</p>
+</li>
+<li><p>3D 图形,</p>
+</li>
+<li><p>甚至是图形动画等等.</p>
+</li>
+</ul>
+<h2 id="Matplotlib安装"><a href="#Matplotlib安装" class="headerlink" title="Matplotlib安装"></a>Matplotlib安装</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>打开 Terminal 窗口, 输入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python 3+ 请复制以下在 terminal 中执行</span><br><span class="line">$ sudo apt-get install python3-matplotlib</span><br><span class="line"></span><br><span class="line"># python 2+ 请复制以下在 terminal 中执行</span><br><span class="line">$ sudo apt-get install python-matplotlib</span><br></pre></td></tr></table></figure>
+
+<h3 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h3><p>打开 Terminal 窗口, 输入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># python 3+ 请复制以下在 terminal 中执行</span><br><span class="line">$ pip3 install matplotlib</span><br><span class="line"></span><br><span class="line"># python 2+ 请复制以下在 terminal 中执行</span><br><span class="line">$ pip install matplotlib</span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install matplotlib</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>使用<code>import</code>导入模块<code>matplotlib.pyplot</code>，并简写成<code>plt</code> 使用<code>import</code>导入模块<code>numpy</code>，并简写成<code>np</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>np.linspace</code>定义x：范围是(-3,3);   个数是50. </p>
+<p>仿真一维数据组(<code>x</code> ,<code>y1</code>)表示曲线1. 仿真一维数据组(<code>x</code> ,<code>y2</code>)表示曲线2.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)</span><br><span class="line">y1 = <span class="number">2</span>*x + <span class="number">1</span></span><br><span class="line">y2 = x**<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="figure图像"><a href="#figure图像" class="headerlink" title="figure图像"></a>figure图像</h3><p>使用<code>plt.figure</code>定义一个图像窗口. </p>
+<p>使用<code>plt.plot</code>画(<code>x</code> ,<code>y2</code>)曲线. </p>
+<p>使用<code>plt.plot</code>画(<code>x</code> ,<code>y1</code>)曲线，曲线的颜色属性(<code>color</code>)为红色;  曲线的宽度(<code>linewidth</code>)为1.0；曲线的类型(<code>linestyle</code>)为虚线.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">plt.plot(x, y2)</span><br><span class="line">plt.plot(x, y1, color=<span class="string">'red'</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">'--'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://morvanzhou.github.io/static/results/plt/2_2_2.png" alt="figure 图像"></p>
+<h3 id="设置坐标轴1"><a href="#设置坐标轴1" class="headerlink" title="设置坐标轴1"></a>设置坐标轴1</h3><p>使用<code>plt.xlim</code>设置x坐标轴范围：(-1, 2)；</p>
+<p>使用<code>plt.ylim</code>设置y坐标轴范围：(-2, 3)； </p>
+<p>使用<code>plt.xlabel</code>设置x坐标轴名称：’I am x’； </p>
+<p>使用<code>plt.ylabel</code>设置y坐标轴名称：’I am y’；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.xlim((<span class="number">-1</span>, <span class="number">2</span>))</span><br><span class="line">plt.ylim((<span class="number">-2</span>, <span class="number">3</span>))</span><br><span class="line">plt.xlabel(<span class="string">'I am x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'I am y'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_3_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_3_1.png" alt="设置坐标轴1"></a></p>
+<p>使用<code>np.linspace</code>定义范围以及个数：范围是(-1,2);个数是5. </p>
+<p>使用<code>print</code>打印出新定义的范围. 使用<code>plt.xticks</code>设置x轴刻度：范围是(-1,2);  个数是5.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new_ticks = np.linspace(<span class="number">-1</span>, <span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">print(new_ticks)</span><br><span class="line">plt.xticks(new_ticks)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.yticks</code>设置y轴刻度以及名称：刻度为[-2, -1.8, -1, 1.22, 3]；对应刻度的名称为[‘really bad’,’bad’,’normal’,’good’, ‘really good’]. 使用<code>plt.show</code>显示图像.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.yticks([<span class="number">-2</span>, <span class="number">-1.8</span>, <span class="number">-1</span>, <span class="number">1.22</span>, <span class="number">3</span>],[<span class="string">r'$really\ bad$'</span>, <span class="string">r'$bad$'</span>, <span class="string">r'$normal$'</span>, <span class="string">r'$good$'</span>, <span class="string">r'$really\ good$'</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_3_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_3_2.png" alt="设置坐标轴1"></a></p>
+<p>使用<code>plt.gca</code>获取当前坐标轴信息. </p>
+<p>使用<code>.spines</code>设置边框：右侧边框；</p>
+<p>使用<code>.set_color</code>设置边框颜色：默认白色； </p>
+<p>使用<code>.spines</code>设置边框：上边框；</p>
+<p>使用<code>.set_color</code>设置边框颜色：默认白色；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_4_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_4_1.png" alt="设置坐标轴2"></a></p>
+<h3 id="设置坐标轴2"><a href="#设置坐标轴2" class="headerlink" title="设置坐标轴2"></a>设置坐标轴2</h3><p>使用<code>.xaxis.set_ticks_position</code>设置x坐标刻度数字或名称的位置：<code>bottom</code>.（所有位置：<code>top</code>，<code>bottom</code>，<code>both</code>，<code>default</code>，<code>none</code>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>.spines</code>设置边框：x轴；使用<code>.set_position</code>设置边框位置：y=0的位置；（位置所有属性：<code>outward</code>，<code>axes</code>，<code>data</code>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_4_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_4_2.png" alt="设置坐标轴2"></a></p>
+<p>使用<code>.yaxis.set_ticks_position</code>设置y坐标刻度数字或名称的位置：<code>left</code>.（所有位置：<code>left</code>，<code>right</code>，<code>both</code>，<code>default</code>，<code>none</code>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>.spines</code>设置边框：y轴；使用<code>.set_position</code>设置边框位置：x=0的位置；（位置所有属性：<code>outward</code>，<code>axes</code>，<code>data</code>） 使用<code>plt.show</code>显示图像.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>,<span class="number">0</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://morvanzhou.github.io/static/results/plt/2_4_3.png" alt="设置坐标轴2"></p>
+<h3 id="Legend图例"><a href="#Legend图例" class="headerlink" title="Legend图例"></a>Legend图例</h3><h4 id="添加图例"><a href="#添加图例" class="headerlink" title="添加图例"></a>添加图例</h4><p>本节中我们将对图中的两条线绘制图例，首先我们设置两条线的类型等信息（蓝色实线与红色虚线).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set line syles</span></span><br><span class="line">l1, = plt.plot(x, y1, label=<span class="string">'linear line'</span>)</span><br><span class="line">l2, = plt.plot(x, y2, color=<span class="string">'red'</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">'--'</span>, label=<span class="string">'square line'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>legend</code>将要显示的信息来自于上面代码中的 <code>label</code>. 所以我们只需要简单写下一下代码, plt 就能自动的为我们添加图例.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend(loc=<span class="string">'upper right'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数 <code>loc=&#39;upper right&#39;</code> 表示图例将添加在图中的右上角.</p>
+<p><img src="https://morvanzhou.github.io/static/results/plt/2_5_1.png" alt="Legend 图例"></p>
+<h4 id="调整位置和名称"><a href="#调整位置和名称" class="headerlink" title="调整位置和名称"></a>调整位置和名称</h4><p>如果我们想单独修改之前的 <code>label</code> 信息, 给不同类型的线条设置图例信息. </p>
+<p>我们可以在 <code>plt.legend</code> 输入更多参数. 如果以下面这种形式添加 legend, 我们需要确保, 在上面的代码 <code>plt.plot(x, y2, label=&#39;linear line&#39;)</code> 和 <code>plt.plot(x, y1, label=&#39;square line&#39;)</code> 中有用变量 <code>l1</code> 和 <code>l2</code> 分别存储起来. 而且需要注意的是 <code>l1,</code> <code>l2,</code>要以逗号结尾, 因为<code>plt.plot()</code> 返回的是一个列表.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.legend(handles=[l1, l2], labels=[<span class="string">'up'</span>, <span class="string">'down'</span>],  loc=<span class="string">'best'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就能分别重新设置线条对应的 <code>label</code> 了.</p>
+<p>最后我们得到带有图例信息的图片.</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_5_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_5_2.png" alt="Legend 图例"></a></p>
+<p>其中’loc’参数有多种，’best’表示自动分配最佳位置，其余的如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'best'</span> : <span class="number">0</span>,          </span><br><span class="line"><span class="string">'upper right'</span>  : <span class="number">1</span>,</span><br><span class="line"><span class="string">'upper left'</span>   : <span class="number">2</span>,</span><br><span class="line"><span class="string">'lower left'</span>   : <span class="number">3</span>,</span><br><span class="line"><span class="string">'lower right'</span>  : <span class="number">4</span>,</span><br><span class="line"><span class="string">'right'</span>        : <span class="number">5</span>,</span><br><span class="line"><span class="string">'center left'</span>  : <span class="number">6</span>,</span><br><span class="line"><span class="string">'center right'</span> : <span class="number">7</span>,</span><br><span class="line"><span class="string">'lower center'</span> : <span class="number">8</span>,</span><br><span class="line"><span class="string">'upper center'</span> : <span class="number">9</span>,</span><br><span class="line"><span class="string">'center'</span>       : <span class="number">10</span>,</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Annotation-标注"><a href="#Annotation-标注" class="headerlink" title="Annotation 标注"></a>Annotation 标注</h3><h4 id="画出基本图"><a href="#画出基本图" class="headerlink" title="画出基本图"></a>画出基本图</h4><p>当图线中某些特殊地方需要标注时，我们可以使用 <code>annotation</code>. matplotlib 中的 <code>annotation</code> 有两种方法， 一种是用 plt 里面的 <code>annotate</code>，一种是直接用 plt 里面的 <code>text</code> 来写标注.</p>
+<p>首先，我们在坐标轴中绘制一条直线.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)</span><br><span class="line">y = <span class="number">2</span>*x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.figure(num=<span class="number">1</span>, figsize=(<span class="number">8</span>, <span class="number">5</span>),)</span><br><span class="line">plt.plot(x, y,)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_6_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_6_1.png" alt="Annotation 标注"></a></p>
+<h4 id="移动坐标"><a href="#移动坐标" class="headerlink" title="移动坐标"></a>移动坐标</h4><p>然后我们挪动坐标轴的位置.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_6_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_6_2.png" alt="Annotation 标注"></a></p>
+<p>然后标注出点<code>(x0, y0)</code>的位置信息. 用<code>plt.plot([x0, x0,], [0, y0,], &#39;k--&#39;, linewidth=2.5)</code> 画出一条垂直于x轴的虚线.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x0 = <span class="number">1</span></span><br><span class="line">y0 = <span class="number">2</span>*x0 + <span class="number">1</span></span><br><span class="line">plt.plot([x0, x0,], [<span class="number">0</span>, y0,], <span class="string">'k--'</span>, linewidth=<span class="number">2.5</span>)</span><br><span class="line"><span class="comment"># set dot styles</span></span><br><span class="line">plt.scatter([x0, ], [y0, ], s=<span class="number">50</span>, color=<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_6_3.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_6_3.png" alt="Annotation 标注"></a></p>
+<h4 id="添加注释-annotate"><a href="#添加注释-annotate" class="headerlink" title="添加注释 annotate"></a>添加注释 annotate</h4><p>接下来我们就对<code>(x0, y0)</code>这个点进行标注.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.annotate(<span class="string">r'$2x+1=%s$'</span> % y0, xy=(x0, y0), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">30</span>, <span class="number">-30</span>),</span><br><span class="line">             textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">16</span>,</span><br><span class="line">             arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.2"</span>))</span><br></pre></td></tr></table></figure>
+
+<p>其中参数<code>xycoords=&#39;data&#39;</code> 是说基于数据的值来选位置, <code>xytext=(+30, -30)</code> 和 <code>textcoords=&#39;offset points&#39;</code> 对于标注位置的描述 和 xy 偏差值, <code>arrowprops</code>是对图中箭头类型的一些设置.</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_6_4.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_6_4.png" alt="Annotation 标注"></a></p>
+<h4 id="添加注释-text"><a href="#添加注释-text" class="headerlink" title="添加注释 text"></a>添加注释 text</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.text(<span class="number">-3.7</span>, <span class="number">3</span>, <span class="string">r'$This\ is\ the\ some\ text. \mu\ \sigma_i\ \alpha_t$'</span>,</span><br><span class="line">         fontdict=&#123;<span class="string">'size'</span>: <span class="number">16</span>, <span class="string">'color'</span>: <span class="string">'r'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>-3.7, 3,</code>是选取text的位置, 空格需要用到转字符<code>\</code>,<code>fontdict</code>设置文本字体.</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_6_5.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_6_5.png" alt="Annotation 标注"></a></p>
+<h3 id="tick-能见度"><a href="#tick-能见度" class="headerlink" title="tick 能见度"></a>tick 能见度</h3><h4 id="生成图形"><a href="#生成图形" class="headerlink" title="生成图形"></a>生成图形</h4><p>当图片中的内容较多，相互遮盖时，我们可以通过设置相关内容的透明度来使图片更易于观察，也即是通过本节中的<code>bbox</code>参数设置来调节图像信息.</p>
+<p>首先参考之前的例子, 我们先绘制图像基本信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, <span class="number">50</span>)</span><br><span class="line">y = <span class="number">0.1</span>*x</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line"><span class="comment"># 在 plt 2.0.2 或更高的版本中, 设置 zorder 给 plot 在 z 轴方向排序</span></span><br><span class="line">plt.plot(x, y, linewidth=<span class="number">10</span>, zorder=<span class="number">1</span>)</span><br><span class="line">plt.ylim(<span class="number">-2</span>, <span class="number">2</span>)</span><br><span class="line">ax = plt.gca()</span><br><span class="line">ax.spines[<span class="string">'right'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.spines[<span class="string">'top'</span>].set_color(<span class="string">'none'</span>)</span><br><span class="line">ax.xaxis.set_ticks_position(<span class="string">'bottom'</span>)</span><br><span class="line">ax.spines[<span class="string">'bottom'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br><span class="line">ax.yaxis.set_ticks_position(<span class="string">'left'</span>)</span><br><span class="line">ax.spines[<span class="string">'left'</span>].set_position((<span class="string">'data'</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_7_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_7_1.png" alt="tick 能见度"></a></p>
+<h4 id="调整坐标"><a href="#调整坐标" class="headerlink" title="调整坐标"></a>调整坐标</h4><p>然后对被遮挡的图像调节相关透明度，本例中设置 x轴 和 y轴 的刻度数字进行透明度设置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> ax.get_xticklabels() + ax.get_yticklabels():</span><br><span class="line">    label.set_fontsize(<span class="number">12</span>)</span><br><span class="line">    <span class="comment"># 在 plt 2.0.2 或更高的版本中, 设置 zorder 给 plot 在 z 轴方向排序</span></span><br><span class="line">    label.set_bbox(dict(facecolor=<span class="string">'white'</span>, edgecolor=<span class="string">'None'</span>, alpha=<span class="number">0.7</span>, zorder=<span class="number">2</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>label.set_fontsize(12)</code>重新调节字体大小，<code>bbox</code>设置目的内容的透明度相关参，<code>facecolor</code>调节 <code>box</code> 前景色，<code>edgecolor</code> 设置边框， 本处设置边框为无，<code>alpha</code>设置透明度. 最终结果如下:</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/2_7_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/2_7_2.png" alt="tick 能见度"></a></p>
+<h2 id="画图种类"><a href="#画图种类" class="headerlink" title="画图种类"></a>画图种类</h2><h3 id="Scatter-散点图"><a href="#Scatter-散点图" class="headerlink" title="Scatter 散点图"></a>Scatter 散点图</h3><h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><p>首先，先引入<code>matplotlib.pyplot</code>简写作<code>plt</code>,再引入模块<code>numpy</code>用来产生一些随机数据。生成1024个呈<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83" target="_blank" rel="noopener">标准正态分布</a>的二维数据组 (平均数是0，方差为1) 作为一个数据集，并图像化这个数据集。每一个点的颜色值用<code>T</code>来表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">n = <span class="number">1024</span>    <span class="comment"># data size</span></span><br><span class="line">X = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, n) <span class="comment"># 每一个点的X值</span></span><br><span class="line">Y = np.random.normal(<span class="number">0</span>, <span class="number">1</span>, n) <span class="comment"># 每一个点的Y值</span></span><br><span class="line">T = np.arctan2(Y,X) <span class="comment"># for color value</span></span><br></pre></td></tr></table></figure>
+
+<p>数据集生成完毕，现在来用<code>scatter</code>plot这个点集，鼠标点上去，可以看到这个函数的各个parameter的描述，如下图：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_1_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_1_2.png" alt="Scatter 散点图"></a></p>
+<p>输入<code>X</code>和<code>Y</code>作为location，<code>size=75</code>，颜色为<code>T</code>，<code>color map</code>用默认值，透明度<code>alpha</code> 为 50%。 x轴显示范围定位(-1.5，1.5)，并用<code>xtick()</code>函数来隐藏x坐标轴，y轴同理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(X, Y, s=<span class="number">75</span>, c=T, alpha=<span class="number">.5</span>)</span><br><span class="line"></span><br><span class="line">plt.xlim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.xticks(())  <span class="comment"># ignore xticks</span></span><br><span class="line">plt.ylim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.yticks(())  <span class="comment"># ignore yticks</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://morvanzhou.github.io/static/results/plt/3_1_1.png" alt="Scatter 散点图"></p>
+<h3 id="Bar-柱状图"><a href="#Bar-柱状图" class="headerlink" title="Bar 柱状图"></a>Bar 柱状图</h3><h4 id="生成基本图形"><a href="#生成基本图形" class="headerlink" title="生成基本图形"></a>生成基本图形</h4><p>向上向下分别生成12个数据，X为 0 到 11 的整数 ，Y是相应的<a href="https://en.wikipedia.org/wiki/Uniform_distribution" target="_blank" rel="noopener">均匀分布</a>的随机数据。 使用的函数是<code>plt.bar</code>，参数为X和Y：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">n = <span class="number">12</span></span><br><span class="line">X = np.arange(n)</span><br><span class="line">Y1 = (<span class="number">1</span> - X / float(n)) * np.random.uniform(<span class="number">0.5</span>, <span class="number">1.0</span>, n)</span><br><span class="line">Y2 = (<span class="number">1</span> - X / float(n)) * np.random.uniform(<span class="number">0.5</span>, <span class="number">1.0</span>, n)</span><br><span class="line"></span><br><span class="line">plt.bar(X, +Y1)</span><br><span class="line">plt.bar(X, -Y2)</span><br><span class="line"></span><br><span class="line">plt.xlim(<span class="number">-.5</span>, n)</span><br><span class="line">plt.xticks(())</span><br><span class="line">plt.ylim(<span class="number">-1.25</span>, <span class="number">1.25</span>)</span><br><span class="line">plt.yticks(())</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就生成了下图所示的柱状图基本框架：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_2_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_2_2.png" alt="Bar 柱状图"></a></p>
+<h4 id="加颜色和数据"><a href="#加颜色和数据" class="headerlink" title="加颜色和数据"></a>加颜色和数据</h4><p>下面我们就颜色和数值进行优化。 用<code>facecolor</code>设置主体颜色，<code>edgecolor</code>设置边框颜色为白色，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.bar(X, +Y1, facecolor=<span class="string">'#9999ff'</span>, edgecolor=<span class="string">'white'</span>)</span><br><span class="line">plt.bar(X, -Y2, facecolor=<span class="string">'#ff9999'</span>, edgecolor=<span class="string">'white'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>现在的结果呈现：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_2_3.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_2_3.png" alt="Bar 柱状图"></a></p>
+<p>接下来我们用函数<code>plt.text</code>分别在柱体上方（下方）加上数值，用<code>%.2f</code>保留两位小数，横向居中对齐<code>ha=&#39;center&#39;</code>，纵向底部（顶部）对齐<code>va=&#39;bottom&#39;</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x, y <span class="keyword">in</span> zip(X, Y1):</span><br><span class="line">    <span class="comment"># ha: horizontal alignment</span></span><br><span class="line">    <span class="comment"># va: vertical alignment</span></span><br><span class="line">    plt.text(x + <span class="number">0.4</span>, y + <span class="number">0.05</span>, <span class="string">'%.2f'</span> % y, ha=<span class="string">'center'</span>, va=<span class="string">'bottom'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x, y <span class="keyword">in</span> zip(X, Y2):</span><br><span class="line">    <span class="comment"># ha: horizontal alignment</span></span><br><span class="line">    <span class="comment"># va: vertical alignment</span></span><br><span class="line">    plt.text(x + <span class="number">0.4</span>, -y - <span class="number">0.05</span>, <span class="string">'%.2f'</span> % y, ha=<span class="string">'center'</span>, va=<span class="string">'top'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最终的结果就像开始一样：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_2_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_2_1.png" alt="Bar 柱状图"></a></p>
+<h3 id="Contours-等高线图"><a href="#Contours-等高线图" class="headerlink" title="Contours 等高线图"></a>Contours 等高线图</h3><h4 id="画等高线"><a href="#画等高线" class="headerlink" title="画等高线"></a>画等高线</h4><p>数据集即三维点 (x,y) 和对应的高度值，共有256个点。高度值使用一个 height function <code>f(x,y)</code> 生成。 x, y 分别是在区间 [-3,3] 中均匀分布的256个值，并用<code>meshgrid</code>在二维平面中将每一个x和每一个y分别对应起来，编织成栅格:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x,y)</span>:</span></span><br><span class="line">    <span class="comment"># the height function</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="number">1</span> - x / <span class="number">2</span> + x**<span class="number">5</span> + y**<span class="number">3</span>) * np.exp(-x**<span class="number">2</span> -y**<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">n = <span class="number">256</span></span><br><span class="line">x = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, n)</span><br><span class="line">y = np.linspace(<span class="number">-3</span>, <span class="number">3</span>, n)</span><br><span class="line">X,Y = np.meshgrid(x, y)</span><br></pre></td></tr></table></figure>
+
+<p>接下来进行颜色填充。使用函数<code>plt.contourf</code>把颜色加进去，位置参数分别为：X, Y, f(X,Y)。透明度0.75，并将 f(X,Y) 的值对应到color map的暖色组中寻找对应颜色。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use plt.contourf to filling contours</span></span><br><span class="line"><span class="comment"># X, Y and value for (X,Y) point</span></span><br><span class="line">plt.contourf(X, Y, f(X, Y), <span class="number">8</span>, alpha=<span class="number">.75</span>, cmap=plt.cm.hot)</span><br></pre></td></tr></table></figure>
+
+<p>接下来进行等高线绘制。使用<code>plt.contour</code>函数划线。位置参数为：X, Y, f(X,Y)。颜色选黑色，线条宽度选0.5。现在的结果如下图所示，只有颜色和线条，还没有数值Label：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># use plt.contour to add contour lines</span></span><br><span class="line">C = plt.contour(X, Y, f(X, Y), <span class="number">8</span>, colors=<span class="string">'black'</span>, linewidth=<span class="number">.5</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_3_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_3_2.png" alt="Contours 等高线图"></a></p>
+<h4 id="添加高度数字"><a href="#添加高度数字" class="headerlink" title="添加高度数字"></a>添加高度数字</h4><p>其中，8代表等高线的密集程度，这里被分为10个部分。如果是0，则图像被一分为二。</p>
+<p>最后加入Label，<code>inline</code>控制是否将Label画在线里面，字体大小为10。并将坐标轴隐藏：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.clabel(C, inline=<span class="literal">True</span>, fontsize=<span class="number">10</span>)</span><br><span class="line">plt.xticks(())</span><br><span class="line">plt.yticks(())</span><br></pre></td></tr></table></figure>
+
+<p>最终结果即：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_3_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_3_1.png" alt="Contours 等高线图"></a></p>
+<h3 id="Image-图片"><a href="#Image-图片" class="headerlink" title="Image 图片"></a>Image 图片</h3><h4 id="随机矩阵画图"><a href="#随机矩阵画图" class="headerlink" title="随机矩阵画图"></a>随机矩阵画图</h4><p>这一节我们讲解怎样在<strong>matplotlib</strong>中打印出图像。这里我们打印出的是纯粹的数字，而非自然图像。 我们今天用这样 3x3 的 2D-array 来表示点的颜色，每一个点就是一个pixel。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a = np.array([<span class="number">0.313660827978</span>, <span class="number">0.365348418405</span>, <span class="number">0.423733120134</span>,</span><br><span class="line">              <span class="number">0.365348418405</span>, <span class="number">0.439599930621</span>, <span class="number">0.525083754405</span>,</span><br><span class="line">              <span class="number">0.423733120134</span>, <span class="number">0.525083754405</span>, <span class="number">0.651536351379</span>]).reshape(<span class="number">3</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>今天做出的图像就是这个样子：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_4_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_4_1.png" alt="Image 图片"></a></p>
+<p>三行三列的格子，<strong>a</strong>代表每一个值，图像右边有一个注释，白色代表值最大的地方，颜色越深值越小。</p>
+<p>下面我们来看代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(a, interpolation=<span class="string">'nearest'</span>, cmap=<span class="string">'bone'</span>, origin=<span class="string">'lower'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我们之前选cmap的参数时用的是：<code>cmap=plt.cmap.bone</code>，而现在，我们可以直接用单引号传入参数。 <code>origin=&#39;lower&#39;</code>代表的就是选择的原点的位置。</p>
+<h4 id="出图方式"><a href="#出图方式" class="headerlink" title="出图方式"></a>出图方式</h4><p>我们在这个<a href="http://matplotlib.org/examples/images_contours_and_fields/interpolation_methods.html" target="_blank" rel="noopener">链接</a> 可以看到<strong>matplotlib</strong>官网上对于内插法的不同方法的描述。下图是一个示例：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_4_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_4_2.png" alt="Image 图片"></a></p>
+<p>这里我们使用的是内插法中的 <a href="https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation" target="_blank" rel="noopener">Nearest-neighbor</a> 的方法，其他的方式也都可以随意取选。</p>
+<h4 id="colorbar"><a href="#colorbar" class="headerlink" title="colorbar"></a>colorbar</h4><p>下面我们添加一个<code>colorbar</code> ，其中我们添加一个<code>shrink</code>参数，使<code>colorbar</code>的长度变短为原来的92%：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.colorbar(shrink=<span class="number">.92</span>)</span><br><span class="line"></span><br><span class="line">plt.xticks(())</span><br><span class="line">plt.yticks(())</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>这样我们2D图像就创建完毕了。</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_4_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_4_1.png" alt="Image 图片"></a></p>
+<h3 id="3D-数据"><a href="#3D-数据" class="headerlink" title="3D 数据"></a>3D 数据</h3><h4 id="3D-图"><a href="#3D-图" class="headerlink" title="3D 图"></a>3D 图</h4><p>首先在进行 <code>3D Plot</code> 时除了导入 <code>matplotlib</code> ，还要额外添加一个模块，即 <code>Axes 3D</code> 3D 坐标轴显示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br></pre></td></tr></table></figure>
+
+<p>之后要先定义一个图像窗口，在窗口上添加3D坐标轴，显示成下图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_2.png" alt="3D 数据"></a></p>
+<p>接下来给进 X 和 Y 值，并将 X 和 Y 编织成栅格。每一个（X, Y）点对应的高度值我们用下面这个函数来计算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># X, Y value</span></span><br><span class="line">X = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</span><br><span class="line">Y = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</span><br><span class="line">X, Y = np.meshgrid(X, Y)    <span class="comment"># x-y 平面的网格</span></span><br><span class="line">R = np.sqrt(X ** <span class="number">2</span> + Y ** <span class="number">2</span>)</span><br><span class="line"><span class="comment"># height value</span></span><br><span class="line">Z = np.sin(R)</span><br></pre></td></tr></table></figure>
+
+<p>今天的结果是这样的：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_1.png" alt="3D 数据"></a></p>
+<p>做出一个三维曲面，并将一个 <code>colormap rainbow</code> 填充颜色，之后将三维图像投影到 XY 平面上做一个等高线图。 plot 3D 图像：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.plot_surface(X, Y, Z, rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.get_cmap(<span class="string">'rainbow'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>rstride</code> 和 <code>cstride</code> 分别代表 row 和 column 的跨度。</p>
+<p>下面两个图分别是跨度为1 和 5 的效果：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_3.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_3.png" alt="3D 数据"></a></p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_4.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_4.png" alt="3D 数据"></a></p>
+<h4 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h4><p>下面添加 XY 平面的等高线：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.contourf(X, Y, Z, zdir=<span class="string">'z'</span>, offset=<span class="number">-2</span>, cmap=plt.get_cmap(<span class="string">'rainbow'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>zdir</code> 选择了x，那么效果将会是对于 XZ 平面的投影，效果如下：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_5.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_5.png" alt="3D 数据"></a></p>
+<p>最终我们的结果如下图：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/3_5_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/3_5_1.png" alt="3D 数据"></a></p>
+<h2 id="多图合并显示"><a href="#多图合并显示" class="headerlink" title="多图合并显示"></a>多图合并显示</h2><h3 id="Subplot-多合一显示"><a href="#Subplot-多合一显示" class="headerlink" title="Subplot 多合一显示"></a>Subplot 多合一显示</h3><h4 id="均匀图中图"><a href="#均匀图中图" class="headerlink" title="均匀图中图"></a>均匀图中图</h4><p>matplotlib 是可以组合许多的小图, 放在一张大图里面显示的. 使用到的方法叫作 subplot.</p>
+<p>使用<code>import</code>导入<code>matplotlib.pyplot</code>模块, 并简写成<code>plt</code>. 使用<code>plt.figure</code>创建一个图像窗口.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.subplot</code>来创建小图. <code>plt.subplot(2,2,1)</code>表示将整个图像窗口分为2行2列, 当前位置为1. 使用<code>plt.plot([0,1],[0,1])</code>在第1个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p><code>plt.subplot(2,2,2)</code>表示将整个图像窗口分为2行2列, 当前位置为2. 使用<code>plt.plot([0,1],[0,2])</code>在第2个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p><code>plt.subplot(2,2,3)</code>表示将整个图像窗口分为2行2列,当前位置为3. <code>plt.subplot(2,2,3)</code>可以简写成<code>plt.subplot(223)</code>, matplotlib同样可以识别. 使用<code>plt.plot([0,1],[0,3])</code>在第3个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">223</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<p><code>plt.subplot(224)</code>表示将整个图像窗口分为2行2列, 当前位置为4. 使用<code>plt.plot([0,1],[0,4])</code>在第4个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">224</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">plt.show()  <span class="comment"># 展示</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_1_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_1_1.png" alt="Subplot 多合一显示"></a></p>
+<h4 id="不均匀图中图"><a href="#不均匀图中图" class="headerlink" title="不均匀图中图"></a>不均匀图中图</h4><p>如果希望展示的小图的大小不相同, 应该怎么做呢? 以上面的4个小图为例, 如果把第1个小图放到第一行, 而剩下的3个小图都放到第二行.</p>
+<p>使用<code>plt.subplot(2,1,1)</code>将整个图像窗口分为2行1列, 当前位置为1. 使用<code>plt.plot([0,1],[0,1])</code>在第1个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.subplot(2,3,4)</code>将整个图像窗口分为2行3列, 当前位置为4. 使用<code>plt.plot([0,1],[0,2])</code>在第4个位置创建一个小图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p>这里需要解释一下为什么第4个位置放第2个小图. 上一步中使用<code>plt.subplot(2,1,1)</code>将整个图像窗口分为2行1列, 第1个小图占用了第1个位置, 也就是整个第1行. 这一步中使用<code>plt.subplot(2,3,4)</code>将整个图像窗口分为2行3列, 于是整个图像窗口的第1行就变成了3列, 也就是成了3个位置, 于是第2行的第1个位置是整个图像窗口的第4个位置.</p>
+<p>使用<code>plt.subplot(235)</code>将整个图像窗口分为2行3列,当前位置为5. 使用<code>plt.plot([0,1],[0,3])</code>在第5个位置创建一个小图. 同上, 再创建<code>plt.subplot(236)</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.subplot(<span class="number">235</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">236</span>)</span><br><span class="line">plt.plot([<span class="number">0</span>,<span class="number">1</span>],[<span class="number">0</span>,<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">plt.show()  <span class="comment"># 展示</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_1_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_1_2.png" alt="Subplot 多合一显示"></a></p>
+<h3 id="Subplot-分格显示"><a href="#Subplot-分格显示" class="headerlink" title="Subplot 分格显示"></a>Subplot 分格显示</h3><p>matplotlib 的 subplot 还可以是分格的,这里介绍三种方法.</p>
+<h4 id="subplot2grid"><a href="#subplot2grid" class="headerlink" title="subplot2grid"></a>subplot2grid</h4><p>使用<code>import</code>导入<code>matplotlib.pyplot</code>模块, 并简写成<code>plt</code>. 使用<code>plt.figure()</code>创建一个图像窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.subplot2grid</code>来创建第1个小图, <code>(3,3)</code>表示将整个图像窗口分成3行3列, <code>(0,0)</code>表示从第0行第0列开始作图，<code>colspan=3</code>表示列的跨度为3, <code>rowspan=1</code>表示行的跨度为1. <code>colspan</code>和<code>rowspan</code>缺省, 默认跨度为1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax1 = plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">0</span>, <span class="number">0</span>), colspan=<span class="number">3</span>)</span><br><span class="line">ax1.plot([<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>])    <span class="comment"># 画小图</span></span><br><span class="line">ax1.set_title(<span class="string">'ax1_title'</span>)  <span class="comment"># 设置小图的标题</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.subplot2grid</code>来创建第2个小图, <code>(3,3)</code>表示将整个图像窗口分成3行3列, <code>(1,0)</code>表示从第1行第0列开始作图，<code>colspan=2</code>表示列的跨度为2. 同上画出 <code>ax3</code>, <code>(1,2)</code>表示从第1行第2列开始作图，<code>rowspan=2</code>表示行的跨度为2. 再画一个 <code>ax4</code> 和 <code>ax5</code>, 使用默认 <code>colspan, rowspan</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ax2 = plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">0</span>), colspan=<span class="number">2</span>)</span><br><span class="line">ax3 = plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">1</span>, <span class="number">2</span>), rowspan=<span class="number">2</span>)</span><br><span class="line">ax4 = plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">2</span>, <span class="number">0</span>))</span><br><span class="line">ax5 = plt.subplot2grid((<span class="number">3</span>, <span class="number">3</span>), (<span class="number">2</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>ax4.scatter</code>创建一个散点图, 使用<code>ax4.set_xlabel</code>和<code>ax4.set_ylabel</code>来对x轴和y轴命名.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax4.scatter([<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line">ax4.set_xlabel(<span class="string">'ax4_x'</span>)</span><br><span class="line">ax4.set_ylabel(<span class="string">'ax4_y'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_2_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_2_1.png" alt="Subplot 分格显示"></a></p>
+<h4 id="gridspec"><a href="#gridspec" class="headerlink" title="gridspec"></a>gridspec</h4><p>使用<code>import</code>导入<code>matplotlib.pyplot</code>模块, 并简写成<code>plt</code>. 使用<code>import</code>导入<code>matplotlib.gridspec</code>, 并简写成<code>gridspec</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib.gridspec <span class="keyword">as</span> gridspec</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.figure()</code>创建一个图像窗口, 使用<code>gridspec.GridSpec</code>将整个图像窗口分成3行3列.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">gs = gridspec.GridSpec(<span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>plt.subplot</code>来作图, <code>gs[0, :]</code>表示这个图占第0行和所有列, <code>gs[1, :2]</code>表示这个图占第1行和第2列前的所有列, <code>gs[1:, 2]</code>表示这个图占第1行后的所有行和第2列, <code>gs[-1, 0]</code>表示这个图占倒数第1行和第0列, <code>gs[-1, -2]</code>表示这个图占倒数第1行和倒数第2列.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ax6 = plt.subplot(gs[<span class="number">0</span>, :])</span><br><span class="line">ax7 = plt.subplot(gs[<span class="number">1</span>, :<span class="number">2</span>])</span><br><span class="line">ax8 = plt.subplot(gs[<span class="number">1</span>:, <span class="number">2</span>])</span><br><span class="line">ax9 = plt.subplot(gs[<span class="number">-1</span>, <span class="number">0</span>])</span><br><span class="line">ax10 = plt.subplot(gs[<span class="number">-1</span>, <span class="number">-2</span>])</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_2_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_2_2.png" alt="Subplot 分格显示"></a></p>
+<h4 id="subplots"><a href="#subplots" class="headerlink" title="subplots"></a>subplots</h4><p>使用<code>plt.subplots</code>建立一个2行2列的图像窗口，<code>sharex=True</code>表示共享x轴坐标, <code>sharey=True</code>表示共享y轴坐标. <code>((ax11, ax12), (ax13, ax14))</code>表示第1行从左至右依次放<code>ax11</code>和<code>ax12</code>, 第2行从左至右依次放<code>ax13</code>和<code>ax14</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f, ((ax11, ax12), (ax13, ax14)) = plt.subplots(<span class="number">2</span>, <span class="number">2</span>, sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>ax11.scatter</code>创建一个散点图.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax11.scatter([<span class="number">1</span>,<span class="number">2</span>], [<span class="number">1</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p><code>plt.tight_layout()</code>表示紧凑显示图像, <code>plt.show()</code>表示显示图像.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_2_3.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_2_3.png" alt="Subplot 分格显示"></a></p>
+<h3 id="图中图"><a href="#图中图" class="headerlink" title="图中图"></a>图中图</h3><p>这次我们来讲matplotlib里一个很有意思的功能，叫做图中图(plot in plot)，最后的效果如下：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_3_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_3_1.png" alt="图中图"></a></p>
+<p>可以看到，整个Figure 1包含了三个图，其中两个小图<code>title inside 1</code>和<code>title inside 2</code>又出现在大图<code>title</code>中。这是如何做到的呢？</p>
+<h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p>首先是一些准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入pyplot模块</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化figure</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据</span></span><br><span class="line">x = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">y = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="大图"><a href="#大图" class="headerlink" title="大图"></a>大图</h4><p>接着，我们来绘制大图。首先确定大图左下角的位置以及宽高：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left, bottom, width, height = <span class="number">0.1</span>, <span class="number">0.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，4个值都是占整个<code>figure</code>坐标系的百分比。在这里，假设<code>figure</code>的大小是10x10，那么大图就被包含在由(1, 1)开始，宽8，高8的坐标系内。</p>
+<p>将大图坐标系添加到<code>figure</code>中，颜色为r(red)，取名为title：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ax1 = fig.add_axes([left, bottom, width, height])</span><br><span class="line">ax1.plot(x, y, <span class="string">'r'</span>)</span><br><span class="line">ax1.set_xlabel(<span class="string">'x'</span>)</span><br><span class="line">ax1.set_ylabel(<span class="string">'y'</span>)</span><br><span class="line">ax1.set_title(<span class="string">'title'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_3_2.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_3_2.png" alt="图中图"></a></p>
+<h4 id="小图"><a href="#小图" class="headerlink" title="小图"></a>小图</h4><p>接着，我们来绘制左上角的小图，步骤和绘制大图一样，注意坐标系位置和大小的改变：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">left, bottom, width, height = <span class="number">0.2</span>, <span class="number">0.6</span>, <span class="number">0.25</span>, <span class="number">0.25</span></span><br><span class="line">ax2 = fig.add_axes([left, bottom, width, height])</span><br><span class="line">ax2.plot(y, x, <span class="string">'b'</span>)</span><br><span class="line">ax2.set_xlabel(<span class="string">'x'</span>)</span><br><span class="line">ax2.set_ylabel(<span class="string">'y'</span>)</span><br><span class="line">ax2.set_title(<span class="string">'title inside 1'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_3_3.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_3_3.png" alt="图中图"></a></p>
+<p>最后，我们来绘制右下角的小图。这里我们采用一种更简单方法，即直接往plt里添加新的坐标系：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.axes([<span class="number">0.6</span>, <span class="number">0.2</span>, <span class="number">0.25</span>, <span class="number">0.25</span>])</span><br><span class="line">plt.plot(y[::<span class="number">-1</span>], x, <span class="string">'g'</span>) <span class="comment"># 注意对y进行了逆序处理</span></span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y'</span>)</span><br><span class="line">plt.title(<span class="string">'title inside 2'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>最后显示图像：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_3_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_3_1.png" alt="图中图"></a></p>
+<h3 id="次坐标轴"><a href="#次坐标轴" class="headerlink" title="次坐标轴"></a>次坐标轴</h3><p> 第一个y坐标 </p>
+<p>有时候我们会用到次坐标轴，即在同个图上有第2个y轴存在。同样可以用matplotlib做到，而且很简单。</p>
+<p>首先，我们做一些准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">10</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">y1 = <span class="number">0.05</span> * x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">y2 = <span class="number">-1</span> * y1</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，<code>y2</code>和<code>y1</code>是互相倒置的。接着，获取figure默认的坐标系 <code>ax1</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig, ax1 = plt.subplots()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="第二个y坐标"><a href="#第二个y坐标" class="headerlink" title="第二个y坐标"></a>第二个y坐标</h4><p>对<code>ax1</code>调用<code>twinx()</code>方法，生成如同镜面效果后的<code>ax2</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax2 = ax1.twinx()</span><br></pre></td></tr></table></figure>
+
+<p>接着进行绘图, 将 <code>y1</code>, <code>y2</code> 分别画在 <code>ax1</code>, <code>ax2</code> 上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ax1.plot(x, y1, <span class="string">'g-'</span>)   <span class="comment"># green, solid line</span></span><br><span class="line"></span><br><span class="line">ax1.set_xlabel(<span class="string">'X data'</span>)</span><br><span class="line"></span><br><span class="line">ax1.set_ylabel(<span class="string">'Y1 data'</span>, color=<span class="string">'g'</span>)</span><br><span class="line"></span><br><span class="line">ax2.plot(x, y2, <span class="string">'b-'</span>) <span class="comment"># blue</span></span><br><span class="line"></span><br><span class="line">ax2.set_ylabel(<span class="string">'Y2 data'</span>, color=<span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>显示图像：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/4_4_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/4_4_1.png" alt="次坐标轴"></a></p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="Animation-动画"><a href="#Animation-动画" class="headerlink" title="Animation 动画"></a>Animation 动画</h3><h4 id="定义方程"><a href="#定义方程" class="headerlink" title="定义方程"></a>定义方程</h4><p>使用matplotlib做动画也是可以的，我们使用其中一种方式，function animation来说说， 具体可参考<a href="http://matplotlib.sourceforge.net/api/animation_api.html" target="_blank" rel="noopener">matplotlib animation api</a>。首先，我们做一些准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> animation</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">fig, ax = plt.subplots()</span><br></pre></td></tr></table></figure>
+
+<p>我们的数据是一个0~2π内的正弦曲线：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">2</span>*np.pi, <span class="number">0.01</span>)</span><br><span class="line">line, = ax.plot(x, np.sin(x))</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://morvanzhou.github.io/static/results/plt/5_1_1.png" target="_blank" rel="noopener"><img src="https://morvanzhou.github.io/static/results/plt/5_1_1.png" alt="Animation 动画"></a></p>
+<p>接着，构造自定义动画函数<code>animate</code>，用来更新每一帧上各个<code>x</code>对应的<code>y</code>坐标值，参数表示第i帧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">animate</span><span class="params">(i)</span>:</span></span><br><span class="line">    line.set_ydata(np.sin(x + i/<span class="number">10.0</span>))</span><br><span class="line">    <span class="keyword">return</span> line,</span><br></pre></td></tr></table></figure>
+
+<p>然后，构造开始帧函数<code>init</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">()</span>:</span></span><br><span class="line">    line.set_ydata(np.sin(x))</span><br><span class="line">    <span class="keyword">return</span> line,</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h4><p>接下来，我们调用<code>FuncAnimation</code>函数生成动画。参数说明：</p>
+<ol>
+<li><code>fig</code> 进行动画绘制的figure</li>
+<li><code>func</code> 自定义动画函数，即传入刚定义的函数<code>animate</code></li>
+<li><code>frames</code> 动画长度，一次循环包含的帧数</li>
+<li><code>init_func</code> 自定义开始帧，即传入刚定义的函数<code>init</code></li>
+<li><code>interval</code> 更新频率，以ms计</li>
+<li><code>blit</code> 选择更新所有点，还是仅更新产生变化的点。应选择<code>True</code>，但mac用户请选择<code>False</code>，否则无法显示动画</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ani = animation.FuncAnimation(fig=fig,</span><br><span class="line">                              func=animate,</span><br><span class="line">                              frames=<span class="number">100</span>,</span><br><span class="line">                              init_func=init,</span><br><span class="line">                              interval=<span class="number">20</span>,</span><br><span class="line">                              blit=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>显示动画：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以将动画以mp4格式保存下来，但首先要保证你已经安装了<code>ffmpeg</code> 或者<code>mencoder</code>， 更多信息参考<a href="http://matplotlib.sourceforge.net/api/animation_api.html" target="_blank" rel="noopener">matplotlib animation api</a>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ani.save(<span class="string">'basic_animation.mp4'</span>, fps=<span class="number">30</span>, extra_args=[<span class="string">'-vcodec'</span>, <span class="string">'libx264'</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Matplotlib/" rel="tag"># Matplotlib</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CCNN/" rel="next" title="卷积神经网络">
+                <i class="fa fa-chevron-left"></i> 卷积神经网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/numpy%20&%20pandas/" rel="prev" title="numpy & pandas">
+                numpy & pandas <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#莫烦-Matplotlib"><span class="nav-number">1.</span> <span class="nav-text">莫烦 Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matplotlib安装"><span class="nav-number">1.1.</span> <span class="nav-text">Matplotlib安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MacOS"><span class="nav-number">1.1.2.</span> <span class="nav-text">MacOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">1.1.3.</span> <span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#figure图像"><span class="nav-number">1.2.1.</span> <span class="nav-text">figure图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴1"><span class="nav-number">1.2.2.</span> <span class="nav-text">设置坐标轴1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置坐标轴2"><span class="nav-number">1.2.3.</span> <span class="nav-text">设置坐标轴2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Legend图例"><span class="nav-number">1.2.4.</span> <span class="nav-text">Legend图例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加图例"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">添加图例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整位置和名称"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">调整位置和名称</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Annotation-标注"><span class="nav-number">1.2.5.</span> <span class="nav-text">Annotation 标注</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画出基本图"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">画出基本图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动坐标"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">移动坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-annotate"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">添加注释 annotate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加注释-text"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">添加注释 text</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tick-能见度"><span class="nav-number">1.2.6.</span> <span class="nav-text">tick 能见度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成图形"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">生成图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调整坐标"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">调整坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图种类"><span class="nav-number">1.3.</span> <span class="nav-text">画图种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scatter-散点图"><span class="nav-number">1.3.1.</span> <span class="nav-text">Scatter 散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#散点图"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">散点图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bar-柱状图"><span class="nav-number">1.3.2.</span> <span class="nav-text">Bar 柱状图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成基本图形"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">生成基本图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加颜色和数据"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">加颜色和数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contours-等高线图"><span class="nav-number">1.3.3.</span> <span class="nav-text">Contours 等高线图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画等高线"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">画等高线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加高度数字"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">添加高度数字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-图片"><span class="nav-number">1.3.4.</span> <span class="nav-text">Image 图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机矩阵画图"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">随机矩阵画图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#出图方式"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">出图方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#colorbar"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">colorbar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-数据"><span class="nav-number">1.3.5.</span> <span class="nav-text">3D 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3D-图"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">3D 图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">投影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多图合并显示"><span class="nav-number">1.4.</span> <span class="nav-text">多图合并显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-多合一显示"><span class="nav-number">1.4.1.</span> <span class="nav-text">Subplot 多合一显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#均匀图中图"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">均匀图中图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不均匀图中图"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">不均匀图中图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subplot-分格显示"><span class="nav-number">1.4.2.</span> <span class="nav-text">Subplot 分格显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subplot2grid"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">subplot2grid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gridspec"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">gridspec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subplots"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">subplots</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图中图"><span class="nav-number">1.4.3.</span> <span class="nav-text">图中图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大图"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">大图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小图"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">小图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#次坐标轴"><span class="nav-number">1.4.4.</span> <span class="nav-text">次坐标轴</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个y坐标"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">第二个y坐标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-number">1.5.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation-动画"><span class="nav-number">1.5.1.</span> <span class="nav-text">Animation 动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义方程"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">定义方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数设置"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">参数设置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

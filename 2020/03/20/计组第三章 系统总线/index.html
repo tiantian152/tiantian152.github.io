@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计组," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第三章 系统总线计算机系统的五大部件之间的互连方式有两种：  一种是各部件之间使用单独的连线，称为分散连接；分散连接方式无法解决I&#x2F;O设备与主机之间连接的灵活性。  另一种是将各部件连到一组公共信息传输线上，称为总线连接。   为什么要用总线？  简化的部件的连接  总线的基本概念总线（bus） 什么是总线？  总线是连接各个部件的信息传输线，是各个部件共享的传输介质  总线上信息的传送  每条总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（计算机组成原理）第三章 系统总线">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="第三章 系统总线计算机系统的五大部件之间的互连方式有两种：  一种是各部件之间使用单独的连线，称为分散连接；分散连接方式无法解决I&#x2F;O设备与主机之间连接的灵活性。  另一种是将各部件连到一组公共信息传输线上，称为总线连接。   为什么要用总线？  简化的部件的连接  总线的基本概念总线（bus） 什么是总线？  总线是连接各个部件的信息传输线，是各个部件共享的传输介质  总线上信息的传送  每条总">
+<meta property="og:image" content="http://yoursite.com/images/20190107160531984.png">
+<meta property="og:image" content="http://yoursite.com/images/1583235993056.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107155404313.png">
+<meta property="og:image" content="http://yoursite.com/images/2019010715580499.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107155939152.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107170742318.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107171002206.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107171159474.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107171557664.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107172146699.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107172357201.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107172615423.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107192413143.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107193731704.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107193811251.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107195753683.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107195902609.png">
+<meta property="og:image" content="http://yoursite.com/images/20190107200251772.png">
+<meta property="article:published_time" content="2020-03-20T08:28:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:29:48.310Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="计组">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/20190107160531984.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/计组第三章 系统总线/"/>
+
+
+
+
+
+  <title>（计算机组成原理）第三章 系统总线 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">（计算机组成原理）第三章 系统总线</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:28:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第三章-系统总线"><a href="#第三章-系统总线" class="headerlink" title="第三章 系统总线"></a>第三章 系统总线</h1><p>计算机系统的五大部件之间的互连方式有两种：</p>
+<ul>
+<li><p>一种是各部件之间使用单独的连线，称为分散连接；分散连接方式无法解决I/O设备与主机之间连接的灵活性。</p>
+</li>
+<li><p>另一种是将各部件连到一组公共信息传输线上，称为总线连接。</p>
+</li>
+</ul>
+<p>为什么要用总线？</p>
+<ul>
+<li>简化的部件的连接</li>
+</ul>
+<h2 id="总线的基本概念"><a href="#总线的基本概念" class="headerlink" title="总线的基本概念"></a>总线的基本概念</h2><p>总线（bus）</p>
+<p><strong>什么是总线？</strong></p>
+<ul>
+<li>总线是连接各个部件的信息传输线，是各个部件<strong>共享</strong>的传输介质</li>
+</ul>
+<p><strong>总线上信息的传送</strong></p>
+<ul>
+<li>每条总线每次可以传输一位二进制代码</li>
+<li>若干条总线可以同时传输若干位二进制代码</li>
+</ul>
+<p><img src="/images/20190107160531984.png" alt="传输信息的方式"></p>
+<h2 id="总线的分类"><a href="#总线的分类" class="headerlink" title="总线的分类"></a>总线的分类</h2><p>按连接部件不同，介绍三类总线：片内总线，系统总线，通信总线</p>
+<h3 id="片内总线"><a href="#片内总线" class="headerlink" title="片内总线"></a>片内总线</h3><p><strong>芯片内部</strong>的总线</p>
+<p>如在CPU芯片内部，寄存器与寄存器之间、寄存器与算逻单元ALU之间都由片内总线连接。</p>
+<h3 id="系统总线（板级总线）"><a href="#系统总线（板级总线）" class="headerlink" title="系统总线（板级总线）"></a>系统总线（板级总线）</h3><p>计算机各个部件之间的信息传输线</p>
+<p>由于这些部件通常都安放在主板或各个插件板（插卡）上，故又称板级总线（在一块电路板上各芯片间的连线）或板间总线。</p>
+<p><strong>系统总线的分类：</strong></p>
+<ul>
+<li><strong>数据总线：双向</strong><ul>
+<li>位数与机器字长和存储字长有关，一般为8位、16位或32位</li>
+<li>数据总线位数称为数据总线的宽度</li>
+<li>如果数据总线的宽度为8位，指令字长为16位，那么，CPU在取值阶段必须两次访问主存。</li>
+</ul>
+</li>
+<li><strong>地址总线：单向</strong><ul>
+<li>与存储地址、I/O地址有关</li>
+<li>主要用来指出数据总线上的源数据或目的数据在主存的地址或者I/O设备的地址</li>
+</ul>
+</li>
+<li><strong>控制总线</strong>：<ul>
+<li>用来发出各种控制信号的传输线，还起到监视各部件状态的作用。</li>
+<li>有出（存储器读写，总线允许，中断确认），有入（中断请求）</li>
+<li>通常对任一控制线而言，它的传输是单向的。但对于控制总线总体来说，又可认为是双向的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="通信总线"><a href="#通信总线" class="headerlink" title="通信总线"></a>通信总线</h3><p>用于计算机系统之间或计算机系统与其他系统之间的通信</p>
+<p>传输方式</p>
+<ul>
+<li>串行通信总线<ul>
+<li>指数据在单条1位宽的传输线上，一位一位按顺序分时传送</li>
+</ul>
+</li>
+<li>并行通信总线<ul>
+<li>指数据在多条并行1位宽的同时由源传送到目的地</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>串行通信</th>
+<th>并行通信</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>适宜距离</td>
+<td>远距离传送（可以从几米达数千公里）</td>
+<td>近距离的数据传输（通常小于30m）</td>
+</tr>
+<tr>
+<td>数据传送速率</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>通信线路费用</td>
+<td>低（还可利用现有的电话网络来实现远程通信）</td>
+<td>高</td>
+</tr>
+</tbody></table>
+<h2 id="总线特性及性能指标"><a href="#总线特性及性能指标" class="headerlink" title="总线特性及性能指标"></a>总线特性及性能指标</h2><h3 id="总线特性"><a href="#总线特性" class="headerlink" title="总线特性"></a>总线特性</h3><p><strong>总线的物理实现</strong></p>
+<ul>
+<li>从物理角度来看，总线由许多导线直接印制在电路板上</li>
+</ul>
+<p><strong>总线特性</strong></p>
+<ul>
+<li>机械特性<ul>
+<li>尺寸 形状 管脚数 排列顺序</li>
+</ul>
+</li>
+<li>电气特性<ul>
+<li>总线的每一根传输线上的信号的<strong>传递方向</strong>和<strong>有效的电平范围</strong></li>
+<li>通常规定由CPU发出的信号称为输出信号，送入CPU的信号称为输入信号</li>
+</ul>
+</li>
+<li>功能特性<ul>
+<li>每根传输线的功能<ul>
+<li>地址</li>
+<li>数据</li>
+<li>控制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>时间特性<ul>
+<li>信号的时序关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="总线性能指标"><a href="#总线性能指标" class="headerlink" title="总线性能指标"></a>总线性能指标</h3><ol>
+<li>总线宽度          数据线的根数，用bit（位）表示</li>
+<li>标准传输率          单位时间内总线上传输数据的位数，通常用每秒传输信息的字节数来衡量，单位可用MBps（兆字节每秒）表示。</li>
+<li>时钟同步/异步    同步、异步</li>
+<li>总线复用             一条信号线上分时传送两种信号，如地址线与数据线复用（8086）</li>
+<li>信号线数             地址线、数据线、控制线的总线数的总和</li>
+<li>总线控制方式     包括突发工作、自动配置、仲裁方式、逻辑方式、计数方式等</li>
+<li>其他指标             负载能力、电源电压、总线宽度能否扩展等</li>
+</ol>
+<h3 id="总线标准"><a href="#总线标准" class="headerlink" title="总线标准"></a>总线标准</h3><p>总线标准，可视为系统与各模块、模块与模块之间的一个互连的标准界面。</p>
+<p>这个界面对它两端的模块都是透明的，即界面的任一方只需根据总线标准的要求完成自身一方接口的功能需求，而无须了解对方接口与总线的连接要求。</p>
+<p>因此，按总线标准设计的接口可视为通用接口。</p>
+<p>目前流行的总线标准有以下几种</p>
+<p><img src="/images/1583235993056.png" alt="1583235993056"></p>
+<h2 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h2><h3 id="单总线结构"><a href="#单总线结构" class="headerlink" title="单总线结构"></a>单总线结构</h3><p>将CPU、主存和I/O设备（通过I/O接口）都挂到一组总线上</p>
+<p><img src="/images/20190107155404313.png" alt="单总线结构"></p>
+<h3 id="面向CPU的双总线结构"><a href="#面向CPU的双总线结构" class="headerlink" title="面向CPU的双总线结构"></a>面向CPU的双总线结构</h3><p>其中一组总线连接CPU和主存，称为<strong>存储总线（M总线）</strong></p>
+<p>另一组用来建立CPU和各I/O设备之间交换信息的通道，称为<strong>输入/输出总线（I/O总线）</strong></p>
+<p>各种I/O设备通过I/O设备通过I/O接口挂到I/O总线上，更便于增删设备。</p>
+<p>当I/O设备与主存交换信息时，原则上不影响CPU的工作</p>
+<p><img src="/images/2019010715580499.png" alt="面向CPU的双总线结构框图"></p>
+<h3 id="以存储器为中心的双总线结构"><a href="#以存储器为中心的双总线结构" class="headerlink" title="以存储器为中心的双总线结构"></a>以存储器为中心的双总线结构</h3><p>在单总线基础上又开辟出的一条CPU与主存之间的总线，称为存储总线</p>
+<p>这组总线速度高，只供主存与CPU之间和传输信息，这样既提高了效率，又减轻了系统总线的负担，还保留了I/O设备与存储器交换信息时不经过CPU的特点</p>
+<p><img src="/images/20190107155939152.png" alt="以存储器为中心的双总线结构框图"></p>
+<h3 id="双总线结构"><a href="#双总线结构" class="headerlink" title="双总线结构"></a>双总线结构</h3><p>双总线结构的特点是 将速度较低的I/O设备从单总线上分离出来，形成主存总线与I/O总线分开的结构。</p>
+<p><img src="/images/20190107170742318.png" alt="双总线结构"></p>
+<h3 id="三总线结构"><a href="#三总线结构" class="headerlink" title="三总线结构"></a>三总线结构</h3><p>将速率不同的I/O设备进行分类，然后将它们连接在不同的通道上，可以进一步提高计算机系统的工作效率。</p>
+<p><img src="/images/20190107171002206.png" alt="三总线结构"><br>主存总线用于CPU与主存之间的传输</p>
+<p>I/O总线供CPU与各类I/O设备之间传递信息</p>
+<p>DMA总线用于高速I/O设备（磁盘、磁带等）与主存之间直接交换信息。</p>
+<p><img src="/images/20190107171159474.png" alt="三总线结构的又一形式"></p>
+<h3 id="四总线结构"><a href="#四总线结构" class="headerlink" title="四总线结构"></a>四总线结构</h3><p>增加了一条与计算机系统紧密相连的高速总线。</p>
+<p>在高速总线上挂接了一些高速I/O设备</p>
+<p>它们通过Cache控制机构中的高速总线桥或高速缓冲器与系统总线和局部总线相连</p>
+<p>在这种结构中，CPU、高速总线的速度以及各自信号线的定一件完全可以不痛，已知各自改变其结构也不会影响高速总线的正常工作</p>
+<p><img src="/images/20190107171557664.png" alt="四总线结构"></p>
+<h2 id="总线控制"><a href="#总线控制" class="headerlink" title="总线控制"></a>总线控制</h2><p>它主要包括判优控制（或称仲裁逻辑）和通信控制</p>
+<h3 id="总线判优控制"><a href="#总线判优控制" class="headerlink" title="总线判优控制"></a>总线判优控制</h3><p>总线上所连接的各类设备，按照其对总线有无控制功能可分为<strong>主设备（模块）</strong>和<strong>从设备（模块）</strong>两种</p>
+<ul>
+<li><p>主设备对总线有控制权</p>
+</li>
+<li><p>从设备只能相应从主设备发来的总线命令，对总线没有控制权</p>
+</li>
+</ul>
+<p>总线上的信息的传送是由主设备启动的，只有获得总线控制权的主设备才能开始传送数据</p>
+<p>总线判优控制可分为<strong>集中式</strong>和<strong>分布式</strong>两种</p>
+<h4 id="集中控制优先权仲裁方式"><a href="#集中控制优先权仲裁方式" class="headerlink" title="集中控制优先权仲裁方式"></a>集中控制优先权仲裁方式</h4><p>将控制逻辑集中在一处（如在CPU中）</p>
+<h5 id="链式查询"><a href="#链式查询" class="headerlink" title="链式查询"></a>链式查询</h5><p><img src="/images/20190107172146699.png" alt="链式查询"></p>
+<p>离总线控制部件最近的设备具有最高的优先级</p>
+<p>特点：</p>
+<ul>
+<li>只需很少几根线就能按一定优先次序实现总线控制，很简单</li>
+<li>很容易扩充设备</li>
+<li>对电路故障很敏感</li>
+<li>优先级别低的设备可能很难获得请求</li>
+</ul>
+<h5 id="计时器定时查询"><a href="#计时器定时查询" class="headerlink" title="计时器定时查询"></a>计时器定时查询</h5><p><img src="/images/20190107172357201.png" alt="计时器定时查询"></p>
+<p>此方案比链式查询方式多了一组设备地址线，少了一根总线同意线 BG，设备地址由一个计数器给出，属于控制线</p>
+<p>总线请求的设备号与计数值一致时，该设备便获得总线使用权，此时终止计数查询，同时该设备建立总线忙 BS 信号</p>
+<p>设备的优先级通过设置不同的计数初始值来改变：</p>
+<p>☆ 计数总是从 0 开始，此时设备的优先次序是固定的。</p>
+<p>☆ 计数的初值总是上次得到控制权设备的设备号，那么所有设备的优先级是相等的，是循环优先级方式</p>
+<p>特点：</p>
+<ul>
+<li>对电路故障不如链式查询方式敏感</li>
+<li>增加了控制线（设备地址）数，控制较为复杂</li>
+</ul>
+<h5 id="独立请求方式"><a href="#独立请求方式" class="headerlink" title="独立请求方式"></a>独立请求方式</h5><p><img src="/images/20190107172615423.png" alt="独立请求方式"></p>
+<p>特点：</p>
+<ul>
+<li><p>响应速度快</p>
+</li>
+<li><p>优先次序控制灵活（通过程序改变）</p>
+</li>
+<li><p>控制线数量多</p>
+</li>
+<li><p>总线控制更复杂</p>
+</li>
+</ul>
+<p>链式查询中仅用两根线确定总线使用权书序那个设备</p>
+<p>在计数器查询中大致用 $log_2n$ 根线</p>
+<p>而独立请求方式需采用2n根线</p>
+<p>n是允许接纳的最大设备数</p>
+<h3 id="总线通信控制"><a href="#总线通信控制" class="headerlink" title="总线通信控制"></a>总线通信控制</h3><p>目的：解决通信双方<strong>协调配合</strong>问题</p>
+<p>在通信时间上，应按分时方式来处理，即以获得总线使用权的先后顺序分时占用总线，即哪一个部件获得使用权，此刻就由它传送，下一部件获得使用权，接着下一时刻传送</p>
+<p>这样一个接一个轮流交替传送</p>
+<h4 id="总线周期"><a href="#总线周期" class="headerlink" title="总线周期"></a>总线周期</h4><p>通常将完成一次总线操作的时间称为总线周期，可分为以下四个阶段</p>
+<h5 id="申请分配阶段"><a href="#申请分配阶段" class="headerlink" title="申请分配阶段"></a>申请分配阶段</h5><p>由需要使用总线的<strong>主模块（或主设备）提出申请</strong>，经总线仲裁机构决定下一传输周期的总线使用权授于某一申请者</p>
+<h5 id="寻址阶段"><a href="#寻址阶段" class="headerlink" title="寻址阶段"></a>寻址阶段</h5><p>取得了使用权的主模块通过发出本次要访问的从模块（或从设备）的地址及有关命令，启动参与本次传输的从模块</p>
+<h5 id="传输阶段"><a href="#传输阶段" class="headerlink" title="传输阶段"></a>传输阶段</h5><p>主模块和从模块进行数据交换，数据由源模块发出，经数据总线流入目的模块</p>
+<h5 id="结束阶段"><a href="#结束阶段" class="headerlink" title="结束阶段"></a>结束阶段</h5><p>主模块的有关信息均从系统总线上撤出，让出总线使用权</p>
+<p>总线通信主要解决通信双方如何获知传输开始和传输结束，以及通信双方如何协调如何配合。</p>
+<h4 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h4><p>通常用四种方式：同步通信、异步通信、半同步通信和分离式通信</p>
+<h5 id="3-5-2-2-1-同步通信（同步式数据输入）"><a href="#3-5-2-2-1-同步通信（同步式数据输入）" class="headerlink" title="3.5.2.2.1 同步通信（同步式数据输入）"></a>3.5.2.2.1 同步通信（同步式数据输入）</h5><p>通信双方由统一时标控制数据传送称为同步通信。</p>
+<p>时标通常由CPU的总线控制部件发出，送到总线上的所有部件</p>
+<p>也可以由每个部件各自的时序发生器发出，但必须由总线控制部件发出的时钟信号对它们进行同步</p>
+<p><img src="/images/20190107192413143.png" alt="同步通信：读"></p>
+<p><img src="/images/20190107193731704.png" alt="同步通信：写"></p>
+<p><strong>优点：</strong>规定明确、统一，模块间的配合简单已知。</p>
+<p><strong>缺点：</strong>主、从模块时间配合属于强制性“同步”，必须在限定时间内完成规定的要求。并且对所有从模块都用同一限时，这就势必造成，对各不相同速度的部件而言，必须按最慢速度的部件来设计公共时钟，严重影响总线的工作效率，也给设计带来了局限性，缺乏灵活性。</p>
+<p><strong>适用场合：</strong>总线长度较短，各部件存取时间比较统一的场合。</p>
+<p>在同步通信的总线系统中，总线传输周期越短，数据线的位数越多，直接影响总线的数据传输率</p>
+<h5 id="异步通信"><a href="#异步通信" class="headerlink" title="异步通信"></a>异步通信</h5><p>异步通信克服了同步通信的缺点，允许各模块速度的不一致性，给设计者充分的灵活性和选择余地。</p>
+<p>它没有公共的时钟标准，不要求所有部件严格的统一操作时间，而是采用应答方式（又称握手方式）</p>
+<p>即当主模块发出请求（Request）信号时，一直等待从模块反馈回来“响应”（Acknowledge）信号后，才开始通信。</p>
+<p>这要求主、从模块之间增加两条应答线（握手交互线 Handshaking）</p>
+<p>异步通信的应答方式又可分为不互锁、半互锁和全互锁三种类型</p>
+<p><img src="/images/20190107193811251.png" alt="异步通信"><br>异步通信可用于并行通信或串行通信</p>
+<p>异步串行通信时约定字符格式为：1个起始位（低电平）、5 ~ 8个数据位、1个奇偶校验位（作检测用）、1或1.5或2个终止位（高电平）</p>
+<p>传送时起始位后面紧跟的是要传送字符的最低位，每个字符的结束时一个高电平的终止位。</p>
+<p>异步串行通信的数据传送速率用波特率来衡量</p>
+<p>波特率是指单位时间内传送二进制数据的位数，单位用bps（位/秒）表示，记作波特</p>
+<h6 id="不互锁方式"><a href="#不互锁方式" class="headerlink" title="不互锁方式"></a>不互锁方式</h6><p>主模块发出请求信号后，不必等待街道从模块的会打信号，而是经过一段时间，确定从模块已收到请求信号后，便撤销其请求信号</p>
+<p>从模块接到请求信号后，在条件允许时发出回答信号，并且经过一段时间确定主模块已收到回答信号后，自动撤销回答信号</p>
+<p>均无互锁关系</p>
+<h6 id="半互锁方式"><a href="#半互锁方式" class="headerlink" title="半互锁方式"></a>半互锁方式</h6><p>主模块发出请求信号，必须接到从模块的回答信号后再撤销其请求信号，有互锁关系</p>
+<p>从模块在接到请求信号后发出回答信号，但不必等待获知主模块的请求信号已经撤销，而是隔一段时间后自动撤销其回答信号，无互锁关系</p>
+<h6 id="全互锁方式"><a href="#全互锁方式" class="headerlink" title="全互锁方式"></a>全互锁方式</h6><p>主模块发出请求信号，必须待从模块回答后在撤销其请求信号</p>
+<p>从模块发出回答信号，必须待获知主模块请求信号已撤销后，再撤销其回答信号</p>
+<p>双方存在互锁关系</p>
+<h4 id="半同步通信"><a href="#半同步通信" class="headerlink" title="半同步通信"></a>半同步通信</h4><p>半同步通信既保留了同步通信的基本特点</p>
+<p>同时又像异步通信那样，允许不同速度的模块和谐地工作</p>
+<p>为此增设了一条“等待”（WAIT）响应信号线，采用插入时钟（等待）周期的措施来协调通行双方的配合问题</p>
+<p><img src="/images/20190107195753683.png" alt="半同步通信"></p>
+<p><img src="/images/20190107195902609.png" alt="半同步通信"></p>
+<p>半同步通信适用于系统工作速度不高但又包含了由许多工作速度差异较大的各类设备组成的简单系统。</p>
+<p>半同步通信控制方式比异步通信简单，在全系统内各模块又在统一的系统时钟控制下同步工作，可靠性高，同步结构较方便</p>
+<p>其缺点是对系统时钟频率不能要求太刀，故从整体来看，系统工作的速度还不是很高</p>
+<p><img src="/images/20190107200251772.png" alt="共同点"></p>
+<h4 id="分离式通信"><a href="#分离式通信" class="headerlink" title="分离式通信"></a>分离式通信</h4><p>对于系统总线而言，从模块内部读数据过程并无实质性的信息传输，总线纯属空闲等待。</p>
+<p>为了克服和利用这种消极等待，<strong>充分挖掘系统总线没瞬间的潜力</strong>，对提高系统性能起极大作用。</p>
+<p>其基本思想是将一个传输周期（或总线周期）分解为两个子周期。</p>
+<p>在第一个字周期中，主模块A在获得总线使用权后将命令、地址以及其他有关信息，包括该主模块编号（当有多个主模块时，此标号尤为重要）发到系统总线上，经总线传输后，由有关的从模块B接收下来。主模块A向系统总线发布这些信息只占用总线很短的时间，一旦发送完，立即放弃总线使用权，以便其他模块使用</p>
+<p>在第二个子周期中，当B模块收到A模块发来的有关命令信号后，经选择、译码、读取等一系列内部操作，将A模块所需的数据准备好，便由B模块申请总线使用权，一旦获准，B模块便将A模块的编号、B模块的地址、A模块所需的数据等一系列信息送到总线上，供A接受</p>
+<p>上述两个传输子周期都只有单方向的信息流，每个模块都变成了主模块</p>
+<p><strong>特点</strong>：</p>
+<ol>
+<li>各模块欲占用总线使用权都必须提出申请。</li>
+<li>在得到总线使用权后，主模块在限定时间内向对方传送信息，采用同步方式传送，不再等待对方的回答信号</li>
+<li>各模块在准备数据的过程中都不用占用总线，使总线可接受其他模块的请求</li>
+<li>总线被占用时都在做有效工作，不存在空闲等待时间，充分利用了总线的有效占用，从而实现了总线在多个主从模块间进行信息交叉重叠并行式传送，这对大型计算机系统是极为重要的</li>
+</ol>
+<p>这种方式控制比较复杂，一般在微型计算机系统中很少采用</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%BB%84/" rel="tag"># 计组</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%8A%E5%BA%94%E7%94%A8/" rel="next" title="（计算机组成原理）第二章 计算机的发展及应用">
+                <i class="fa fa-chevron-left"></i> （计算机组成原理）第二章 计算机的发展及应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E6%B1%87%E7%BC%96%EF%BC%88%E4%B8%80%EF%BC%89%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="汇编（一）基础知识">
+                汇编（一）基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-系统总线"><span class="nav-number">1.</span> <span class="nav-text">第三章 系统总线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总线的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">总线的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线的分类"><span class="nav-number">1.2.</span> <span class="nav-text">总线的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#片内总线"><span class="nav-number">1.2.1.</span> <span class="nav-text">片内总线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统总线（板级总线）"><span class="nav-number">1.2.2.</span> <span class="nav-text">系统总线（板级总线）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信总线"><span class="nav-number">1.2.3.</span> <span class="nav-text">通信总线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线特性及性能指标"><span class="nav-number">1.3.</span> <span class="nav-text">总线特性及性能指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总线特性"><span class="nav-number">1.3.1.</span> <span class="nav-text">总线特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总线性能指标"><span class="nav-number">1.3.2.</span> <span class="nav-text">总线性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总线标准"><span class="nav-number">1.3.3.</span> <span class="nav-text">总线标准</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线结构"><span class="nav-number">1.4.</span> <span class="nav-text">总线结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单总线结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">单总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向CPU的双总线结构"><span class="nav-number">1.4.2.</span> <span class="nav-text">面向CPU的双总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以存储器为中心的双总线结构"><span class="nav-number">1.4.3.</span> <span class="nav-text">以存储器为中心的双总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双总线结构"><span class="nav-number">1.4.4.</span> <span class="nav-text">双总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三总线结构"><span class="nav-number">1.4.5.</span> <span class="nav-text">三总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四总线结构"><span class="nav-number">1.4.6.</span> <span class="nav-text">四总线结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总线控制"><span class="nav-number">1.5.</span> <span class="nav-text">总线控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总线判优控制"><span class="nav-number">1.5.1.</span> <span class="nav-text">总线判优控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集中控制优先权仲裁方式"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">集中控制优先权仲裁方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#链式查询"><span class="nav-number">1.5.1.1.1.</span> <span class="nav-text">链式查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计时器定时查询"><span class="nav-number">1.5.1.1.2.</span> <span class="nav-text">计时器定时查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#独立请求方式"><span class="nav-number">1.5.1.1.3.</span> <span class="nav-text">独立请求方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总线通信控制"><span class="nav-number">1.5.2.</span> <span class="nav-text">总线通信控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总线周期"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">总线周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#申请分配阶段"><span class="nav-number">1.5.2.1.1.</span> <span class="nav-text">申请分配阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻址阶段"><span class="nav-number">1.5.2.1.2.</span> <span class="nav-text">寻址阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输阶段"><span class="nav-number">1.5.2.1.3.</span> <span class="nav-text">传输阶段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结束阶段"><span class="nav-number">1.5.2.1.4.</span> <span class="nav-text">结束阶段</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通信方式"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-2-2-1-同步通信（同步式数据输入）"><span class="nav-number">1.5.2.2.1.</span> <span class="nav-text">3.5.2.2.1 同步通信（同步式数据输入）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步通信"><span class="nav-number">1.5.2.2.2.</span> <span class="nav-text">异步通信</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#不互锁方式"><span class="nav-number">1.5.2.2.2.1.</span> <span class="nav-text">不互锁方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#半互锁方式"><span class="nav-number">1.5.2.2.2.2.</span> <span class="nav-text">半互锁方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#全互锁方式"><span class="nav-number">1.5.2.2.2.3.</span> <span class="nav-text">全互锁方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半同步通信"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">半同步通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分离式通信"><span class="nav-number">1.5.2.4.</span> <span class="nav-text">分离式通信</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

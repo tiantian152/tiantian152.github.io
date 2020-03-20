@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="密码学," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第三章 分组密码索引 分组密码的基本概念 Feistel密码结构 SP网络 DES 分组密码的工作模式 3.1 分组密码的基本概念3.1.1 概念 分组密码的应用  伪随机数生成器  流密码  消息认证码(MAC)和哈希函数  消息认证技术、数据完整性机制、实体认证协议以及单钥数字签字体制的核心组成部分。   应用中对于分组码的要求   安全性  运行速度  存储量(程序的长度、数据分组长度、高速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三章 分组密码">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/index.html">
+<meta property="og:site_name" content="天天的个人博客">
+<meta property="og:description" content="第三章 分组密码索引 分组密码的基本概念 Feistel密码结构 SP网络 DES 分组密码的工作模式 3.1 分组密码的基本概念3.1.1 概念 分组密码的应用  伪随机数生成器  流密码  消息认证码(MAC)和哈希函数  消息认证技术、数据完整性机制、实体认证协议以及单钥数字签字体制的核心组成部分。   应用中对于分组码的要求   安全性  运行速度  存储量(程序的长度、数据分组长度、高速">
+<meta property="og:image" content="http://yoursite.com/images/1583399087925.png">
+<meta property="og:image" content="http://yoursite.com/images/1583399124542.png">
+<meta property="og:image" content="http://yoursite.com/images/1583399909167.png">
+<meta property="og:image" content="http://yoursite.com/images/1583400204396.png">
+<meta property="og:image" content="http://yoursite.com/images/1583400349427.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1734617-20190905221130355-774380186.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/03/%E7%A8%8B%E5%BA%8F/QQ/QQ%E6%96%87%E4%BB%B6/724513626/FileRecv/MobileFile/IMG_0971(20200317-162619).PNG">
+<meta property="og:image" content="http://yoursite.com/images/1584433646047.png">
+<meta property="og:image" content="http://yoursite.com/images/1583730510997.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733412870.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733370502.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733385862.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733397812.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733496899.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733697432.png">
+<meta property="og:image" content="http://yoursite.com/images/1583733783581.png">
+<meta property="og:image" content="http://yoursite.com/images/1583734183000.png">
+<meta property="og:image" content="http://yoursite.com/images/1583734247049.png">
+<meta property="og:image" content="http://yoursite.com/images/1583734473507.png">
+<meta property="og:image" content="http://yoursite.com/images/1583736565677.png">
+<meta property="og:image" content="http://yoursite.com/images/1583742373155.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739290342.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739326821.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739359679.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739376196.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739423807.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739452203.png">
+<meta property="og:image" content="http://yoursite.com/images/1583739463734.png">
+<meta property="og:image" content="http://yoursite.com/images/1583753442892.png">
+<meta property="og:image" content="http://yoursite.com/images/1583754343824.png">
+<meta property="og:image" content="http://yoursite.com/images/1583754569542.png">
+<meta property="og:image" content="http://yoursite.com/images/1583754997872.png">
+<meta property="og:image" content="http://yoursite.com/images/1584434260989.png">
+<meta property="og:image" content="http://yoursite.com/images/1583755263438.png">
+<meta property="og:image" content="http://yoursite.com/images/1584434835749.png">
+<meta property="og:image" content="http://yoursite.com/images/1584434850334.png">
+<meta property="og:image" content="http://yoursite.com/images/1584434862998.png">
+<meta property="og:image" content="http://yoursite.com/images/1583755500426.png">
+<meta property="og:image" content="http://yoursite.com/images/1583755519949.png">
+<meta property="og:image" content="http://yoursite.com/images/1583755628150.png">
+<meta property="og:image" content="http://yoursite.com/images/1583755643555.png">
+<meta property="og:image" content="http://yoursite.com/images/1583756068211.png">
+<meta property="og:image" content="http://yoursite.com/images/1583756078527.png">
+<meta property="og:image" content="http://yoursite.com/images/1583756753418.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1583996309522.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1583996320968.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997457570.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997495588.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997630539.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997694713.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997711967.png">
+<meta property="og:image" content="http://yoursite.com/images/1583997732630.png">
+<meta property="og:image" content="http://yoursite.com/images/1583999544190.png">
+<meta property="og:image" content="http://yoursite.com/images/1583999564280.png">
+<meta property="og:image" content="http://yoursite.com/images/1583999594476.png">
+<meta property="og:image" content="http://yoursite.com/images/1583999625007.png">
+<meta property="og:image" content="http://yoursite.com/images/1583999636519.png">
+<meta property="og:image" content="http://yoursite.com/images/20141213142652421.png">
+<meta property="og:image" content="http://yoursite.com/images/1584002130232.png">
+<meta property="og:image" content="http://yoursite.com/images/1584002141290.png">
+<meta property="og:image" content="http://yoursite.com/images/1584003082770.png">
+<meta property="og:image" content="http://yoursite.com/images/1584003318547.png">
+<meta property="og:image" content="http://yoursite.com/images/1584003851356.png">
+<meta property="og:image" content="http://yoursite.com/images/1584003996349.png">
+<meta property="og:image" content="http://yoursite.com/images/1584004422872.png">
+<meta property="og:image" content="http://yoursite.com/images/1584004533603.png">
+<meta property="og:image" content="http://yoursite.com/images/1584004560053.png">
+<meta property="og:image" content="http://yoursite.com/images/1584004602160.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336416593.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336427034.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336446256.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336471991.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336490433.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336517885.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336573568.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336589162.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336639692.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336652292.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336684134.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336698191.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336726419.png">
+<meta property="og:image" content="http://yoursite.com/images/1584336740848.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338029770.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338133616.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338179646.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338257822.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338283467.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338291223.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338312895.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338364951.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338380290.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338415196.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338437049.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338449164.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338504675.png">
+<meta property="og:image" content="http://yoursite.com/images/1584338530642.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344193184.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344293280.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344236670.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344253644.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344321097.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344462314.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344532153.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344918101.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344928965.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344998771.png">
+<meta property="og:image" content="http://yoursite.com/images/1584345015658.png">
+<meta property="og:image" content="http://yoursite.com/images/1584344597019.png">
+<meta property="og:image" content="http://yoursite.com/images/1584345076028.png">
+<meta property="article:published_time" content="2020-03-20T08:18:09.000Z">
+<meta property="article:modified_time" content="2020-03-20T08:19:13.494Z">
+<meta property="article:author" content="tiantian">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/1583399087925.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/20/第三章 分组密码/"/>
+
+
+
+
+
+  <title>第三章 分组密码 | 天天的个人博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天天的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tiantian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天天的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第三章 分组密码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T16:18:09+08:00">
+                2020-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">密码学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第三章-分组密码"><a href="#第三章-分组密码" class="headerlink" title="第三章 分组密码"></a>第三章 分组密码</h2><p>索引</p>
+<p><a href="#分组密码的基本概念">分组密码的基本概念</a></p>
+<p><a href="#分组密码的基本概念">Feistel密码结构</a></p>
+<p><a href="#分组密码的基本概念">SP网络</a></p>
+<p><a href="#分组密码的基本概念">DES</a></p>
+<p><a href="#分组密码的基本概念">分组密码的工作模式</a></p>
+<h3 id="3-1-分组密码的基本概念"><a href="#3-1-分组密码的基本概念" class="headerlink" title="3.1 分组密码的基本概念"></a>3.1 <span id="分组密码的基本概念">分组密码的基本概念</span></h3><h4 id="3-1-1-概念"><a href="#3-1-1-概念" class="headerlink" title="3.1.1 概念"></a>3.1.1 概念</h4><ul>
+<li><p><strong>分组密码的应用</strong></p>
+<ul>
+<li>伪随机数生成器 </li>
+<li>流密码 </li>
+<li>消息认证码(MAC)和哈希函数 </li>
+<li>消息认证技术、数据完整性机制、实体认证协议以及单钥数字签字体制的核心组成部分。</li>
+</ul>
+</li>
+<li><p><strong>应用中对于分组码的要求</strong> </p>
+<ul>
+<li>安全性 </li>
+<li>运行速度 </li>
+<li>存储量(程序的长度、数据分组长度、高速缓存大小) </li>
+<li>实现平台(硬、软件、芯片) </li>
+<li>运行模式</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/1583399087925.png" alt="1583399087925"></p>
+<p><img src="/images/1583399124542.png" alt="1583399124542"></p>
+<p>通常取n=m。 </p>
+<p>若n&lt;m ，则为有数据扩展的分组密码。 </p>
+<p>若n&gt;m ，则为有数据压缩的分组密码。</p>
+<h5 id="安全性设计原则"><a href="#安全性设计原则" class="headerlink" title="安全性设计原则"></a>安全性设计原则</h5><ol>
+<li><h6 id="混淆原则"><a href="#混淆原则" class="headerlink" title="混淆原则"></a>混淆原则</h6></li>
+</ol>
+<p>混淆原则就是将密文、明文、密钥三者之间的统计关系和代数关系变得尽可能复杂，使得敌手即使获得了密文和明文，也无法求出密钥的任何信息；即使获得了密文和明文的统计规律，也无法求出明文的新的信息。</p>
+<ul>
+<li>明文不能由已知的明文，密文及少许密钥比特代数地或统计地表示出来。</li>
+<li>密钥不能由已知的明文，密文及少许密钥比特代数地或统计地表示出来</li>
+</ul>
+<ol start="2">
+<li><h6 id="扩散原则"><a href="#扩散原则" class="headerlink" title="扩散原则"></a>扩散原则</h6></li>
+</ol>
+<p>扩散原则就是应将明文的统计规律和结构规律散射到相当长的一段统计中去。(Shannon的原话)。</p>
+<ul>
+<li><p>也就是说让明文中的每一位影响密文中的尽可能多的位，或者说让密文中的每一位都受到明文中的尽可能多位的影响。</p>
+</li>
+<li><p>如果当明文变化一个比特时,密文有某些比特不可能发生变化,则这个明文就与那些密文无关,因而在攻击这个明文比比特时就可不利用那些密文比特</p>
+</li>
+</ul>
+<h5 id="分组密码算法应满足的要求"><a href="#分组密码算法应满足的要求" class="headerlink" title="分组密码算法应满足的要求"></a>分组密码算法应满足的要求</h5><ul>
+<li>分组长度n要足够大：<ul>
+<li>使分组代换字母表的元素个数 $2^n$ 足够大 </li>
+<li>防止明文穷举攻击法奏效。 </li>
+</ul>
+</li>
+<li>密钥量要足够大： <ul>
+<li>即置换子集中的元素足够多的</li>
+<li>尽可能消除弱密钥并使所有密钥同等地好，以防止密钥穷举攻击奏效</li>
+<li>但密钥又不能过长，以便于密钥的管理</li>
+</ul>
+</li>
+<li>由密钥确定置换的算法要足够复杂： <ul>
+<li>充分实现明文与密钥的扩散和混淆，没有简单的关系可循，要能抗击各种已知的攻击</li>
+</ul>
+</li>
+<li>加密和解密运算简单： <ul>
+<li>易于软件和硬件高速实现。 </li>
+</ul>
+</li>
+<li>数据扩展： <ul>
+<li>一般无数据扩展，在采用同态置换和随机化加密技术时可引入数据扩展。 </li>
+</ul>
+</li>
+<li>差错传播尽可能地小：<ul>
+<li>一个密文分组的错误尽可能少的影响其他密文分组的解密</li>
+</ul>
+</li>
+</ul>
+<h5 id="分组密码的实现原则"><a href="#分组密码的实现原则" class="headerlink" title="分组密码的实现原则"></a>分组密码的实现原则</h5><ul>
+<li>软件实现的原则： <ul>
+<li>使用子块和简单的运算。如将分组n化分为子段，每段长为8、16或32。 </li>
+<li>在以软件实现时，应选用简单的运算，使作用于子段上的密码运算易于以标准处理器的基本运算，如加、乘、移位等实现，避免用以软件难于实现的逐比特置换</li>
+</ul>
+</li>
+<li>硬件实现的原则： <ul>
+<li>加密解密可用同样的器件来实现</li>
+</ul>
+</li>
+</ul>
+<h4 id="设计分组密码时的常用方法"><a href="#设计分组密码时的常用方法" class="headerlink" title="设计分组密码时的常用方法"></a>设计分组密码时的常用方法</h4><h5 id="3-1-2-代换"><a href="#3-1-2-代换" class="headerlink" title="3.1.2 代换"></a>3.1.2 代换</h5><p><img src="/images/1583399909167.png" alt="1583399909167"></p>
+<p><img src="/images/1583400204396.png" alt="1583400204396"></p>
+<p>上图代表 n=4 的代换密码的一般结构，4 比特输出产生16 个可能输入状态中的一个，由代换结构将这一状态映射为16个可能输出状态中的一个，每一输出状态由4个密文比特表示。</p>
+<p>加密映射和解密映射可由代换表来定义：<img src="/images/1583400349427.png" alt="1583400349427"></p>
+<p>但是这样的代换结构有一些问题需要考虑：</p>
+<ul>
+<li>如果分组长度太小，如n=4，系统则等价于古典的代换密码，容易通过对明文的统计分析而被攻破 <ul>
+<li>这个弱点不是代换结构固有的，只是因为分组长度太小</li>
+<li>如果分组长度n足够大，而且从明文到密文可有任意可逆的代换，那么明文的统计特性将被隐藏而使以上的攻击不能奏效</li>
+<li>但是使n很大是不现实的，会导致密钥太大而无法处理</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-1-2-扩散和混淆"><a href="#3-1-2-扩散和混淆" class="headerlink" title="3.1.2 扩散和混淆"></a>3.1.2 扩散和混淆</h5><p>扩散和混淆是 Shannon 提出的涉及密码系统的两个基本方法，目的是抗击敌手对密码系统的统计分析</p>
+<p><strong>扩散</strong></p>
+<ul>
+<li>将明文的统计特性散布到密文中</li>
+<li>实现的方式是使密文中每一位由明文中的多位产生</li>
+<li>在二元分组密码中，可对数据重复执行某个置换再对这一置换作用以一个函数，便可获得扩散</li>
+<li>目的是使<strong>明文和密文</strong>之间的统计关系变得复杂</li>
+</ul>
+<p><strong>混淆</strong></p>
+<ul>
+<li>目的是使<strong>密文和密文</strong>之间的统计关系变得复杂</li>
+<li>复杂的代换函数效果比较理想</li>
+</ul>
+<h3 id="3-2-Feistel密码结构"><a href="#3-2-Feistel密码结构" class="headerlink" title="3.2 Feistel密码结构"></a>3.2 <span id="Feistel密码结构">Feistel密码结构</span></h3><p>很多的分组密码结构本质上基于 Feistel 网络结构。</p>
+<p>Feistel 密码结构提出利用<strong>乘积密码</strong>可获得简单的代换密码，乘积密码简单地说Feistel结构就是顺序地执行两个或多个基本密码系统，使最后结果的密码强度高于每个密码系统的结果</p>
+<p>轮函数将中间状态的部分比特不加改变的简单放置到其他位置</p>
+<h4 id="Feistel加密结构："><a href="#Feistel加密结构：" class="headerlink" title="Feistel加密结构："></a>Feistel加密结构：</h4><p>假设加密过程的输入为分组长 2w 的明文和一个密钥 K ( K 在运算过程中将分成多个子密钥 Ki），将明文分为两部分，左边记为L0，右边记为R0，这两半数据经过n轮迭代后组合成密文分组。以下是加密过程图：</p>
+<p><img src="../../%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1734617-20190905221130355-774380186.jpg" alt="img"></p>
+<p>第一轮：R0与子密钥k0进行运算，记为F（R0，k0），得到的结果与L0进行异或运算。</p>
+<p>​                最终得到的结果将作为第二轮运算的右半部分记为R1，而R0直接作为第二轮的左半部分记为L1。</p>
+<p>第二轮：L1和F(R1，K1)（R1和K1运算的结果）进行异或运算，产生的结果为第三轮的R2，R1直接变为L2</p>
+<p>第三轮以后一次类推，n轮迭代之后，左右两边再合并到一起为最后的密文分组</p>
+<p>每轮的置换可以由以下函数表示：</p>
+<p>$L_i = R_{i-1}$</p>
+<p>$R_i = L_{i-1}⊕F(R_{i-1},K_i)$</p>
+<h4 id="与Feistel有关的参数："><a href="#与Feistel有关的参数：" class="headerlink" title="与Feistel有关的参数："></a>与Feistel有关的参数：</h4><p>1、分组大小。分组越多安全性越高，加密速度越慢，分组密码中普遍使用的分组大小为64bit。</p>
+<p>2、密钥大小。密钥越长安全性越高，加密速度越慢，一般使用128bit的密钥或者更长。</p>
+<p>3、轮数。轮数越多安全性越高，一般为16轮。</p>
+<p>4、子密钥产生算法。该算法越复杂安全性越高。</p>
+<p>5、轮函数。轮函数越复杂安全性越高。</p>
+<h4 id="Feistel解密结构："><a href="#Feistel解密结构：" class="headerlink" title="Feistel解密结构："></a>Feistel解密结构：</h4><p>​        本质上与加密过程一样，就是把加密过程反过来</p>
+<h3 id="3-3-SP网络"><a href="#3-3-SP网络" class="headerlink" title="3.3 SP网络"></a>3.3 <span id="SP网络">SP网络</span></h3><p>Shannon 1949文章中介绍的<strong>替代-置换网络的思想</strong>即SP网络</p>
+<ul>
+<li>形成了现代密码的基础</li>
+<li>是替代-置换乘积密码的现代形式</li>
+</ul>
+<p>不想写了，这节看ppt吧，感觉ppt说的乱七八糟，书上没有，老师也不讲，总结不出啥</p>
+<h3 id="3-4-DES（数据加密标准）"><a href="#3-4-DES（数据加密标准）" class="headerlink" title="3.4 DES（数据加密标准）"></a>3.4 <span id="DES">DES（数据加密标准）</span></h3><p>DES全称为Data Encryption Standard，即数据加密标准，是一种使用<a href="https://baike.baidu.com/item/%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86/5928903" target="_blank" rel="noopener">密钥加密</a>的块算法，1977年被<a href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E8%81%94%E9%82%A6%E6%94%BF%E5%BA%9C/8370227" target="_blank" rel="noopener">美国联邦政府</a>的国家标准局确定为<a href="https://baike.baidu.com/item/%E8%81%94%E9%82%A6%E8%B5%84%E6%96%99%E5%A4%84%E7%90%86%E6%A0%87%E5%87%86/3940777" target="_blank" rel="noopener">联邦资料处理标准</a>（FIPS），并授权在非密级政府通信中使用，随后该算法在国际上广泛流传开来。</p>
+<p><a href="https://www.cnblogs.com/lixiaoxu/articles/7736917.html" target="_blank" rel="noopener">https://www.cnblogs.com/lixiaoxu/articles/7736917.html</a></p>
+<h4 id="3-4-1-DES算法简介"><a href="#3-4-1-DES算法简介" class="headerlink" title="3.4.1 DES算法简介"></a>3.4.1 DES算法简介</h4><p>DES算法是迭代型的分组密码算法</p>
+<ul>
+<li>分组长度 64bit</li>
+<li>密钥长度 64bit</li>
+<li>有效密钥长度 56bit（其余的8bit为奇偶校验）</li>
+<li>迭代轮数 16</li>
+<li>轮密钥长度 48bit</li>
+<li>处理长度不足 64 bit 的明文 在尾部加0，凑成64位的整数倍</li>
+</ul>
+<p><img src="../../%E7%A8%8B%E5%BA%8F/QQ/QQ%E6%96%87%E4%BB%B6/724513626/FileRecv/MobileFile/IMG_0971(20200317-162619).PNG" alt="IMG_0971(/images/IMG_0971(20200317-162619).PNG)"></p>
+<p><img src="/images/1584433646047.png" alt="DES.png"></p>
+<p><img src="/images/1583730510997.png" alt="1583730510997"></p>
+<p>上图是DES加密算法的框图，其中明文分组长64位比特，密钥长为64比特，有效密钥长为56比特。</p>
+<p><strong>图的左边</strong>是明文的处理过程，有三个阶段</p>
+<ul>
+<li>首先是一个初始置换IP，用于重排明文分组的64位比特数据</li>
+<li>然后是具有相同功能的16轮变换，每轮中都有置换和代换运算，第16论变换的输出分为左右两半，并被交换次序</li>
+<li>最后再经过一个逆初始置换 $IP^{-1}$ ，从而产生64比特的密文</li>
+</ul>
+<p>除初始置换和逆初始置换外，DES的结构和Feistel密码结构完全相同</p>
+<p><strong>图的右边</strong>是使用56比特密钥的方法。</p>
+<ul>
+<li>密钥首先通过一个置换函数</li>
+<li>然后，对加密过程的每一轮，通过一个左循环移位和一个置换产生一个子密钥<ul>
+<li>其中的每轮置换都相同，但由于密钥被重复迭代，所以产生的每轮子密钥不相同</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-初始置换与逆初始置换"><a href="#1-初始置换与逆初始置换" class="headerlink" title="1. 初始置换与逆初始置换"></a>1. 初始置换与逆初始置换</h5><p>初始置换是将64 bit明文的位置进行置换，得到一个乱序的64 bit明文组。</p>
+<p>逆初始置换将16轮迭代后给出的64 bit组进行置换，得到输出的密文组。输出为阵中元素按行读得的结果。 </p>
+<p><strong>IP和IP-1在密码意义上作用不大，它们的作用在于打乱原来输入x的ASCII码字划分的关系</strong></p>
+<p><img src="/images/1583733412870.png" alt="1583733412870"></p>
+<p><img src="/images/1583733370502.png" alt="1583733370502"></p>
+<p>下面是64bit 的输入M</p>
+<p><img src="/images/1583733385862.png" alt="1583733385862"></p>
+<p><img src="/images/1583733397812.png" alt="1583733397812"></p>
+<h5 id="2-轮函数的结构"><a href="#2-轮函数的结构" class="headerlink" title="2. 轮函数的结构"></a>2. 轮函数的结构</h5><p><img src="/images/1583733496899.png" alt="1583733496899"></p>
+<p>上图是DES加密算法中的轮结构</p>
+<p>首先看图的左半部分</p>
+<p>将64bit的输入分为各为32bit的左，右两部分，分别记为L和R。和Feistel网络一样，每轮变换可由一下公式表示：<img src="/images/1583733697432.png" alt="1583733697432"></p>
+<p>其中<strong>轮密码 $K_i$ 为48bit</strong>，上式中函数 $F(R,K)$ 的计算如下图所示：<img src="/images/1583733783581.png" alt="1583733783581"></p>
+<p>轮输入的右半部分R为32bit，R首先被扩展成48bit，扩展过程由表3-2(c)定义，其中将R的16个bit各重复一次。扩展后的48bit在于子密钥 $K_i$ 异或，然后再通过一个S盒，产生32bit的输出。该输出再经由一个由表3-2(d)定义的置换，产生的结构即为函数 $F(R,K)​$ 的输出</p>
+<p>F中的代换由8个S盒组成，每个S盒的输入长为6bit，输出长为4bit，其变换关系如下表，每个S盒给出了4个代换<br><img src="/images/1583734183000.png" alt="1583734183000"><br><img src="/images/1583734247049.png" alt="1583734247049"></p>
+<p>对每个盒 $S_i​$，其6bit输入中，第1个和第6个比特形成一个2位二进制数，用来选择 $S_i​$ 的4个代换中的一个</p>
+<p><img src="/images/1583734473507.png" alt="1583734473507"></p>
+<h5 id="3-密钥的产生"><a href="#3-密钥的产生" class="headerlink" title="3. 密钥的产生"></a>3. 密钥的产生</h5><p>在图3-5和3-6中，输入算法的56bit密钥手下经过一个置换运算，该置换由表3-4(a)指出，然后降至换后的56bit分为28bit的左、右两半，分别记为$C_0$ 和 $D_0$。在第i轮分别对 $C_{i-1} 和 D_{i-1}$进行左循环移位，所移位数由表3-4(c)给出。移位后的结果作为下一轮求子密钥的输入，同时也作为置换选择2的输入、通过置换选择2产生的48bit的 $K_i$，即为本轮的子密钥，作为函数 $F(R_{i-1},K_i)$ 的输入。其中置换选择2由下表定义</p>
+<p><img src="/images/1583736565677.png" alt="1583736565677"></p>
+<p><strong>p盒置换</strong></p>
+<p>将S-盒变换后的32比特数据再进行P盒置换，置换后得到的32比特即为 F 函数的输出</p>
+<p>基本特点： </p>
+<ul>
+<li>P盒的各输出块的4个比特都来自不同的输入块</li>
+<li>P盒的各输入块的4个比特都分配到不同的输出块之中</li>
+<li>P盒的第t输出块的4个比特都不来自第t输入块</li>
+<li>P盒输出的第1个元是输入的第16个元</li>
+</ul>
+<img src="/images/1583742373155.png" width=40%>
+
+
+
+<h5 id="4-解密"><a href="#4-解密" class="headerlink" title="4. 解密"></a>4. 解密</h5><p>和Feistel密码一样，DES的解密和加密使用同一算法，但子密钥使用的顺序相反</p>
+<h4 id="3-4-2-二重DES"><a href="#3-4-2-二重DES" class="headerlink" title="3.4.2 二重DES"></a>3.4.2 二重DES</h4><p>总结：</p>
+<ul>
+<li>目的是抵抗穷举搜索攻击，期望密钥长度扩展为112bit</li>
+<li>容易受到中间相遇攻击（下图最后部分有提及），这一攻击法所需的存储量为$2^{56}\times8Byte$ ，最大实验的加密次数为 $2\times 2^{56} = 2^{57}$</li>
+</ul>
+<p>二重DES是多重使用DES时最简单的形式，如下图所示<br><img src="/images/1583739290342.png" alt="1583739290342"><br><img src="/images/1583739326821.png" alt="1583739326821"><br><img src="/images/1583739359679.png" alt="1583739359679"><br><img src="/images/1583739376196.png" alt="1583739376196"></p>
+<h4 id="3-4-3-两个密钥的三重DES（EDE）"><a href="#3-4-3-两个密钥的三重DES（EDE）" class="headerlink" title="3.4.3 两个密钥的三重DES（EDE）"></a>3.4.3 两个密钥的三重DES（EDE）</h4><p>破解的穷举搜索量为 $2^P{112} \approx 5\times10^{35}$ 量级</p>
+<p>差分分析破解也要超过 $10^{52}$ 量级</p>
+<p><img src="/images/1583739423807.png" alt="1583739423807"></p>
+<h4 id="3-4-4-3个密钥的三重DES"><a href="#3-4-4-3个密钥的三重DES" class="headerlink" title="3.4.4 3个密钥的三重DES"></a>3.4.4 3个密钥的三重DES</h4><p><img src="/images/1583739452203.png" alt="1583739452203"><br><img src="/images/1583739463734.png" alt="1583739463734"></p>
+<h4 id="DES的安全性"><a href="#DES的安全性" class="headerlink" title="DES的安全性"></a>DES的安全性</h4><p><strong>关于DES密钥</strong></p>
+<p><strong>互补性：</strong>若明文组x逐位取补，密钥k逐位取补，有 $y=DES_k(x)$，则有 $\bar{y}=DES_{\bar{K}(\bar{x})}$，这会导致DES在选择明文破译时所需的工作量减半</p>
+<p><strong>弱密钥和半弱密钥</strong></p>
+<p><img src="/images/1583753442892.png" alt="1583753442892"></p>
+<p>DES算法在每次迭代是都有一个子密钥供加密用。如果给定初始密钥k，各轮的子密钥都相同，就称给定密钥k为<strong>弱密钥</strong></p>
+<p><strong>DES密钥长度的争议</strong></p>
+<h3 id="3-5-分组密码的工作模式-以DES为例"><a href="#3-5-分组密码的工作模式-以DES为例" class="headerlink" title="3.5 分组密码的工作模式(以DES为例)"></a>3.5 <span id="分组密码的工作模式">分组密码的工作模式</span>(以DES为例)</h3><p>分组密码在加密时明文分组的长度是固定的，而使用中待加密的数据量是不定的，数据格式可能是多种多样的，为了能在各种场合使用DES，美国在 FIPS PUS 74 和 81 中定义了DES的四种运行模式，如下表所示<br><img src="/images/1583754343824.png" alt="1583754343824"></p>
+<h4 id="比较和选用"><a href="#比较和选用" class="headerlink" title="比较和选用"></a>比较和选用</h4><p>ECB模式简单、高速，但最弱，易受重放和替换攻击，一般用于加密长度小于等于分组长度的消息</p>
+<p>CBC，CFB，OFB模式的选用取决于实际的特殊需求。 </p>
+<ol>
+<li><p>明文不易丢信号，对明文的格式没有特殊要求的环境可选用CBC模式。需要完整性认证功能时也可选用该模式。 </p>
+</li>
+<li><p>容易丢信号的环境，或对明文格式有特殊要求的环境，可选用CFB模式。 </p>
+</li>
+<li><p>不易丢信号，但信号特别容易错，且明文冗余特别多，可选用OFB模式</p>
+</li>
+</ol>
+<h4 id="3-5-1-电话本模式-ECB"><a href="#3-5-1-电话本模式-ECB" class="headerlink" title="3.5.1 电话本模式 ECB"></a>3.5.1 电话本模式 ECB</h4><p>这是最简单的运行模式，它一次对一个64bit长的明文<strong>块</strong>分组加密，而且每次加密的密钥都相同，如下图所示<br><img src="/images/1583754569542.png" alt="1583754569542"></p>
+<p>当密钥取定时，对明文的每一个分组，都有一个唯一的密文与之对应，因此可以形象的认为有一个非常大的电码本</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>实现简单</li>
+<li>不同明文分组的加密可并行实施，尤其是硬件实现时速度很快 </li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>相同明文分组对应相同密文分组</strong> </li>
+<li>一旦一个块被破解整体的安全性就遭到彻底破坏</li>
+<li>不能隐蔽明文分组的统计规律和结构规律,不能抵抗替换攻击 </li>
+</ul>
+<p><strong>应用：</strong> </p>
+<ul>
+<li>用于随机数的加密保护 </li>
+<li>用于单分组明文的加密</li>
+</ul>
+<h4 id="3-5-2-密码分组链接模式-CBC"><a href="#3-5-2-密码分组链接模式-CBC" class="headerlink" title="3.5.2 密码分组链接模式 CBC"></a>3.5.2 密码分组链接模式 CBC</h4><p>为了解决ECB的安全缺陷，可以让重复的明文分组产生不同的密文分组，密码分组链接模式 CBC 就可以满足这一要求，下图为示意图：<br><img src="/images/1583754997872.png" alt="1583754997872"></p>
+<p>CBC(Cipher Block Chaining, 密码块链)模式</p>
+<p>一次对一个明文分组进行加密，每次加密使用同一密钥，<strong>加密算法的输入是当前明文分组和前一次密文分组(第一个是初始化向量IV)的异或</strong>，这样每个密文块依赖该块之前的所有明文块，因此加密算法的输入不会显示出这次的明文分组之间的固定关系，所以重复的明文分组不会在密文中暴露出这种重复关系</p>
+<p><strong>解密</strong>时，每一个密文分组被解密后，再与前一个密文分组异或<br><img src="/images/1584434260989.png" alt="1584434260989"></p>
+<p><img src="/images/1583755263438.png" alt="1583755263438"></p>
+<ul>
+<li>明文块的统计特性得到了隐蔽</li>
+<li>具有有限的(两步)错误传播特性<ul>
+<li><strong>一个密文块的错误将导致两个密文块不能正确解密</strong></li>
+</ul>
+</li>
+<li>具有自同步功能<ul>
+<li>密文出现丢块和错块不影响后续密文块的解密</li>
+<li>若从第t块起密文块正确，则第t+1个明文块就能正确求出</li>
+</ul>
+</li>
+</ul>
+<p><strong>利用CBC模式实现报文的完整性认证</strong></p>
+<p>目的：检查文件在(直接或加密)传输和存储中是否遭到有意或无意的篡改</p>
+<p>关键技术：</p>
+<ol>
+<li>文件的制造者和检验者共享一个密钥</li>
+<li>文件的明文必须具有检验者预先知道的冗余度</li>
+<li>文件的制造者用共享密钥对具有约定冗余度的明文用CBC模式加密</li>
+<li>文件的检验者用共享密钥对密文解密，并检验约定冗余度是否正确</li>
+</ol>
+<p><strong>具体实现技术</strong></p>
+<p><img src="/images/1584434835749.png" alt="1584434835749"></p>
+<p>认证码生成</p>
+<p><img src="/images/1584434850334.png" alt="1584434850334"></p>
+<p>认证码校验</p>
+<p><img src="/images/1584434862998.png" alt="1584434862998"></p>
+<h4 id="3-5-3-密码反馈模式-CFB"><a href="#3-5-3-密码反馈模式-CFB" class="headerlink" title="3.5.3 密码反馈模式 CFB"></a>3.5.3 密码反馈模式 CFB</h4><p>CFB(Cipher Feedback, 密码反馈)模式和CBC模式比较相似，前一个分组的密文加密后和当前分组的明文XOR异或操作生成当前分组的密文。CFB模式的解密和CBC模式的加密在流程上其实是非常相似的。</p>
+<p>如上所述，DES是分组长为64bit的分组密码，但利用CFB或OFB模式可将DES转换为流密码，流密码不需要对消息进行填充，而且运行是实时的。因此如果传送字母流，可使用流密码对每个字母直接加密并传送。</p>
+<p>下图是CFB模式示意图，设传送的每一单元（如一个字符）是 j bit长，通常取 j=8，与CBC模式一样，明文单元被链接在一起，使得密文是前面所有明文的函数</p>
+<p><img src="/images/1583755500426.png" alt="1583755500426"><br><img src="/images/1583755519949.png" alt="1583755519949"></p>
+<p><img src="/images/1583755628150.png" alt="1583755628150"><br><img src="/images/1583755643555.png" alt="1583755643555"></p>
+<p>若待加密消息需按字符、字节或比特处理时，可采用CFB模式，并称待加密消息按 r 比特处理的CFB模式为 r 比特CFB模式。 </p>
+<p><strong>适用范围:</strong> </p>
+<ul>
+<li>适用于每次处理 r比特明文块的特定需求的加密情形,能灵活适应数据各格式的需要 </li>
+<li>例如,数据库加密要求加密时不能改变明文的字节长度,这时就要以明文字节为单位进行加密</li>
+</ul>
+<p><strong>CFB模式的特点</strong></p>
+<ul>
+<li>相同明文：和按CBC模式加密一样，改变IV同样会导致相同的明文输入得到不同的加密输出。IV无需保密（虽在某些应用中IV须是不可预测的）</li>
+<li>链接依赖性：类似CBC加密，链接机制致使密文组依赖于当前明文组和其前面的明文组；因此，重排密文组会影响解密</li>
+<li>错误的传播：<strong>一个或多个比特错误出现在任一个r比特的密文组中会影响这个组和后继 $\lceil n/r \rceil$ 个密文组的解密</strong></li>
+<li>错误恢复：CFB和CBC相似，也是自同步的，但它需有 $\lceil n/r \rceil​$ 个密文组才能还原</li>
+</ul>
+<h4 id="3-5-4-输出反馈模式-OFB"><a href="#3-5-4-输出反馈模式-OFB" class="headerlink" title="3.5.4 输出反馈模式 OFB"></a>3.5.4 输出反馈模式 OFB</h4><p>OFB(Output Feedback, 输出反馈)模式将分组密码转换为同步流密码，也就是说可以根据明文长度先独立生成相应长度的流密码。</p>
+<p>通过流程图可以看出，OFB和CFB非常相似，<strong>CFB是将前一个密文分组反馈到移位寄存器，OFB是将加密算法的输出反馈到移位寄存器</strong>。由于异或操作的对称性，OFB模式的解密和加密完全一样的流程。</p>
+<p><img src="/images/1583756068211.png" alt="1583756068211"><br><img src="/images/1583756078527.png" alt="1583756078527"></p>
+<p><strong>OFB模式在结构上类似于CFB模式，但反馈的内容是DES的输出而不是密文</strong></p>
+<p><strong>OFB工作模式的特点</strong></p>
+<ul>
+<li>相同明文：和CBC及CFB一样，改变IV同样会导致相同的明文输入得到不同的加密输出。 </li>
+<li>链接依赖性：密钥流是独立于明文的。 </li>
+<li>错误传播：有一个或多个比特错误的任一密文字符<strong>仅会影响该字符的解密</strong>，密文字符的某比特位置出错将致使还原明文的相应位置也出错。 </li>
+<li>错误恢复：OFB模式能从密文比特错误中得以恢复，但在丢失密文比特后就无法实现自同步了，这是因为丢失密文比特会破坏密钥流的编排。</li>
+</ul>
+<h4 id="3-5-5-计数器模式"><a href="#3-5-5-计数器模式" class="headerlink" title="3.5.5 计数器模式"></a>3.5.5 计数器模式</h4><p>利用固定密钥k对自然数序列1,2,3,…,n, …加密，将得到的密文分组序列看作密钥流序列，按加法密码的方式与明文分组逐位异或的一种方式</p>
+<p>利用这种方式可以产生<strong>伪随机数序列</strong>,其伪随机特性远比计算机产生的随机数的性质好</p>
+<p><img src="/images/1583756753418.png" alt="1583756753418"></p>
+<ul>
+<li><p>效率 </p>
+<ul>
+<li>可并行加密 </li>
+<li>预处理 </li>
+<li>吞吐量仅受可使用并行数量的限制 </li>
+</ul>
+</li>
+<li><p>加密数据块的随机访问 </p>
+</li>
+<li><p>可证明安全 </p>
+</li>
+<li><p>简单性（只要求实现加密算法）</p>
+</li>
+</ul>
+<h3 id="3-7-AES算法—Rijndael"><a href="#3-7-AES算法—Rijndael" class="headerlink" title="3.7 AES算法—Rijndael"></a>3.7 AES算法—Rijndael</h3><p>DES算法由于其密钥较短，难以抵抗现有的攻击，因此不再作为加密标准 </p>
+<p>1997年1月，美国NIST向全世界密码学界发出征集21世纪高级加密标准（AES——Advanced Encryption Standard）算法的公告，并成立了AES标准工作研究室，1997年4月15日的例会制定了对AES的评估标准</p>
+<h4 id="1-有限域的基本概念"><a href="#1-有限域的基本概念" class="headerlink" title="1. 有限域的基本概念"></a>1. 有限域的基本概念</h4><p>有限域有时也称为伽罗瓦域，它指的是拥有有限个元素的集合。大致来讲， 伽罗瓦域是一个由有限个元素组成的集合，在这个集合内可以执行加、减、乘和逆操作。</p>
+<p>F是一个非空集合，定义了加法、乘法两个二元运算，对这两个运算封闭</p>
+<ul>
+<li><p><strong>加法满足</strong>：对于任意a,b,c∈F </p>
+<ul>
+<li>a+b=b+a；交换律 </li>
+<li>(a+b)+c=a+(b+c)；结合律 </li>
+<li>存在0 ∈F，使得a+0=a；有零元 </li>
+<li>存在-a ∈F，使得a+(-a)=0；有负元 </li>
+</ul>
+</li>
+<li><p><strong>乘法满足</strong>：对于任意a,b,c∈F </p>
+<ul>
+<li>$a·b=b·a$；交换律 </li>
+<li>$(a·b) ·c=a·(b·c)$；结合律 </li>
+<li>存在e ∈F，使得 $a·e=a$；有单位元 </li>
+<li>存在$a^{-1} ∈F$，使得 $a·a^{-1} =e$；有逆元 </li>
+</ul>
+</li>
+<li><p><strong>乘法对加法满足分配律</strong> </p>
+<ul>
+<li>a·(b+c)=a·b+a·c</li>
+</ul>
+</li>
+</ul>
+<p><font color=red>例1</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Zn&#x3D;&#123;0,1,2,…，n-1&#125;modn，加法和乘法都是模n的运算，运算封闭 </span><br><span class="line"></span><br><span class="line">加法满足结合律和交换律，有零元0，有负元 </span><br><span class="line"></span><br><span class="line">乘法满足结合律和交换律，有单位元1，不一定有逆元 </span><br><span class="line"></span><br><span class="line">Zn中的数什么时候才有乘法逆元呢？ </span><br><span class="line"></span><br><span class="line">引理：整数a在模n乘法下有逆元，当且仅当a与n互素。 </span><br><span class="line"></span><br><span class="line">所有与n互素的元素在模n乘法下构成乘法交换群 </span><br><span class="line"></span><br><span class="line">1…n-1都与n互素，则n为素数 </span><br><span class="line"></span><br><span class="line">对于任一素数p，Zp为域，其元素个数为p个</span><br></pre></td></tr></table></figure>
+
+<p><font color=red>例2</font></p>
+<p><img src="../../%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1583996309522.png" alt="1583996309522"><br><img src="../../%E5%AD%A6%E4%B9%A0%E6%96%87%E4%BB%B6/%E5%AF%86%E7%A0%81%E5%AD%A6//images/1583996320968.png" alt="1583996320968"></p>
+<h4 id="2-GF-2-8-域"><a href="#2-GF-2-8-域" class="headerlink" title="2. $GF(2^8)$域"></a>2. $GF(2^8)$域</h4><p>$2^8=256$</p>
+<p>有限域中的元素可以用多种不同的方式表示，对于任意素数的方幂，都有唯一的一个有限域，但由于不同的表示方法会影响复杂度的原因，本算法采用传统的<strong>多项式表示法</strong></p>
+<p>AES加密标准算法中是以字节为处理单元，可以将每一字节看作是有限域 $GF(2^8)$ 上的一个元素，分别对应于一个次数不超过7的多项式。</p>
+<p><strong>如$b_7b_6b_5b_4b_3b_2b_1b_0$可表示为多项式 $b_7x^7+b_6x^6+b_5x^5+b_4x^4+b_3x^3+b_2x^2+b_1x^1+b_0$</strong></p>
+<p>例如十六进制数57对应的二进制位01010111，看成一个字节，对应的多项式为$x^6+x^4+x^2+x+1$</p>
+<p><strong><font color=red>$GF(2^8)$中的运算</font></strong></p>
+<p><strong>加法：</strong><img src="/images/1583997457570.png" alt="1583997457570"></p>
+<p><strong>乘法：</strong><img src="/images/1583997495588.png" alt="1583997495588"></p>
+<p><strong>逆元（广义欧几里得算法）：</strong><img src="/images/1583997630539.png" alt="1583997630539"></p>
+<p><strong>x乘法：</strong><br><img src="/images/1583997694713.png" alt="1583997694713"><br><img src="/images/1583997711967.png" alt="1583997711967"><br><img src="/images/1583997732630.png" alt="1583997732630"></p>
+<p><strong>$GF(2^8)$上的模多项式运算：</strong></p>
+<p><strong>加法</strong></p>
+<p>4个字节构成的向量可以表示为系数在 $GF(2^8)​$ 上的次数小于4的多项式</p>
+<p>多项式的加法就是对应系数相加；换句话说，多项式的加法就是4字节向量的逐比特异或。 </p>
+<p><strong>乘法</strong><br><img src="/images/1583999544190.png" alt="1583999544190"><br><img src="/images/1583999564280.png" alt="1583999564280"><br><img src="/images/1583999594476.png" alt="1583999594476"></p>
+<p><img src="/images/1583999625007.png" alt="1583999625007"><br><img src="/images/1583999636519.png" alt="1583999636519"></p>
+<h4 id="3-设计思想"><a href="#3-设计思想" class="headerlink" title="3. 设计思想"></a>3. 设计思想</h4><p>Rijndael 密码的设计力求满足一下三条标准：</p>
+<ol>
+<li>抵抗所有已知的攻击</li>
+<li>在多个平台上速度快，编码紧凑</li>
+<li>设计简单</li>
+</ol>
+<p>Rijndael没有采用Feistel结构，轮函数由3个不同的可逆均匀变换构成的，称为<strong>3个层</strong></p>
+<ol>
+<li>线性混合层：确保多轮之上的高度扩散</li>
+<li>非线性层：将具有最有的“最坏形况非线性特性”的S盒并行使用</li>
+<li>密钥加层：单轮子密钥简单的异或到中间状态上，实现一次性掩饰</li>
+</ol>
+<p>在第一轮之前，用了一个<strong>初始密钥加层</strong>，目的是在不知道密钥的情况下，对最后一个密钥加层以后的任一层（或者是进行已知明文攻击的时候，对第一个密钥加层以前的任一层）可简单的剥去，因此初始密码加层对密码的安全性无任何意义</p>
+<h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><p><img src="/images/20141213142652421.png" alt="img"></p>
+<h4 id="算法说明"><a href="#算法说明" class="headerlink" title="算法说明"></a>算法说明</h4><p>Rijndael 是一个迭代性分组密码，其分组长度和密钥长度都可变，各自可以独立的指定为128bit、192bit、256bit</p>
+<h5 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h5><p>类似于明文分组和密文分组，算法中间的结果也需要分组，称之为状态，所有的操作都在状态上进行。</p>
+<p>状态可以用以字节为元素的<strong>矩阵阵列</strong>表示，该阵列有4行，列数记为 $N_b$，$N_b$ 等于分组长度除以32</p>
+<h5 id="种子密钥"><a href="#种子密钥" class="headerlink" title="种子密钥"></a>种子密钥</h5><p>密钥种子类似的用一个以字节为元素的<strong>矩阵阵列</strong>表示，该阵列为4行，列数记为 $N_k$，$N_k$等于密钥长度除以32</p>
+<p><strong>例：</strong><br><img src="/images/1584002130232.png" alt="1584002130232"></p>
+<h5 id="轮数"><a href="#轮数" class="headerlink" title="轮数"></a>轮数</h5><p>迭代的轮数记为 $N_r​$，$N_r​$ 与 $N_b​$ 和 $N_k​$ 有关，关系如下表：<br><img src="/images/1584002141290.png" alt="1584002141290"></p>
+<h5 id="算法输入与输出"><a href="#算法输入与输出" class="headerlink" title="算法输入与输出"></a>算法输入与输出</h5><p>可看成由 8bit 字节构成的一维数组</p>
+<p>下标范围为：</p>
+<ul>
+<li><p>输入输出：$0\sim (4N_b-1)$</p>
+</li>
+<li><p>密钥种子：$0\sim (4N_k-1)$</p>
+</li>
+</ul>
+<p>放入和读出的顺序都是按照上面矩阵列表的列读取（从上到下，从左到右）</p>
+<p>第 n 个元素对应在状态矩阵中的第(i, j)位置上的元素，关系如下：$i=n\ mod\ 4;\ \ j=\lfloor n/4\rfloor;\ \ n=i+4j$</p>
+<h4 id="5-轮函数"><a href="#5-轮函数" class="headerlink" title="5. 轮函数"></a>5. 轮函数</h4><p>Rijndael 的轮函数由四个不同的计算部件组成，分别是字节代换，行移位，列混合，密钥加</p>
+<h5 id="5-1-字节代换（ByteSub）"><a href="#5-1-字节代换（ByteSub）" class="headerlink" title="5.1 字节代换（ByteSub）"></a>5.1 字节代换（ByteSub）</h5><p>字节代换是非线性代换，独立的对状态的每个字节进行</p>
+<p>代换表（S盒）是可逆的，记为 ByteSub(State) 由一下两个变换合成得到：</p>
+<ol>
+<li>首先，将字节看作 $GF(2^8)$ 上的元素，映射到自己乘法逆元，00 映射到自己</li>
+<li>其次，对自己饿做如下的仿射变换： <img src="/images/1584003082770.png" width=50%>
+
+</li>
+</ol>
+<img src="/images/1584003318547.png" width=80%>
+
+<p><img src="/images/1584003851356.png" alt="S盒"></p>
+<p>ByteSub 的逆变换由代换表的逆表做字节代换，可通过如下两步实现：首先进行仿射变换的逆变换，再求每一字节在 $GF(2^8)​$ 上的逆元</p>
+<h5 id="5-2-行移位（shiftRow）"><a href="#5-2-行移位（shiftRow）" class="headerlink" title="5.2 行移位（shiftRow）"></a>5.2 行移位（shiftRow）</h5><p>行移位是将状态矩阵的各行进行循环移位，不同状态行的位移量不同。</p>
+<ul>
+<li>第0行：不动</li>
+<li>第1行：循环左移C1字节</li>
+<li>第2行：循环左移C2字节</li>
+<li>第3行：循环左移C3字节</li>
+</ul>
+<p><img src="/images/1584003996349.png" alt="1584003996349"></p>
+<p>记为：ShiftRow(State)</p>
+<p>ShiftRow 的逆变换是对状态矩阵的后3列分别以位移量 $N_b-C_1, N_b-C_2,N_b-C_3$ 进行循环移位</p>
+<h5 id="5-3-列混淆（MixColumn）"><a href="#5-3-列混淆（MixColumn）" class="headerlink" title="5.3 列混淆（MixColumn）"></a>5.3 列混淆（MixColumn）</h5><p>将每列视为 $GF(2^8)$ 上的多项式，与固定的多项式 $c(x)$ 进行模 $x^4+1$ 乘法，记为 $\otimes$，要求 $c(x)$模 $x^4+1$ 可逆，$c(x)=03x^3+01x^2+01x+02$，表示为MixColumn(State)，</p>
+<p>列混淆运算也可写为矩阵乘法，设 $b(x)=c(x)\otimes a(x)​$，则<img src="/images/1584004422872.png" width=30%></p>
+<p><img src="/images/1584004533603.png" alt="1584004533603"></p>
+<p>逆运算：<img src="/images/1584004560053.png" alt="1584004560053"><br>或<img src="/images/1584004602160.png" width=50%></p>
+<h5 id="5-4-轮密钥加（AddRoundKey）"><a href="#5-4-轮密钥加（AddRoundKey）" class="headerlink" title="5.4 轮密钥加（AddRoundKey）"></a>5.4 轮密钥加（AddRoundKey）</h5><p>轮密钥加是指：轮密钥与状态进行逐比特异或</p>
+<p>轮密钥由种子密钥通过密钥编排算法得到，轮密钥长度与分组长度 $N_b​$ 相同</p>
+<p>状态State与轮密钥RoundKey的密钥加运算表示为 AddRoundKey(State,RoundKey)</p>
+<h4 id="6-AES的密钥编排"><a href="#6-AES的密钥编排" class="headerlink" title="6. AES的密钥编排"></a>6. AES的密钥编排</h4><p>密钥编排是指从种子密钥得到轮密钥的过程，它由密钥扩展和轮密钥选取两部分组成，其基本原理如下：</p>
+<ol>
+<li>轮密钥的比特数等于分组长度乘以（轮数加1）</li>
+<li>种子密钥被扩展成扩展密钥</li>
+<li>轮密钥从扩展密钥中取，其中第1轮轮密钥取扩展密钥的前 $N_b​$ 个字，第2轮轮密钥取接下来的 $N_b​$ 个字，如此下去</li>
+</ol>
+<p>1） 密钥扩展</p>
+<p><img src="/images/1584336416593.png" alt="1584336416593"><br><img src="/images/1584336427034.png" alt="1584336427034"><br><img src="/images/1584336446256.png" alt="1584336446256"><br><img src="/images/1584336471991.png" alt="1584336471991"><br><img src="/images/1584336490433.png" alt="1584336490433"></p>
+<p>2）轮密钥选取</p>
+<p><img src="/images/1584336517885.png" alt="1584336517885"></p>
+<h4 id="7-伪代码"><a href="#7-伪代码" class="headerlink" title="7. 伪代码"></a>7. 伪代码</h4><p>加密算法</p>
+<p><img src="/images/1584336573568.png" alt="1584336573568"><br><img src="/images/1584336589162.png" alt="1584336589162"></p>
+<p>加解密相近程度及解密算法</p>
+<p><img src="/images/1584336639692.png" alt="1584336639692"></p>
+<p><img src="/images/1584336652292.png" alt="1584336652292"></p>
+<p><img src="/images/1584336684134.png" alt="1584336684134">)<img src="/images/1584336698191.png" alt="1584336698191"></p>
+<p><img src="/images/1584336726419.png" alt="1584336726419">)<img src="/images/1584336740848.png" alt="1584336740848"></p>
+<h3 id="3-8-中国商用密码算法-SM4"><a href="#3-8-中国商用密码算法-SM4" class="headerlink" title="3.8 中国商用密码算法 SM4"></a>3.8 中国商用密码算法 SM4</h3><p>SM4 算法是用于 WAPI 的分组密码算法，是2006年我国国家密码管理局公布的第一个商用密码算法</p>
+<p>SM4 算法是分组密码算法，其中数据分组长度为128bit，密钥分组长度也为128bit。<br>加密算法与密钥扩展算法都采用32轮迭代结构，以字节（8bit）和字（32bit）为单位进行数据处理</p>
+<h4 id="3-8-1-基本运算"><a href="#3-8-1-基本运算" class="headerlink" title="3.8.1 基本运算"></a>3.8.1 基本运算</h4><img src="/images/1584338029770.png" width=80%>
+
+<h4 id="3-8-2-基本密码部件"><a href="#3-8-2-基本密码部件" class="headerlink" title="3.8.2 基本密码部件"></a>3.8.2 基本密码部件</h4><h5 id="S盒"><a href="#S盒" class="headerlink" title="S盒"></a>S盒</h5><p><img src="/images/1584338133616.png" alt="1584338133616"></p>
+<p><img src="/images/1584338179646.png" alt="1584338179646"></p>
+<h5 id="非线性变换-tau"><a href="#非线性变换-tau" class="headerlink" title="非线性变换 $\tau$"></a>非线性变换 $\tau$</h5><p><img src="/images/1584338257822.png" alt="1584338257822"></p>
+<h5 id="线性变换部件-L"><a href="#线性变换部件-L" class="headerlink" title="线性变换部件 L"></a>线性变换部件 L</h5><p><img src="/images/1584338283467.png" alt="1584338283467"><br><img src="/images/1584338291223.png" alt="1584338291223"></p>
+<h5 id="合成变换-T"><a href="#合成变换-T" class="headerlink" title="合成变换 T"></a>合成变换 T</h5><p><img src="/images/1584338312895.png" alt="1584338312895"></p>
+<h4 id="3-8-3-轮函数"><a href="#3-8-3-轮函数" class="headerlink" title="3.8.3 轮函数"></a>3.8.3 轮函数</h4><p><img src="/images/1584338364951.png" alt="1584338364951">)<img src="/images/1584338380290.png" alt="1584338380290"></p>
+<h4 id="3-8-4-加密算法"><a href="#3-8-4-加密算法" class="headerlink" title="3.8.4 加密算法"></a>3.8.4 加密算法</h4><p><img src="/images/1584338415196.png" alt="1584338415196"></p>
+<h4 id="3-8-5-解密算法"><a href="#3-8-5-解密算法" class="headerlink" title="3.8.5 解密算法"></a>3.8.5 解密算法</h4><p><img src="/images/1584338437049.png" alt="1584338437049"><br><img src="/images/1584338449164.png" alt="1584338449164"></p>
+<h4 id="3-8-6-密钥扩展算法"><a href="#3-8-6-密钥扩展算法" class="headerlink" title="3.8.6 密钥扩展算法"></a>3.8.6 密钥扩展算法</h4><p><img src="/images/1584338504675.png" alt="1584338504675"><br><img src="/images/1584338530642.png" alt="1584338530642"></p>
+<h3 id="IDEA（国际数据加密算法）-算法"><a href="#IDEA（国际数据加密算法）-算法" class="headerlink" title="IDEA（国际数据加密算法） 算法"></a>IDEA（国际数据加密算法） 算法</h3><h4 id="设计原理"><a href="#设计原理" class="headerlink" title="设计原理"></a>设计原理</h4><ul>
+<li>分组长度：64bit</li>
+<li>密钥长度：128bit</li>
+<li>迭代轮数：8轮 + 输出变换（出口处理变换）</li>
+<li>轮子密钥：16bit为一个密钥块<ul>
+<li>每轮6个密钥块，输出变换有4个</li>
+<li>共有52个密钥块</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>加密算法与解密算法相同，只是子密钥的使用顺序按一定方式倒序</li>
+<li>不再是Feistel模型，而是共处理模型（Lai-Massey模型）</li>
+</ul>
+</li>
+</ul>
+<p><strong>算法的密码强度主要通过有效的混淆和扩散特性而得以保证</strong></p>
+<p><strong>混淆</strong>是通过使用以下3种运算而获得，3种运算都有两个16bit的输入和一个16bit的输出</p>
+<p><img src="/images/1584344193184.png" alt="1584344193184"></p>
+<p><img src="/images/1584344293280.png" alt="1584344293280"></p>
+<p><img src="/images/1584344236670.png" alt="1584344236670"><br><img src="/images/1584344253644.png" alt="1584344253644"></p>
+<p><img src="/images/1584344321097.png" alt="1584344321097"></p>
+<p><strong>扩散</strong></p>
+<p>扩散是有MA结构（乘加）的基本单元实现的。该结构的输入是链两个16bit的字段和两个16bit的子密钥，输出也为两个16bit的子段</p>
+<p>这一结构在算法中重复出现了8次，获得了非常有效的扩散效果</p>
+<img src="/images/1584344462314.png" width=30%>
+
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><img src="/images/1584344532153.png" width=70%>
+
+<h4 id="加解密过程"><a href="#加解密过程" class="headerlink" title="加解密过程"></a>加解密过程</h4><p>加密过程有连续的8轮迭代和一个输出变换组成，算法将64bit的明文分组分成4个16bit的子段，每轮迭代以4个16bit的子段作为输入，输出也为4个16bit的子段。最后的输出变换也产生4个16bit的子段，链接起来后形成64bit的密文分组。每轮迭代还需要6个16bit的子密钥，最后的输出变换需要输出变换需要4个16位子密钥，总数为52</p>
+<p>在每一轮中，执行的顺序如下：</p>
+<ol>
+<li><p>X1和第一个子密钥相乘。</p>
+</li>
+<li><p>x2和第二个子密钥相加。</p>
+</li>
+<li><p>X3和第三个子密钥相加。</p>
+</li>
+<li><p>x4和第四个子密钥相乘。</p>
+</li>
+<li><p>将第(1)步和第(3)步的结果相异或。 .</p>
+</li>
+<li><p>将第(2)步和第(4)步的结果相异或。</p>
+</li>
+<li><p>将第(5)步的结果与第五个子密钥相乘。</p>
+</li>
+<li><p>将第(6)步和第(7)步的结果相加。</p>
+</li>
+<li><p>将第(8)步的结果与第六个子密钥相乘。</p>
+</li>
+<li><p>将第(7)步和第(9)步的结果相加。</p>
+</li>
+<li><p>将第(1)步和第(9)步的结果相异或。</p>
+</li>
+<li><p>将第(3)步和第(9)步的结果相异或。</p>
+</li>
+<li><p>将第(2)步和第(10)步的结果相异或。</p>
+</li>
+<li><p>将第(4)步和第(10)步的结果相异或。</p>
+</li>
+</ol>
+<p>每一轮的输出是第(11)、(12)、(13)和(14) 步的结果形成的4个子分组。</p>
+<p><strong>将中间两个分组分组交换(最后一轮除外)</strong>后，即为下一轮的输入。</p>
+<p>经过8轮运算之后，有一个最终的输出变换：</p>
+<ol>
+<li><p>X1和第一个子密钥相乘。</p>
+</li>
+<li><p>x2和第二个子密钥相加。</p>
+</li>
+<li><p>x3和第三个子密钥相加。</p>
+</li>
+<li><p>x4和第四个子密钥相乘。</p>
+</li>
+</ol>
+<p>最后，这4个子分组重新连接到一起产生密文。</p>
+<h5 id="1-轮结构"><a href="#1-轮结构" class="headerlink" title="1. 轮结构"></a>1. 轮结构</h5><img src="/images/1584344918101.png" width=50%>
+
+<img src="/images/1584344928965.png" width=50%>
+
+<p><img src="/images/1584344998771.png" alt="1584344998771"></p>
+<p><strong>加解密子密钥表</strong></p>
+<p><img src="/images/1584345015658.png" alt="1584345015658"></p>
+<p><strong>加密过程图</strong></p>
+<p><img src="/images/1584344597019.png" alt="1584344597019"></p>
+<p><strong>解密过程图</strong></p>
+<p><img src="/images/1584345076028.png" alt="1584345076028"></p>
+<h4 id="子密钥生成算法"><a href="#子密钥生成算法" class="headerlink" title="子密钥生成算法"></a>子密钥生成算法</h4><p>算法用了52个子密钥(8轮中的每一轮需要6个，其他4个用与输出变换)。</p>
+<p>首先，将128-位密钥分成8个16-位子密钥。这些是算法的第一批8个子密钥（第一轮六个，第二轮的头两个）。然后，密钥向左环移x位后再分成8个子密钥。开始4个用在第二轮，后面4个用在第三轮。密钥再次向左环移25位产生另外8个子密钥，如此进行直到算法结束。</p>
+<p>具体是：</p>
+<blockquote>
+<p>IDEA总共进行8轮迭代操作，每轮需要6个子密钥，另外还需要4个额外子密钥,所以总共需要52个子密钥，这个52个子密钥都是从128位密钥中扩展出来的。</p>
+<p>首先把输入的Key分成8个16位的子密钥，1-6号子密钥供第一轮加密使用，7-8号子密钥供第二轮使用，然后把这个128位密钥循环左移25位，这样$Key = k_{26}k_{27}k_{28}k_{24}k_{25}​$</p>
+<p>把新生成的Key在分成8个16位的子密钥，1-4号子密钥供第二轮加密使用(前面已经提供了两个)，5-8号子密钥供第三轮加密使用。到此我们已经得到了16个子密钥，如此继续,当循环左移了5次之后已经生成了48个子密钥,还有四个额外的子密钥需要生成，再次把Key循环左移25位,选取划分出来的8个16位子密钥的前4个作为那4个额外的加密密钥.供加密使用的52个子密钥生成完毕。</p>
+<p>输入的64位数据分组被分成4个16-位子分组：x1，X2，x3和x4。这4个子分组成为算法的第一轮的输入，总共有8轮。在每一轮中，这4个子分组相互相异或，相加，相乘，且与6个16位子密钥相异或，相加，相乘。在轮与轮间，第二和第三个子分组交换。最后在输出变换中4个子分组与4个子密钥进行运算。</p>
+</blockquote>
+<h4 id="设计特点"><a href="#设计特点" class="headerlink" title="设计特点"></a>设计特点</h4><ul>
+<li>所有运算都面向16位子块进行，因此对于16位处理器特别有效</li>
+<li>全部使用计算机指令</li>
+<li>没有比特运算</li>
+<li>利用三种不同的群运算实现混乱和扩散</li>
+</ul>
+<p>这个设计思想丰富了混乱和扩散的实现技术，它和尽量使用计算机固有指令的设计思想是对编码理论的两大贡献</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag"># 密码学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/20/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%B5%81%E5%AF%86%E7%A0%81/" rel="next" title="第二章 流密码">
+                <i class="fa fa-chevron-left"></i> 第二章 流密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/%E8%AE%A1%E7%BB%84%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/" rel="prev" title="（计算机组成原理）第一章 概述">
+                （计算机组成原理）第一章 概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tiantian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-分组密码"><span class="nav-number">1.</span> <span class="nav-text">第三章 分组密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-分组密码的基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">3.1 分组密码的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">3.1.1 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#安全性设计原则"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">安全性设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#混淆原则"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">混淆原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#扩散原则"><span class="nav-number">1.1.1.1.2.</span> <span class="nav-text">扩散原则</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分组密码算法应满足的要求"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">分组密码算法应满足的要求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分组密码的实现原则"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">分组密码的实现原则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计分组密码时的常用方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">设计分组密码时的常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-代换"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">3.1.2 代换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-扩散和混淆"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">3.1.2 扩散和混淆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Feistel密码结构"><span class="nav-number">1.2.</span> <span class="nav-text">3.2 Feistel密码结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Feistel加密结构："><span class="nav-number">1.2.1.</span> <span class="nav-text">Feistel加密结构：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Feistel有关的参数："><span class="nav-number">1.2.2.</span> <span class="nav-text">与Feistel有关的参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feistel解密结构："><span class="nav-number">1.2.3.</span> <span class="nav-text">Feistel解密结构：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-SP网络"><span class="nav-number">1.3.</span> <span class="nav-text">3.3 SP网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-DES（数据加密标准）"><span class="nav-number">1.4.</span> <span class="nav-text">3.4 DES（数据加密标准）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-DES算法简介"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.4.1 DES算法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-初始置换与逆初始置换"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1. 初始置换与逆初始置换</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-轮函数的结构"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2. 轮函数的结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-密钥的产生"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">3. 密钥的产生</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-解密"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">4. 解密</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-二重DES"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.4.2 二重DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-两个密钥的三重DES（EDE）"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.4.3 两个密钥的三重DES（EDE）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-4-3个密钥的三重DES"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4.4 3个密钥的三重DES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DES的安全性"><span class="nav-number">1.4.5.</span> <span class="nav-text">DES的安全性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-分组密码的工作模式-以DES为例"><span class="nav-number">1.5.</span> <span class="nav-text">3.5 分组密码的工作模式(以DES为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较和选用"><span class="nav-number">1.5.1.</span> <span class="nav-text">比较和选用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-电话本模式-ECB"><span class="nav-number">1.5.2.</span> <span class="nav-text">3.5.1 电话本模式 ECB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-密码分组链接模式-CBC"><span class="nav-number">1.5.3.</span> <span class="nav-text">3.5.2 密码分组链接模式 CBC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-3-密码反馈模式-CFB"><span class="nav-number">1.5.4.</span> <span class="nav-text">3.5.3 密码反馈模式 CFB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-4-输出反馈模式-OFB"><span class="nav-number">1.5.5.</span> <span class="nav-text">3.5.4 输出反馈模式 OFB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-5-计数器模式"><span class="nav-number">1.5.6.</span> <span class="nav-text">3.5.5 计数器模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-AES算法—Rijndael"><span class="nav-number">1.6.</span> <span class="nav-text">3.7 AES算法—Rijndael</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-有限域的基本概念"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 有限域的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-GF-2-8-域"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. $GF(2^8)$域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-设计思想"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 设计思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法流程"><span class="nav-number">1.6.4.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法说明"><span class="nav-number">1.6.5.</span> <span class="nav-text">算法说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#状态"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#种子密钥"><span class="nav-number">1.6.5.2.</span> <span class="nav-text">种子密钥</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#轮数"><span class="nav-number">1.6.5.3.</span> <span class="nav-text">轮数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#算法输入与输出"><span class="nav-number">1.6.5.4.</span> <span class="nav-text">算法输入与输出</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-轮函数"><span class="nav-number">1.6.6.</span> <span class="nav-text">5. 轮函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-字节代换（ByteSub）"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">5.1 字节代换（ByteSub）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-行移位（shiftRow）"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">5.2 行移位（shiftRow）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-列混淆（MixColumn）"><span class="nav-number">1.6.6.3.</span> <span class="nav-text">5.3 列混淆（MixColumn）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4-轮密钥加（AddRoundKey）"><span class="nav-number">1.6.6.4.</span> <span class="nav-text">5.4 轮密钥加（AddRoundKey）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-AES的密钥编排"><span class="nav-number">1.6.7.</span> <span class="nav-text">6. AES的密钥编排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-伪代码"><span class="nav-number">1.6.8.</span> <span class="nav-text">7. 伪代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-中国商用密码算法-SM4"><span class="nav-number">1.7.</span> <span class="nav-text">3.8 中国商用密码算法 SM4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-1-基本运算"><span class="nav-number">1.7.1.</span> <span class="nav-text">3.8.1 基本运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-2-基本密码部件"><span class="nav-number">1.7.2.</span> <span class="nav-text">3.8.2 基本密码部件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#S盒"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">S盒</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非线性变换-tau"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">非线性变换 $\tau$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性变换部件-L"><span class="nav-number">1.7.2.3.</span> <span class="nav-text">线性变换部件 L</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合成变换-T"><span class="nav-number">1.7.2.4.</span> <span class="nav-text">合成变换 T</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-3-轮函数"><span class="nav-number">1.7.3.</span> <span class="nav-text">3.8.3 轮函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-4-加密算法"><span class="nav-number">1.7.4.</span> <span class="nav-text">3.8.4 加密算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-5-解密算法"><span class="nav-number">1.7.5.</span> <span class="nav-text">3.8.5 解密算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-6-密钥扩展算法"><span class="nav-number">1.7.6.</span> <span class="nav-text">3.8.6 密钥扩展算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDEA（国际数据加密算法）-算法"><span class="nav-number">1.8.</span> <span class="nav-text">IDEA（国际数据加密算法） 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设计原理"><span class="nav-number">1.8.1.</span> <span class="nav-text">设计原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">1.8.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加解密过程"><span class="nav-number">1.8.3.</span> <span class="nav-text">加解密过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-轮结构"><span class="nav-number">1.8.3.1.</span> <span class="nav-text">1. 轮结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子密钥生成算法"><span class="nav-number">1.8.4.</span> <span class="nav-text">子密钥生成算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计特点"><span class="nav-number">1.8.5.</span> <span class="nav-text">设计特点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tiantian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
